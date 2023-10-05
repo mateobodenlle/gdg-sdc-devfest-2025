@@ -41,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "smoothscroll-polyfill": "0.4.4",
+    "styled-jsx": "^5.1.2",
     "swr": "2.2.4",
     "validator": "13.11.0",
     "vanilla-tilt": "1.8.1"
