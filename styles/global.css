@@ -20,8 +20,7 @@
   font-weight: 100 900;
   font-display: swap;
   font-display: optional;
-  src: url(https://assets.vercel.com/raw/upload/v1587415301/fonts/2/inter-var-latin.woff2)
-    format('woff2');
+  src: url(https://assets.vercel.com/raw/upload/v1587415301/fonts/2/inter-var-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
     U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -58,10 +57,10 @@
   --gray: #252729;
   --secondary-color: #8a8f98;
   --sidebar: #0e0e10;
-  --brand: #702ec2;
-  --brand-lighter: #d6ccee;
-  --brand-light: #8465cb;
-  --brand-dark: #472a84;
+  --brand: #4285f4;
+  --brand-lighter: #8ab4f8;
+  --brand-light: #619af6;
+  --brand-dark: #0c47a6;
   --gray1: #222222;
   --error: #ea3323;
 
@@ -77,16 +76,18 @@ html {
   height: 100%;
   box-sizing: border-box;
   touch-action: manipulation;
-  font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+  font-feature-settings: 'case'1, 'rlig'1, 'calt'0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
+
 body {
   position: relative;
   min-height: 100%;
@@ -105,26 +106,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 }
+
 html,
 body {
   color: var(--foreground);
   background-color: var(--accents-8);
 }
+
 ::selection {
   background-color: #0070f3;
   color: var(--foreground);
 }
+
 [role='grid']:focus {
   outline: none;
 }
+
 svg {
   text-rendering: optimizeLegibility;
 }
+
 h1,
 h2,
 h3 {
   margin: 0;
 }
+
 a {
   text-decoration: none;
   transition: color 0.2s ease;
@@ -153,6 +160,7 @@ svg path,
 svg circle {
   shape-rendering: geometricprecision;
 }
+
 [data-reach-skip-link] {
   border: 0;
   clip: rect(0 0 0 0);
@@ -163,6 +171,7 @@ svg circle {
   overflow: hidden;
   position: absolute;
 }
+
 [data-reach-skip-link]:focus {
   padding: 1rem;
   position: fixed;
@@ -242,6 +251,7 @@ input {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -298,6 +308,7 @@ input {
   .self-screenshare {
     height: 100%;
   }
+
   .user-screenshare {
     height: auto;
   }
@@ -345,6 +356,7 @@ input {
     opacity: 0;
     transform: translate(-50%, -48%) scale(0.96);
   }
+
   100% {
     opacity: 1;
     translate: (-50%, -50%) scale(1);
