@@ -25,7 +25,7 @@ const supabase =
 
 export async function getUserByUsername(username: string): Promise<ConfUser> {
   const { data } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .select('name, ticketNumber')
     .eq('username', username)
     .single();
@@ -35,7 +35,7 @@ export async function getUserByUsername(username: string): Promise<ConfUser> {
 
 export async function getUserById(id: string): Promise<ConfUser> {
   const { data, error } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .select('name, username, createdAt')
     .eq('id', id)
     .single();
@@ -45,7 +45,7 @@ export async function getUserById(id: string): Promise<ConfUser> {
 }
 
 export async function createUser(id: string, email: string): Promise<ConfUser> {
-  const { data, error } = await supabase!.from<ConfUser>('users').insert({ id, email }).single();
+  const { data, error } = await supabase!.from('users').insert({ id, email }).single();
   if (error) throw new Error(error.message);
 
   return data ?? {};
@@ -53,7 +53,7 @@ export async function createUser(id: string, email: string): Promise<ConfUser> {
 
 export async function getTicketNumberByUserId(id: string): Promise<string | null> {
   const { data } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .select('ticketNumber')
     .eq('id', id)
     .single();
@@ -65,7 +65,7 @@ export async function createGitHubUser(user: any): Promise<string> {
   const { data, error } = await supabase!.from('github_users').insert({ userData: user }).single();
   if (error) throw new Error(error.message);
 
-  return data.id;
+  return (data as any).id;
 }
 
 export async function updateUserWithGitHubUser(id: string, token: string): Promise<ConfUser> {
@@ -76,7 +76,7 @@ export async function updateUserWithGitHubUser(id: string, token: string): Promi
   }
 
   const { error } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .update({ username, name })
     .eq('id', id)
     .single();

@@ -21,7 +21,7 @@ const VideoList = () => {
   const activeSpeakerThreshold = hmsConfig.activeSpeakerThreshold;
   const stagePeers = useHMSStore(selectPeersByRole('stage'));
   const peers = useHMSStore(selectPeers);
-  const localPeer = useHMSStore(selectLocalPeer);
+  const localPeer = useHMSStore(selectLocalPeer) as HMSPeer;
   const renderPeers = peers.filter(p => p.roleName !== 'viewer');
   const [activeSpeaker, setActiveSpeaker] = useState(localPeer);
   const dominantSpeaker = useHMSStore(selectDominantSpeaker);

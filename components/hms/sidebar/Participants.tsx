@@ -1,4 +1,4 @@
-import { useHMSStore, selectLocalPeer, selectPeersByRole } from '@100mslive/react-sdk';
+import { useHMSStore, selectLocalPeer, selectPeersByRole, HMSPeer } from '@100mslive/react-sdk';
 import React from 'react';
 import Avatar from '../Avatar';
 import Dropdown from './Dropdown';
@@ -8,7 +8,7 @@ const Participants = () => {
   const backstagePeers = useHMSStore(selectPeersByRole('backstage'));
   const inviteePeers = useHMSStore(selectPeersByRole('invitee'));
   const viewerPeers = useHMSStore(selectPeersByRole('viewer'));
-  const localPeer = useHMSStore(selectLocalPeer);
+  const localPeer = useHMSStore(selectLocalPeer) as HMSPeer;
   return (
     <div className="h-full p-4 overflow-y-scroll text-foreground">
       {backstagePeers.length > 0 && localPeer.roleName === 'backstage' ? (

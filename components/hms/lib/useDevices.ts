@@ -55,17 +55,17 @@ export const useDevices = (): useDevicesResult => {
     [DeviceType.videoInput]: sdkSelectedDevices.videoInputDeviceId
   };
 
-  if (!isAllowedToPublish.video && allDevices.videoInput === []) {
+  /*if (!isAllowedToPublish.video && allDevices.videoInput === []) {
     delete allDevices[DeviceType.videoInput];
     delete selectedDeviceIDs[DeviceType.videoInput];
   }
   if (!isAllowedToPublish.audio && allDevices.audioInput === []) {
     delete allDevices[DeviceType.audioInput];
     delete selectedDeviceIDs[DeviceType.audioInput];
-  }
+  }*/
 
   const updateDevice = useCallback(
-    async ({ deviceType, deviceId }) => {
+    async ({ deviceType, deviceId }: { deviceType: any, deviceId: any }) => {
       try {
         switch (deviceType) {
           case DeviceType.audioInput:
@@ -78,7 +78,7 @@ export const useDevices = (): useDevicesResult => {
             hmsActions.setAudioOutputDevice(deviceId);
             break;
         }
-      } catch (err) {}
+      } catch (err) { }
     },
     [hmsActions]
   );

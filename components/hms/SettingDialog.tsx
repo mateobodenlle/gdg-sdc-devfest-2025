@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CrossIcon } from '@100mslive/react-icons';
 import Select from './select';
@@ -7,7 +7,7 @@ import { AudioLevelIcon } from '@100mslive/react-icons';
 import Button from './Button';
 import { useDevices, DeviceType } from './lib/useDevices';
 
-const SettingDialog: React.FC = ({ children }) => {
+const SettingDialog: React.FC<{children: ReactNode}> = ({ children }) => {
   const { allDevices, selectedDeviceIDs, updateDevice, isAllowedToPublish } = useDevices();
   const videoInput = allDevices['videoInput'] || [];
   const audioInput = allDevices['audioInput'] || [];

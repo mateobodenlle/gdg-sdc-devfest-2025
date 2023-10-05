@@ -4,7 +4,8 @@ import {
   useHMSStore,
   selectDominantSpeaker,
   selectLocalPeer,
-  selectPeersByRole
+  selectPeersByRole,
+  HMSPeer
 } from '@100mslive/react-sdk';
 import UsersIcon from '@components/icons/icon-users';
 import { useRouter } from 'next/router';
@@ -30,7 +31,7 @@ const Header = () => {
     >
       <div className="flex flex-row items-center gap-2">
         <div className="block items-center">
-          {localPeer.roleName === 'viewer' ? (
+          {(localPeer as HMSPeer).roleName === 'viewer' ? (
             <button
               onClick={leave}
               className={

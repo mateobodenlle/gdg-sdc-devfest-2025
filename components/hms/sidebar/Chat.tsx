@@ -1,4 +1,4 @@
-import { useHMSActions, useHMSStore } from '@100mslive/react-sdk';
+import { HMSPeer, useHMSActions, useHMSStore } from '@100mslive/react-sdk';
 import { selectHMSMessages, selectLocalPeer } from '@100mslive/react-sdk';
 import React, { FormEvent } from 'react';
 import Avatar from '../Avatar';
@@ -20,14 +20,14 @@ const Chat = () => {
       el.scrollTop = el.scrollHeight;
     }
   }, [msgs]);
-  const localPeer = useHMSStore(selectLocalPeer);
+  const localPeer = useHMSStore(selectLocalPeer) as HMSPeer;
   return (
     <>
       <div id="chat-feed" className="h-full overflow-y-scroll p-4">
         {msgs.length > 0 ? (
           msgs.map(m => (
             <div key={m.id} className="flex items-start w-full mb-5 relative">
-              <Avatar name={m.sender === localPeer.id ? localPeer.name : m.senderName} />
+              <Avatar name={m.sender === localPeer.id ? localPeer.name : m.senderName as string} />
               <div className="flex flex-col flex-grow">
                 <div className="w-full flex  items-center font-medium pl-2">
                   <span className="text-foreground">
@@ -48,7 +48,7 @@ const Chat = () => {
               {localPeer.roleName === 'stage' || localPeer.roleName === 'backstage' ? (
                 <div className="absolute top-0 right-0">
                   {localPeer.id !== m.sender ? (
-                    <Dropdown role={m.senderRole || 'viewer'} id={m.sender} />
+                    <Dropdown role={m.senderRole || 'viewer'} id={m.sender as string} />
                   ) : null}
                 </div>
               ) : null}
