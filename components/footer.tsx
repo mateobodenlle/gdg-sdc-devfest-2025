@@ -42,21 +42,9 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
         </div>
         <div className={styles['footer-copyright']}>
-          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
-          rights reserved.
+          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} Todos los derechos reservados.
         </div>
         <div className={styles['footer-center-group']}>
-          <p className={styles['footer-paragraph']}>
-            <a
-              href={REPO}
-              className={styles['footer-link']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Source Code
-            </a>
-          </p>
-          <div className={styles['footer-separator']} />
           <p className={styles['footer-paragraph']}>
             <a
               href={CODE_OF_CONDUCT}
@@ -64,7 +52,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Code of Conduct
+              Código de Conducta
             </a>
           </p>
           {LEGAL_URL && (

@@ -19,12 +19,12 @@ import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '@components/page';
 import ConfContent from '@components/index';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
 export default function Conf() {
   const { query } = useRouter();
   const meta = {
-    title: 'DevFest Santiago de Compostela 2023',
+    title: SITE_NAME,
     description: META_DESCRIPTION
   };
   const ticketNumber = query.ticketNumber?.toString();

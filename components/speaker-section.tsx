@@ -51,7 +51,7 @@ export default function SpeakerSection({ speaker }: Props) {
           >
             <path d="M15 18l-6-6 6-6" />
           </svg>
-          Back to speakers
+          Speakers
       </Link>
       <div key={speaker.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>

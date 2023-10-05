@@ -15,7 +15,7 @@ const LinkButton: React.FC<LinkButtonProps & JSX.IntrinsicElements['a']> = ({
   href = '/',
   ...props
 }) => {
-  const baseClass = `flex items-center justify-center rounded-lg p-2 cursor-pointer disabled:cursor-not-allowed focus:outline-none text-white`;
+  const baseClass = `flex items-center justify-center rounded-lg p-2 cursor-pointer disabled:cursor-not-allowed focus:outline-none text-white font-bold`;
   let variantClass = ``;
   if (variant === 'danger') {
     variantClass = `bg-red-500 hover:bg-red-600 focus:bg-red-400`;

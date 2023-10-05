@@ -18,6 +18,8 @@ import cn from 'classnames';
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
 import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@lib/constants';
+import Logo from './logo';
+import IconLogo from './icons/icon-logo';
 
 export default function Hero() {
   return (
@@ -25,16 +27,22 @@ export default function Hero() {
       <h2
         className={cn(
           styleUtils.appear,
-          styleUtils['appear-third'],
+          styleUtils['appear-second'],
           styleUtils['show-on-mobile'],
           styles.description
         )}
       >
         {SITE_DESCRIPTION}
       </h2>
+      <div className={cn(styleUtils.appear,
+        styleUtils['appear-second'],
+        styles.logo)}>
+        <IconLogo />
+      </div>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
-        Welcome to the
-        <br className={styleUtils['show-on-desktop']} /> {BRAND_NAME} conference
+
+        {/*<br className={styleUtils['show-on-desktop']} />*/}
+        {BRAND_NAME}
       </h1>
       <h2
         className={cn(
@@ -50,7 +58,7 @@ export default function Hero() {
         <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>
-          <strong>Online</strong>
+          <strong>Presencial</strong>
         </p>
       </div>
     </div>

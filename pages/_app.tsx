@@ -23,6 +23,22 @@ import NProgress from '@components/nprogress';
 import ResizeHandler from '@components/resize-handler';
 import { useEffect } from 'react';
 import { HMSRoomProvider } from '@100mslive/react-sdk';
+import localFont from 'next/font/local';
+
+const googleSans = localFont({
+  src: [
+    {
+      path: '../public/GoogleSansDisplay-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/GoogleSansDisplay-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -30,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <SSRProvider>
-      <OverlayProvider>
+      <OverlayProvider className={googleSans.className}>
         <HMSRoomProvider>
           <Component {...pageProps} />
           <ResizeHandler />
