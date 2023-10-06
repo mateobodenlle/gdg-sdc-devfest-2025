@@ -17,7 +17,7 @@
 import cn from 'classnames';
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
-import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@lib/constants';
+import { BRAND_NAME, DATE, SHORT_DATE, SITE_DESCRIPTION } from '@lib/constants';
 import Logo from './logo';
 import IconLogo from './icons/icon-logo';
 
@@ -55,7 +55,8 @@ export default function Hero() {
         {SITE_DESCRIPTION}
       </h2>
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
-        <p>{DATE}</p>
+        <p className='hidden md:block text-right'>{DATE}</p>
+        <p className='block md:hidden text-right'>{SHORT_DATE}</p>
         <div className={styles['description-separator']} />
         <p>
           <strong>Presencial</strong>
