@@ -23,7 +23,7 @@ import IconLogo from './icons/icon-logo';
 
 export default function Hero() {
   return (
-    <div className={cn(styles.wrapper, styles.colorBackground)}>
+    <div className={cn(styles.wrapper)}>
       <h2
         className={cn(
           styleUtils.appear,
