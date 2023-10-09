@@ -1,6 +1,36 @@
+@keyframes unblur {
+    to {
+        filter: blur(70px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes gradient_animation {
+    0% {
+        background: radial-gradient(at 71% 77%,
+                var(--brand) 0,
+                transparent 21%),
+            radial-gradient(at 36% 47%, var(--brand-lighter) 0, transparent 50%),
+            radial-gradient(at 54% 29%, var(--brand-dark) 0, transparent 28%),
+            radial-gradient(at 45% 51%, var(--brand) 0, transparent 53%),
+            radial-gradient(at 73% 44%, var(--brand-lighter) 0, transparent 54%),
+            radial-gradient(at 24% 7%, var(--brand-lighter) 0, transparent 40%),
+            radial-gradient(at 76% 46%, var(--brand) 0, transparent 50%);
+    }
+}
+
 .colorBackground {
     left: 50%;
     transform: translateX(-50%);
+    /* mix-blend-mode: normal; */
+    max-height: 800px;
+    height: 80vh;
+    max-width: 1400px;
+    width: 70vw;
+    width: 100%;
+    z-index: -1;
+    filter: blur(400px);
+    opacity: 0;
     background: radial-gradient(at 71% 77%,
             var(--brand) 0,
             transparent 21%),
@@ -10,13 +40,7 @@
         radial-gradient(at 73% 44%, var(--brand-lighter) 0, transparent 54%),
         radial-gradient(at 24% 7%, var(--brand-lighter) 0, transparent 40%),
         radial-gradient(at 76% 46%, var(--brand) 0, transparent 50%);
-    /* mix-blend-mode: normal; */
-    max-height: 800px;
-    height: 80vh;
-    max-width: 1400px;
-    width: 70vw;
-    width: 100%;
-    z-index: -1;
+    animation: unblur 7.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, gradient_animation 4s ease 0s infinite;
 }
 
 .colorBackgroundBottom {
@@ -35,19 +59,9 @@
     height: 70vh;
     max-width: 80vw;
     width: 60vw;
-    z-index: -1;
+    z-index: -2;
     animation-delay: 1.0s !important;
-}
-
-@keyframes unblur {
-    to {
-        filter: blur(70px);
-        opacity: 0.6;
-    }
-}
-
-.unblur {
     filter: blur(400px);
     opacity: 0;
-    animation: unblur 7.5s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+    animation: unblur 7.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, gradient_animation_bottom 4s ease 0s infinite;
 }
