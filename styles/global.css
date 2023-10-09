@@ -54,8 +54,8 @@
   --accents-7: #333333;
   --accents-8: #111111;
 
-  --gray: #252729;
-  --secondary-color: #8a8f98;
+  --gray: #303a45;
+  --secondary-color: #00000066;
   --sidebar: #0e0e10;
   --brand: #4285f4;
   --brand-lighter: #8ab4f8;
@@ -65,6 +65,7 @@
   --error: #ea3323;
 
   --foreground: #fff;
+  --foreground-secondary: #ffffff66;
 
   --header-height: 72px;
   --video-list-height: 150px;

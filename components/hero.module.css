@@ -44,7 +44,7 @@
   line-height: 1.4;
   text-align: center;
   margin: 30px auto auto auto;
-  color: var(--secondary-color);
+  color: var(--foreground-secondary);
   max-width: 30em;
   width: 70%;
 }
