@@ -23,7 +23,7 @@ export const SITE_NAME = 'DevFest Santiago de Compostela 2023';
 export const META_DESCRIPTION =
   'DevFest Santiago de Compostela es una conferencia tecnológica organizada por Google Developers Group Santiago de Compostela. Los GDG son una red local de grupos sin ánimo de lucro ofrecen charlas, demostraciones prácticas, talleres y laboratorios de código sobre las últimas tecnologías de Google. En 2022, se celebraron más de 550 DevFests, que ayudaron a más de 320.000 desarrolladores. DevFest es el principal evento local para que los desarrolladores conozcan las últimas tecnologías de Google de la mano de Googlers, Google Developer Experts y ponentes del sector.';
 export const SITE_DESCRIPTION =
-  'Google Developers Group Santiago de Compostela presenta:';
+  'La conferencia que no te quieres perder!';
 export const DATE = '30 noviembre - 01 diciembre';
 export const SHORT_DATE = '30/11 - 01/12';
 export const FULL_DATE = '30 Nov 17h - 01 Dic 21h';

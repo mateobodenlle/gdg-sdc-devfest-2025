@@ -30,9 +30,8 @@ export default function Hero() {
           className={cn(
             styleUtils.appear,
             styleUtils['appear-second'],
-            styleUtils['show-on-mobile'],
             styles.description
-          )}
+          ) + ' block md:hidden'}
         >
           {SITE_DESCRIPTION}
         </h2>
@@ -50,9 +49,8 @@ export default function Hero() {
           className={cn(
             styleUtils.appear,
             styleUtils['appear-third'],
-            styleUtils['show-on-tablet'],
             styles.description
-          )}
+          ) + ' hidden md:block'}
         >
           {SITE_DESCRIPTION}
         </h2>
@@ -65,14 +63,14 @@ export default function Hero() {
           </p>
         </div>
       </div>
-          <GradientBackground
-            variant="large"
-            className="fixed top-20 opacity-40 dark:opacity-60"
-          />
-          <GradientBackground
-            variant="small"
-            className="fixed bottom-0 opacity-30 dark:opacity-10"
-          />
+      <GradientBackground
+        variant="large"
+        className="fixed top-20 opacity-40 dark:opacity-60"
+      />
+      <GradientBackground
+        variant="small"
+        className="fixed bottom-0 opacity-30 dark:opacity-10"
+      />
     </div>
   );
 }

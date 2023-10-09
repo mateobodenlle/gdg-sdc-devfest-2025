@@ -43,9 +43,10 @@
   font-size: 20px;
   line-height: 1.4;
   text-align: center;
-  margin: auto auto 30px;
+  margin: 30px auto auto auto;
   color: var(--secondary-color);
-  max-width: 355px;
+  max-width: 30em;
+  width: 70%;
 }
 
 .description-separator {
@@ -72,18 +73,18 @@
 
   .info {
     font-size: 24px;
-    margin-bottom: 80px;
+    margin-bottom: 1.5em;
   }
 
   .description {
     font-size: var(--space-8x);
-    max-width: 531px;
+    max-width: 30em;
     margin: 40px auto;
   }
 }
 
 .logo {
-  width: 15em;
-  max-width: 40vw;
+  width: 50%;
+  max-width: 20em;
   margin: 0 auto;
 }
