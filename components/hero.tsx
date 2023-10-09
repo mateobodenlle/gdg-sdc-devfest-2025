@@ -28,9 +28,8 @@ export default function Hero() {
         className={cn(
           styleUtils.appear,
           styleUtils['appear-second'],
-          styleUtils['show-on-mobile'],
           styles.description
-        )}
+        ) + ' block md:hidden'}
       >
         {SITE_DESCRIPTION}
       </h2>
@@ -48,9 +47,8 @@ export default function Hero() {
         className={cn(
           styleUtils.appear,
           styleUtils['appear-third'],
-          styleUtils['show-on-tablet'],
           styles.description
-        )}
+        ) + ' hidden md:block'}
       >
         {SITE_DESCRIPTION}
       </h2>
