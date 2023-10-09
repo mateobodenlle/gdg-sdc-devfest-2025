@@ -26,7 +26,7 @@ export default function LearnMore() {
   return (
     <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.contact, styles.btn_container)}>
       <LinkButton className={cn(styles.button, styles.register, ) + " px-12"} href='https://www.meetup.com/gdgsantiagoes/events/295358691/'>
-        Entradas
+        ¡Consigue tu entrada!
       </LinkButton>
     </div>
   );

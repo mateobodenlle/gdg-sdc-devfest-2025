@@ -111,6 +111,7 @@ html,
 body {
   color: var(--foreground);
   background-color: var(--accents-8);
+  z-index: -100;
 }
 
 ::selection {

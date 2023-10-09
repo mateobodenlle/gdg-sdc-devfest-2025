@@ -22,6 +22,7 @@ import styles from './sponsors-grid.module.css';
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
+    <Link legacyBehavior key={sponsor.name} href={`/expo/${sponsor.slug}`}>
       <a
         role="button"
         tabIndex={0}
@@ -30,14 +31,13 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           [styles.gold]: sponsor.tier === 'gold'
         })}
       >
-    <Link key={sponsor.name} href={`/expo/${sponsor.slug}`}>
-        <div className={styles.imageWrapper}>
+        <div className={styles.imageWrapper + ' min-h-[20vh]'}>
           <Image
             alt={sponsor.name}
             src={sponsor.cardImage.url}
             className={cn(styles.image, {
               [styles.silver]: sponsor.tier === 'silver'
-            })}
+            }) + ' '}
             loading="lazy"
             title={sponsor.name}
             width={900}
@@ -52,8 +52,8 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
             </div>
           </div>
         )}
-    </Link>
       </a>
+    </Link>
   );
 }
 
