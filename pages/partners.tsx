@@ -23,7 +23,7 @@ import Layout from '@components/layout';
 
 import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
 type Props = {
   sponsors: Sponsor[];
@@ -31,14 +31,14 @@ type Props = {
 
 export default function ExpoPage({ sponsors }: Props) {
   const meta = {
-    title: 'Expo - Virtual Event Starter Kit',
+    title: 'Partners - ' + SITE_NAME,
     description: META_DESCRIPTION
   };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Expo" description={meta.description} />
+        <Header hero="Partners" description={meta.description} />
         <SponsorsGrid sponsors={sponsors} />
       </Layout>
     </Page>

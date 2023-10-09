@@ -28,6 +28,7 @@ import DemoButton from './hms/demo-cta';
 import RoomCta from './hms/demo-cta/room-cta';
 import { hmsConfig } from './hms/config';
 import ViewSource from './view-source';
+import { GradientBackground } from './GradientBackground';
 
 type Props = {
   children: React.ReactNode;

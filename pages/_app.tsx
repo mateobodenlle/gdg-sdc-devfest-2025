@@ -24,6 +24,7 @@ import ResizeHandler from '@components/resize-handler';
 import { useEffect } from 'react';
 import { HMSRoomProvider } from '@100mslive/react-sdk';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 
 const googleSans = localFont({
   src: [
@@ -39,6 +40,7 @@ const googleSans = localFont({
     },
   ],
 });
+
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {

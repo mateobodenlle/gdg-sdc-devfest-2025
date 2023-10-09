@@ -17,7 +17,7 @@
 import cn from 'classnames';
 import VercelLogo from '@components/icons/icon-platform';
 import styles from './footer.module.css';
-import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, REPO } from '@lib/constants';
+import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, REPO, BRAND_NAME } from '@lib/constants';
 
 export function HostedByVercel() {
   return (<></>)
@@ -43,7 +43,7 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
         </div>
         <div className={styles['footer-copyright']}>
-          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} Todos los derechos reservados.
+          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${BRAND_NAME}.`} Todos los derechos reservados.
         </div>
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>

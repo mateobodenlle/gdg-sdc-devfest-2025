@@ -17,7 +17,7 @@
 export const SITE_URL = 'https://devfest.gdg-sdc.org';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'GDGSantiagoES';
-export const BRAND_NAME = 'DevFest Santiago de Compostela 2023';
+export const BRAND_NAME = 'GDG Santiago de Compostela';
 export const SITE_NAME_MULTILINE = ['DevFest', 'Santiago de Compostela'];
 export const SITE_NAME = 'DevFest Santiago de Compostela 2023';
 export const META_DESCRIPTION =
@@ -51,6 +51,10 @@ export const NAVIGATION = [
   /*{
     name: 'Live Stage',
     route: '/stage/a'
+  },
+  {
+    name: 'Equipo',
+    route: '/team'
   },
   {
     name: 'Vercel Stage',
