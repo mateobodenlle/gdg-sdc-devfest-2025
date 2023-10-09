@@ -23,7 +23,7 @@ import IconLogo from './icons/icon-logo';
 
 export default function Hero() {
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, styles.colorBackground)}>
       <h2
         className={cn(
           styleUtils.appear,
@@ -55,8 +55,8 @@ export default function Hero() {
         {SITE_DESCRIPTION}
       </h2>
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
-        <p className='hidden md:block text-right'>{DATE}</p>
         <p className='block md:hidden text-right'>{SHORT_DATE}</p>
+        <p className='hidden md:block text-right'>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>
           <strong>Presencial</strong>
