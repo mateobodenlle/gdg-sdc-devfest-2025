@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Job, Sponsor, Stage, Speaker } from '@lib/types';
+import { Job, Sponsor, Stage, Speaker, TeamMember } from '@lib/types';
 
 const API_URL = 'https://gapi.storyblok.com/v1/api';
 const API_TOKEN = process.env.STORYBLOK_PREVIEW_TOKEN;
@@ -205,5 +205,37 @@ export async function getAllJobs(): Promise<Job[]> {
   `);
 
   const transformedData = transformResponse(data.JobItems.items);
+  return transformedData;
+}
+
+export async function getAllTeamMembers(): Promise<TeamMember[]> {
+  const data = await fetchCmsAPI(`
+    {
+      TeamMemberItems(per_page: 100) {
+        name
+        slug
+        items {
+          content {
+            role
+            currentAffiliation
+            roleAtCurrentAffiliation
+            linkedin {
+              url
+            }
+            github {
+              url
+            }
+            image {
+              url: filename
+            }
+            bio
+            email
+          }
+        }
+      }
+    }
+  `);
+
+  const transformedData = transformResponse(data.TeamMemberItems.items);
   return transformedData;
 }
