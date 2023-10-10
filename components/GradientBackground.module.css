@@ -42,7 +42,7 @@
         radial-gradient(at 45% 51%, var(--brand-yellow) 0, transparent 53%),
         radial-gradient(at 73% 44%, var(--brand) 0, transparent 54%),
         radial-gradient(at 24% 7%, var(--brand-light) 0, transparent 40%),
-        radial-gradient(at 76% 46%, var(--brand) 0, transparent 50%);
+        radial-gradient(at 76% 46%, var(--brand-green) 0, transparent 50%);
     background-size: 500% auto;
     animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 3s infinite alternate, moveColorBackground 15s ease-in-out 4s infinite alternate;
 }
@@ -80,12 +80,12 @@
     background: radial-gradient(at 73% 25%,
             var(--brand-lighter) 0,
             transparent 21%),
-        radial-gradient(at 36% 47%, var(--brand) 0, transparent 50%),
+        radial-gradient(at 36% 47%, var(--brand-light) 0, transparent 50%),
         radial-gradient(at 79% 45%, var(--brand-yellow) 0, transparent 28%),
         radial-gradient(at 66% 38%, var(--brand) 0, transparent 53%),
         radial-gradient(at 89% 13%, var(--brand-red) 0, transparent 54%),
         radial-gradient(at 24% 7%, var(--brand) 0, transparent 40%),
-        radial-gradient(at 76% 46%, var(--brand-red) 0, transparent 50%);
+        radial-gradient(at 76% 46%, var(--brand-green) 0, transparent 50%);
     background-size: 500% auto;
     animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate, moveColorBackgroundBottom 10s ease-in-out 5s infinite alternate;
 }
