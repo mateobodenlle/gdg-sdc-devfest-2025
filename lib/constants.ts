@@ -42,7 +42,7 @@ export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
     name: 'Entradas',
-    route: 'https://www.meetup.com/gdgsantiagoes/events/295358691/'
+    route: 'https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2023/'
   },
   {
     name: 'Call for Speakers',
