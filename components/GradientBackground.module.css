@@ -8,24 +8,32 @@
 @keyframes moveColorBackground {
     0% {
         transform: translateX(-50%) translateY(20%) rotate(15deg);
+        width: 70vw;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10%) rotate(10deg);
+        width: 50vw;
     }
 
     100% {
         transform: translateX(-60%) translateY(30%) rotate(-15deg);
+        width: 70vw;
     }
 }
 
 .colorBackground {
     left: 50%;
-    transform: translateX(-50%) translateY(20%) rotate(15deg);
     /* mix-blend-mode: normal; */
+    transform: translateX(-50%) translateY(20%) rotate(15deg);
+    width: 70vw;
     max-height: 800px;
     height: 60vh;
     max-width: 1400px;
-    width: 70vw;
     z-index: -1;
     filter: blur(500px);
     opacity: 0;
+    border-radius: 30%;
     background: radial-gradient(at 71% 77%,
             var(--brand) 0,
             transparent 21%),
@@ -41,25 +49,34 @@
 
 @keyframes moveColorBackgroundBottom {
     0% {
-        transform: translateX(-50%) rotate(155deg);
+        transform: translateX(-50%) translateY(0%) rotate(155deg);
+        width: 60vw;
+    }
+
+    50% {
+        transform: translateX(-40%) translateY(-30%) rotate(135deg);
+        width: 40vw;
     }
 
     100% {
-        transform: translateX(-40%) rotate(135deg);
+        transform: translateX(-80%) translateY(-30%) rotate(120deg);
+        width: 40vw;
     }
 }
 
 .colorBackgroundBottom {
+    transform: translateX(-50%) translateY(0%) rotate(155deg);
+    width: 60vw;
     left: 50%;
-    transform: translateX(-50%) rotate(155deg);
     /* mix-blend-mode: normal; */
     height: 70vh;
     max-width: 80vw;
-    width: 60vw;
     z-index: -2;
     animation-delay: 1.0s !important;
     filter: blur(500px);
     opacity: 0;
+    /* Rounded corners */
+    border-radius: 30%;
     background: radial-gradient(at 73% 25%,
             var(--brand-lighter) 0,
             transparent 21%),
@@ -70,7 +87,7 @@
         radial-gradient(at 24% 7%, var(--brand) 0, transparent 40%),
         radial-gradient(at 76% 46%, var(--brand-red) 0, transparent 50%);
     background-size: 500% auto;
-    animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate, moveColorBackgroundBottom 15s ease-in-out 5s infinite alternate;
+    animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate, moveColorBackgroundBottom 10s ease-in-out 5s infinite alternate;
 }
 
 @keyframes rainbow_anim {

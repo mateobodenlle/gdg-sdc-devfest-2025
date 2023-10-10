@@ -20,7 +20,6 @@ import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
-import Logo from './icons/icon-logo';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
 import React from 'react';
@@ -29,6 +28,9 @@ import RoomCta from './hms/demo-cta/room-cta';
 import { hmsConfig } from './hms/config';
 import ViewSource from './view-source';
 import { GradientBackground } from './GradientBackground';
+import IconLogo from './icons/icon-logo';
+import HmsLogo from './icons/icon-hms';
+import Logo from './logo';
 
 type Props = {
   children: React.ReactNode;
