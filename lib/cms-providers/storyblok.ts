@@ -29,8 +29,8 @@ const API_TOKEN = process.env.STORYBLOK_PREVIEW_TOKEN;
 function transformResponse(response: any[], _speakers?: any) {
   const content = response.map((r: any) => {
     const newCont = r.content ?? r;
-    newCont.slug = r.slug;
-    newCont.name = r.name;
+    newCont.slug = r.slug ?? '';
+    newCont.name = r.name ?? '';
     return newCont;
   });
   content.map((item: any) => {
@@ -242,7 +242,5 @@ export async function getAllTeamMembers(): Promise<TeamMember[]> {
   `);
 
   const transformedData = transformResponse(data.TeamItems.items);
-  console.log(data);
-  console.log(transformedData);
   return transformedData;
 }

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://devfest.gdg-sdc.org
+
+# Sitemaps
+Sitemap: https://devfest.gdg-sdc.org/sitemap.xml
