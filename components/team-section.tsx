@@ -18,8 +18,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
-import { Speaker } from '@lib/types';
-import styles from './speaker-section.module.css';
+import { Speaker, TeamMember } from '@lib/types';
+import styles from './team-section.module.css';
+import { LinkedInIcon, MailIcon, SpeakerIcon } from '@100mslive/react-icons';
+import IconAvatar from './icons/icon-avatar';
+import IconCheck from './icons/icon-check';
+import IconTwitter from './icons/icon-twitter';
 
 const TwitterIcon = () => (
   <svg width={24} viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -31,13 +35,13 @@ const TwitterIcon = () => (
 );
 
 type Props = {
-  speaker: Speaker;
+  teamMember: TeamMember;
 };
 
-export default function SpeakerSection({ speaker }: Props) {
+export default function TeamMemberSection({ teamMember: teamMember }: Props) {
   return (
     <>
-      <Link href="/speakers" className={styles.backlink}>
+      <Link href="/team" className={styles.backlink}>
           <svg
             viewBox="0 0 24 24"
             width="24"
@@ -51,49 +55,52 @@ export default function SpeakerSection({ speaker }: Props) {
           >
             <path d="M15 18l-6-6 6-6" />
           </svg>
-          Speakers
+          Equipo
       </Link>
-      <div key={speaker.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
+      <div key={teamMember.name} className={styles.container}>
+        <div style={{ minWidth: '300px', position: 'relative' }}>
           <Image
-            alt={speaker.name}
-            title={speaker.name}
-            src={speaker.image.url}
+            alt={teamMember.name}
+            title={teamMember.name}
+            src={teamMember.image.url}
             className={styles.image}
             loading="lazy"
-            height={400}
-            width={300}
+            content='cover'
+            layout='fill'
           />
         </div>
         <div className={styles['speaker-details']}>
           <div>
-            <h1 className={styles.name}>{speaker.name}</h1>
+            <h1 className={styles.name}>{teamMember.name}</h1>
             <p className={styles.title}>
-              {`${speaker.title} @ `}
-              <span className={styles.company}>{speaker.company}</span>
+              <span className={styles.company}>{teamMember.role}</span>
+            </p>
+            <p className={styles.title}>
+              {`${teamMember.roleAtCurrentAffiliation} @ `}
+              <span className={styles.company}>{teamMember.currentAffiliation}</span>
             </p>
             <h2 className={styles['bio-header']}>Bio</h2>
-            <p className={styles.bio}>{speaker.bio}</p>
+            <p className={styles.bio}>{teamMember.bio}</p>
             <h3 className={styles['socials-header']}>Social Media</h3>
-            {speaker.twitter ? (
+            {teamMember.linkedin ? (
               <a
-                aria-label="Twitter"
-                href={speaker.twitter}
+                aria-label="LinkedIn"
+                href={teamMember.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <TwitterIcon />
+                <LinkedInIcon />
               </a>
             ) : (
               <span className={styles.disabled}>
-                <TwitterIcon />
+                <LinkedInIcon />
               </span>
             )}
-            {speaker.github ? (
+            {teamMember.github ? (
               <a
                 aria-label="GitHub"
                 className={styles.githubIcon}
-                href={speaker.github}
+                href={teamMember.github}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -104,15 +111,22 @@ export default function SpeakerSection({ speaker }: Props) {
                 <GithubIcon color="#D8D8D8" size={24} />
               </span>
             )}
+            {teamMember.email ? (
+              <a
+                aria-label="Email"
+                className={styles.githubIcon}
+                href={`mailto:${teamMember.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MailIcon color="#D8D8D8" />
+              </a>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
-      {speaker.talk && (
-        <div className={styles['talk-details']}>
-          <h3 className={styles['socials-header']}>{speaker.talk.title}</h3>
-          <p>{speaker.talk.description}</p>
-        </div>
-      )}
     </>
   );
 }

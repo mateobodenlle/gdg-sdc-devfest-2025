@@ -27,7 +27,7 @@ export default function TeamGrid({ teamMembers }: Props) {
   return (
     <div className={styles.grid}>
       {teamMembers.map(teamMember => (
-        <Link legacyBehavior key={teamMember.name} href={`/speakers/${teamMember.slug}`}>
+        <Link legacyBehavior key={teamMember.name} href={`/team/${teamMember.slug}`}>
           <a role="button" tabIndex={0} className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image
@@ -39,16 +39,15 @@ export default function TeamGrid({ teamMembers }: Props) {
                 title={teamMember.name}
                 placeholder={teamMember.image.blurDataURL ? 'blur' : 'empty'}
                 blurDataURL={teamMember.image.blurDataURL}
-                width={300}
-                height={300}
+                layout='fill'
+                objectFit='cover'
               />
             </div>
             <div className={styles.cardBody}>
               <div>
                 <h2 className={styles.name}>{teamMember.name}</h2>
                 <p className={styles.title}>
-                  {`${teamMember.role} @ `}
-                  <span className={styles.company}>{teamMember.currentAffiliation}</span>
+                  <span className={styles.company}>{teamMember.role}</span>
                 </p>
               </div>
             </div>

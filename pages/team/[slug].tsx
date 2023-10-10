@@ -14,48 +14,62 @@
  * limitations under the License.
  */
 
-import { GetStaticProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Page from '@components/page';
-import SpeakersGrid from '@components/speakers-grid';
+import SpeakerSection from '@components/speaker-section';
 import Layout from '@components/layout';
-import Header from '@components/header';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker, TeamMember } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
-import TeamGrid from '@components/team-grid';
+import TeamMemberSection from '@components/team-section';
 import { getAllTeamMembers } from '@lib/cms-providers/storyblok';
 
 type Props = {
-  teamMembers: TeamMember[];
+  speaker: TeamMember;
 };
 
-export default function Team({ teamMembers }: Props) {
+export default function TeamMemberPage({ speaker }: Props) {
   const meta = {
-    title: 'Equipo - ' + SITE_NAME,
+    title: `${speaker.name} - ${SITE_NAME}`,
     description: META_DESCRIPTION
   };
+
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Equipo" description={meta.description} />
-        <TeamGrid teamMembers={teamMembers} />
+        <TeamMemberSection teamMember={speaker} />
       </Layout>
     </Page>
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const teamMembers = await getAllTeamMembers().catch((e) => {
-    console.error(e);
-    return [];
-  });
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const slug = params?.slug;
+  const speakers = await getAllTeamMembers();
+  const currentSpeaker = speakers.find((s: TeamMember) => s.slug === slug) || null;
+
+  if (!currentSpeaker) {
+    return {
+      notFound: true
+    };
+  }
 
   return {
     props: {
-      teamMembers
+      speaker: currentSpeaker
     },
-    revalidate: 6000
+    revalidate: 60
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const speakers = await getAllTeamMembers();
+  const slugs = speakers.map((s: TeamMember) => ({ params: { slug: s.slug } }));
+
+  return {
+    paths: slugs,
+    fallback: false
   };
 };

@@ -48,13 +48,13 @@ export const NAVIGATION = [
     name: 'Call for Speakers',
     route: 'https://sessionize.com/gdg-devfest-2023/'
   },
-  /*{
-    name: 'Live Stage',
-    route: '/stage/a'
-  },
   {
     name: 'Equipo',
     route: '/team'
+  },
+  /*{
+    name: 'Live Stage',
+    route: '/stage/a'
   },
   {
     name: 'Vercel Stage',
