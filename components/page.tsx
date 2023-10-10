@@ -19,6 +19,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants';
+import Script from 'next/script';
+const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || '';
 
 type Meta = {
   title: string | null;

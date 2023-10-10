@@ -25,6 +25,7 @@ import { useEffect } from 'react';
 import { HMSRoomProvider } from '@100mslive/react-sdk';
 import localFont from 'next/font/local';
 import Script from 'next/script';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const googleSans = localFont({
   src: [
@@ -41,7 +42,6 @@ const googleSans = localFont({
   ],
 });
 
-
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.body.classList?.remove('loading');
@@ -50,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <SSRProvider>
       <OverlayProvider className={googleSans.className}>
         <HMSRoomProvider>
+          <GoogleAnalytics trackPageViews />
           <Component {...pageProps} />
           <ResizeHandler />
           <NProgress />

@@ -16,25 +16,13 @@
 
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
-
-const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || '';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang="es">
-        <Head >
-          <Script src={"https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID} />
-          <Script id="google-analytics">
-            {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', '${GA_MEASUREMENT_ID}');
-        `}
-          </Script>
-        </Head>
+        <Head />
         <body className="loading">
           <Main />
           <NextScript />

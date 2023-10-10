@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     props: {
       speaker: currentSpeaker
     },
-    revalidate: 60
+    revalidate: 6000
   };
 };
 
