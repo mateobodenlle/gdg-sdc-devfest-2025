@@ -12,5 +12,5 @@ export function GradientBackground({ variant, className }: { variant: 'large' | 
         className
     );
 
-    return <div className={cn(classes, styles.unblur)} />;
+    return <div className={cn(classes, styles.unblur, styles.rainbox_bg)} />;
 }

@@ -40,7 +40,7 @@ export default function Hero() {
           styles.logo)}>
           <IconLogo />
         </div>
-        <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
+        <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], /*styles.rainbow_text,*/ styles.hero)}>
 
           {/*<br className={styleUtils['show-on-desktop']} />*/}
           {SITE_NAME}
