@@ -46,7 +46,7 @@ export default function ExpoPage({ sponsors }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const sponsors = await getAllSponsors();
+  const sponsors = await getAllSponsors().catch(() => []);
 
   return {
     props: {
