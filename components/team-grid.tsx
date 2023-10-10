@@ -47,7 +47,8 @@ export default function TeamGrid({ teamMembers }: Props) {
               <div>
                 <h2 className={styles.name}>{teamMember.name}</h2>
                 <p className={styles.title}>
-                  <span className={styles.company}>{teamMember.role}</span>
+                  {`${teamMember.roleAtCurrentAffiliation} @ `}
+                  <span className={styles.company}>{teamMember.currentAffiliation}</span>
                 </p>
               </div>
             </div>
