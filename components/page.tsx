@@ -37,7 +37,7 @@ type Props = {
 
 export default function Page({ meta, children, fullViewport = false }: Props) {
   const router = useRouter();
-  const image = meta.image || '/opengraph-card.png';
+  const image = meta.image || '/open-graph-image.png';
   const title = meta.title || SITE_NAME;
   const url = meta.url || `${SITE_URL}${router.asPath}`;
   const description = meta.description || SITE_NAME;
