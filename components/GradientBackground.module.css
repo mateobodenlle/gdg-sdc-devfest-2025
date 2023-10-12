@@ -47,7 +47,7 @@
 
     /* in mobile phones ans tablets*/
     @media screen and (max-width: 768px) {
-        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 3s infinite alternate;
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards;
     }
 
     /* in desktops and laptops */
@@ -98,7 +98,7 @@
     background-size: 500% auto;
 
     @media screen and (max-width: 768px) {
-        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate;
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards;
     }
 
     /* in desktops and laptops */
