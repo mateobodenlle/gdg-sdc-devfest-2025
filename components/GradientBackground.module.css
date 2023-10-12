@@ -44,7 +44,16 @@
         radial-gradient(at 24% 7%, var(--brand-light) 0, transparent 40%),
         radial-gradient(at 76% 46%, var(--brand-green) 0, transparent 50%);
     background-size: 500% auto;
-    animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 3s infinite alternate, moveColorBackground 15s ease-in-out 4s infinite alternate;
+
+    /* in mobile phones ans tablets*/
+    @media screen and (max-width: 768px) {
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 3s infinite alternate;
+    }
+
+    /* in desktops and laptops */
+    @media screen and (min-width: 769px) {
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 3s infinite alternate, moveColorBackground 15s ease-in-out 4s infinite alternate;
+    }
 }
 
 @keyframes moveColorBackgroundBottom {
@@ -87,7 +96,15 @@
         radial-gradient(at 24% 7%, var(--brand) 0, transparent 40%),
         radial-gradient(at 76% 46%, var(--brand-green) 0, transparent 50%);
     background-size: 500% auto;
-    animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate, moveColorBackgroundBottom 10s ease-in-out 5s infinite alternate;
+
+    @media screen and (max-width: 768px) {
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate;
+    }
+
+    /* in desktops and laptops */
+    @media screen and (min-width: 769px) {
+        animation: unblur 5.5s cubic-bezier(0.1, 0, 0.175, 1) forwards, rainbow_anim 15s ease-in-out 4s infinite alternate, moveColorBackgroundBottom 10s ease-in-out 5s infinite alternate;
+    }
 }
 
 @keyframes rainbow_anim {
