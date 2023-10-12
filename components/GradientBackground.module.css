@@ -8,17 +8,17 @@
 @keyframes moveColorBackground {
     0% {
         transform: translateX(-50%) translateY(20%) rotate(15deg);
-        width: 70vw;
+        /*width: 70vw;*/
     }
 
     50% {
         transform: translateX(-50%) translateY(10%) rotate(10deg);
-        width: 50vw;
+        /*width: 50vw;*/
     }
 
     100% {
         transform: translateX(-60%) translateY(30%) rotate(-15deg);
-        width: 70vw;
+        /*width: 70vw;*/
     }
 }
 
@@ -26,7 +26,7 @@
     left: 50%;
     /* mix-blend-mode: normal; */
     transform: translateX(-50%) translateY(20%) rotate(15deg);
-    width: 70vw;
+    width: 60vw;
     max-height: 800px;
     height: 60vh;
     max-width: 1400px;
@@ -50,23 +50,23 @@
 @keyframes moveColorBackgroundBottom {
     0% {
         transform: translateX(-50%) translateY(0%) rotate(155deg);
-        width: 60vw;
+        /*width: 60vw;*/
     }
 
     50% {
         transform: translateX(-40%) translateY(-30%) rotate(135deg);
-        width: 40vw;
+        /*width: 40vw;*/
     }
 
     100% {
         transform: translateX(-80%) translateY(-30%) rotate(120deg);
-        width: 40vw;
+        /*width: 40vw;*/
     }
 }
 
 .colorBackgroundBottom {
     transform: translateX(-50%) translateY(0%) rotate(155deg);
-    width: 60vw;
+    width: 50vw;
     left: 50%;
     /* mix-blend-mode: normal; */
     height: 70vh;
