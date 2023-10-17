@@ -30,6 +30,7 @@ export type Speaker = {
   talk: Talk;
   image: Image;
   imageSquare: Image;
+  isTopSpeaker?: boolean;
 };
 
 export type TeamMember = {

@@ -39,16 +39,18 @@ export default function SpeakersGrid({ speakers }: Props) {
                 title={speaker.name}
                 placeholder={speaker.image.blurDataURL ? 'blur' : 'empty'}
                 blurDataURL={speaker.image.blurDataURL}
-                width={300}
-                height={300}
+                layout='fill'
+                objectFit='cover'
               />
             </div>
             <div className={styles.cardBody}>
               <div>
                 <h2 className={styles.name}>{speaker.name}</h2>
                 <p className={styles.title}>
-                  {`${speaker.title} @ `}
-                  <span className={styles.company}>{speaker.company}</span>
+                  {`${speaker.title}`}
+                  {speaker.company && (
+                    <span className={styles.company}>{' @ '}{speaker.company}</span>)
+                  }
                 </p>
               </div>
             </div>

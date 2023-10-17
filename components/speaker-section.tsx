@@ -38,39 +38,41 @@ export default function SpeakerSection({ speaker }: Props) {
   return (
     <>
       <Link href="/speakers" className={styles.backlink}>
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            shapeRendering="geometricPrecision"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-          Speakers
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          shapeRendering="geometricPrecision"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Speakers
       </Link>
       <div key={speaker.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
+        <div style={{ minWidth: '300px', position: 'relative' }}>
           <Image
             alt={speaker.name}
             title={speaker.name}
             src={speaker.image.url}
             className={styles.image}
             loading="lazy"
-            height={400}
-            width={300}
+            content='cover'
+            layout='fill'
           />
         </div>
         <div className={styles['speaker-details']}>
           <div>
             <h1 className={styles.name}>{speaker.name}</h1>
             <p className={styles.title}>
-              {`${speaker.title} @ `}
-              <span className={styles.company}>{speaker.company}</span>
+              {`${speaker.title}`}
+              {speaker.company && (
+                <span className={styles.company}>{' @ '}{speaker.company}</span>)
+              }
             </p>
             <h2 className={styles['bio-header']}>Bio</h2>
             <p className={styles.bio}>{speaker.bio}</p>

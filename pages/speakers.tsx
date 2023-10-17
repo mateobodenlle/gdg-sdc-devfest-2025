@@ -37,7 +37,7 @@ export default function Speakers({ speakers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={meta.description} />
+        <Header hero="Speakers" description={<>Estos son los speakers que participarán en el DevFest Santiago de Compostela 2023. ¡No te los pierdas!<br/><span className='font-bold'>Anunciaremos más speakers próximamente.</span></>} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>
@@ -45,12 +45,23 @@ export default function Speakers({ speakers }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const speakers = await getAllSpeakers();
+  const speakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
+    name: speaker.fullName,
+    title: speaker.tagLine,
+    image: {
+      url: speaker.profilePicture,
+    },
+    slug: speaker.id,
+    isTopSpeaker: speaker.isTopSpeaker
+  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
+    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+  )
+    .catch(() => [])
 
   return {
     props: {
       speakers
     },
-    revalidate: 60
+    revalidate: 360
   };
 };
