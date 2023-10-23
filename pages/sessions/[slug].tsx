@@ -22,7 +22,7 @@ import Layout from '@components/layout';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker, Talk } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 import TalkSection from '@components/talk-section';
 
 type Props = {
@@ -31,7 +31,7 @@ type Props = {
 
 export default function SpeakerPage({ talk }: Props) {
   const meta = {
-    title: 'Demo - Virtual Event Starter Kit',
+    title: 'Sesión - ' + SITE_NAME,
     description: META_DESCRIPTION
   };
 
