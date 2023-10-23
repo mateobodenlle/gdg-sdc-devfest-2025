@@ -87,7 +87,7 @@ export default function Schedule({ allStages }: Props) {
       {/*
           Buttons to switch between days
         */}
-      <div className="flex justify-center space-x-4 my-8">
+      <div className="flex justify-start gap-4 my-8 px-8">
         {allDays.map((day: Date) => (
           <Button
             onClick={() => setCurrentDay(day)}
@@ -96,9 +96,9 @@ export default function Schedule({ allStages }: Props) {
             type="button"
             className={cn(styles.button, styles['button-link'], {
               [styles['button-active']]: day.toDateString() === currentDay.toDateString()
-              })}
+            })}
           >
-            {day.toDateString()}
+            {((string) => string[0].toUpperCase() + string.slice(1))(day.toLocaleDateString(new Intl.Locale('es-ES'), { weekday: 'long', day: 'numeric' }))}
           </Button>
         ))}
       </div>
