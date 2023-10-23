@@ -81,7 +81,7 @@ export default function TeamMemberSection({ teamMember: teamMember }: Props) {
             </p>
             <h2 className={styles['bio-header']}>Bio</h2>
             <p className={styles.bio}>{teamMember.bio}</p>
-            <h3 className={styles['socials-header']}>Social Media</h3>
+            <h3 className={styles['socials-header']}>Redes sociales</h3>
             {teamMember.linkedin ? (
               <a
                 aria-label="LinkedIn"

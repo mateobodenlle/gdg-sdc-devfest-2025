@@ -21,14 +21,15 @@ import SpeakerSection from '@components/speaker-section';
 import Layout from '@components/layout';
 
 import { getAllSpeakers } from '@lib/cms-api';
-import { Speaker } from '@lib/types';
+import { Speaker, Talk } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
+import TalkSection from '@components/talk-section';
 
 type Props = {
-  speaker: Speaker;
+  talk: Talk;
 };
 
-export default function SpeakerPage({ speaker }: Props) {
+export default function SpeakerPage({ talk }: Props) {
   const meta = {
     title: 'Demo - Virtual Event Starter Kit',
     description: META_DESCRIPTION
@@ -37,7 +38,7 @@ export default function SpeakerPage({ speaker }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <SpeakerSection speaker={speaker} />
+        <TalkSection talk={talk} />
       </Layout>
     </Page>
   );
@@ -46,23 +47,60 @@ export default function SpeakerPage({ speaker }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug;
 
-  const speakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => ({
+  const allSpeakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
     name: speaker.fullName,
     title: speaker.tagLine,
     image: {
       url: speaker.profilePicture,
     },
     slug: speaker.id,
-    isTopSpeaker: speaker.isTopSpeaker,
-    bio: speaker.bio,
+    isTopSpeaker: speaker.isTopSpeaker
   })).sort((a: any, b: any) => a.name.localeCompare(b.name))
     .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
   )
-    .catch(() => [])
+    .catch((e) => {
+      console.error(e);
+      return []
+    }
+    );
 
-  const currentSpeaker = speakers.find((s: Speaker) => s.slug === slug) || null;
+  const allTalks = await fetch('https://sessionize.com/api/v2/skykx1cq/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+    [
+      ...prevList,
+      ...date.rooms.reduce((prevRooms: any[], room: any) => (
+        [
+          ...prevRooms,
+          ...room.sessions.map((session: any) => ({
+            title: session.title,
+            description: session.description,
+            start: session.startsAt,
+            end: session.endsAt,
+            speaker: session.speakers[0] ?
+              session.speakers.map((speaker: any) => (
+                // Get the full speaker details from the list
+                allSpeakers.find((s: any) => s.slug === speaker.id)
+              )).sort((a: any, b: any) => a.name.localeCompare(b.name))
+                .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+              : null,
+            stage: {
+              name: room.name
+            },
+            slug: session.id,
+            isServiceSession: session.isServiceSession,
+            isPlenumSession: session.isPlenumSession
+          }))
+        ]
+      ), [])
+    ]
+  ), []))
+    .catch((e) => {
+      console.error(e);
+      return []
+    });
 
-  if (!currentSpeaker) {
+  const currentTalk = allTalks.find((t: any) => t.slug === slug) || null;
+
+  if (!currentTalk) {
     return {
       notFound: true
     };
@@ -70,19 +108,33 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   return {
     props: {
-      speaker: currentSpeaker
+      talk: currentTalk
     },
     revalidate: 60
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await fetch('https://sessionize.com/api/v2/skykx1cq/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => (
-    { params: { slug: speaker.id } }
-  )));
+  const allSlugs = await fetch('https://sessionize.com/api/v2/skykx1cq/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+    [
+      ...prevList,
+      ...date.rooms.reduce((prevRooms: any[], room: any) => (
+        [
+          ...prevRooms,
+          ...room.sessions.map((session: any) => ({
+            params: { slug: session.id },
+          }))
+        ]
+      ), [])
+    ]
+  ), []))
+    .catch((e) => {
+      console.error(e);
+      return []
+    });
 
   return {
-    paths: slugs,
+    paths: allSlugs,
     fallback: 'blocking'
   };
 };

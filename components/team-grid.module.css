@@ -21,13 +21,21 @@
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   grid-gap: 24px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@media (min-width: 472px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit,
+      minmax(300px, 1fr));
+  }
+}
+
 
 @media (min-width: 768px) {
   .grid {
