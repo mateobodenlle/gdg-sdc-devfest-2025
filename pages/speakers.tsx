@@ -37,7 +37,7 @@ export default function Speakers({ speakers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={<>Estos son los speakers que participarán en el DevFest Santiago de Compostela 2023. ¡No te los pierdas!<br/><span className='font-bold'>Anunciaremos más speakers próximamente.</span></>} />
+        <Header hero="Speakers" description={<>Estos son los speakers que participarán en el DevFest Santiago de Compostela 2023. ¡No te los pierdas!<br /><span className='font-bold'>Anunciaremos más speakers próximamente.</span></>} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>
@@ -53,14 +53,21 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     },
     slug: speaker.id,
     isTopSpeaker: speaker.isTopSpeaker
-  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
-    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+  }))
   )
-    .catch(() => [])
+    .catch(() => []);
+
+
+  const topSpeakers = speakers.filter((speaker: any) => speaker.isTopSpeaker).sort((a: any, b: any) => a.name.localeCompare(b.name));
+  const otherSpeakers = speakers.filter((speaker: any) => !speaker.isTopSpeaker);
+  // Shuffle the other speakers
+  otherSpeakers.sort(() => Math.random() - 0.5);
+    
+  const allSpeakers = [...topSpeakers, ...otherSpeakers];
 
   return {
     props: {
-      speakers
+      speakers: allSpeakers,
     },
     revalidate: 360
   };
