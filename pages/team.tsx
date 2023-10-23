@@ -39,7 +39,7 @@ export default function Team({ teamMembers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Equipo" description={meta.description} />
+        <Header hero="Equipo" description="Estos somos nosotros, los que hacemos posible este evento. ¡Conócenos!" />
         <TeamGrid teamMembers={teamMembers} />
       </Layout>
     </Page>
