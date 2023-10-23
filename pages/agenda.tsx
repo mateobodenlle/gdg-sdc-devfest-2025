@@ -22,17 +22,18 @@ import Layout from '@components/layout';
 import Header from '@components/header';
 
 import { getAllStages } from '@lib/cms-api';
-import { Stage } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { Stage, Talk } from '@lib/types';
+import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 import React from 'react';
 
 type Props = {
   allStages: Stage[];
+  serviceSessions: Talk[];
 };
 
-export default function SchedulePage({ allStages }: Props) {
+export default function SchedulePage({ allStages, serviceSessions }: Props) {
   const meta = {
-    title: 'Schedule - Virtual Event Starter Kit',
+    title: 'Agenda - ' + SITE_NAME,
     description: META_DESCRIPTION
   };
 
@@ -43,7 +44,7 @@ export default function SchedulePage({ allStages }: Props) {
           hero="Agenda"
           description="Estas son las charlas que podrás disfrutar en el DevFest Santiago de Compostela 2023. ¡No te las pierdas!"
         />
-        <Schedule allStages={allStages} />
+        <Schedule allStages={allStages} serviceSessions={serviceSessions} />
       </Layout>
     </Page>
   );
@@ -123,8 +124,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      allStages
+      allStages,
+      serviceSessions,
     },
-    revalidate: 60
+    revalidate: 360
   };
 };

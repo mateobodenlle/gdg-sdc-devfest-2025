@@ -59,7 +59,7 @@ export default function Hero() {
           <p className='hidden md:block text-right'>{DATE}</p>
           <div className={styles['description-separator']} />
           <p>
-            <strong>Presencial</strong>
+            <strong>15:30h</strong>
           </p>
         </div>
       </div>

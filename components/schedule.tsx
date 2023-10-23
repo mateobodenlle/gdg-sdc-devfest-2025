@@ -21,6 +21,7 @@ import TalkCard from './talk-card';
 import React from 'react';
 import LinkButton from './hms/LinkButton';
 import Button from './hms/Button';
+import ServiceSessionCard from './service-session-card';
 
 function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block
@@ -47,11 +48,38 @@ function StageRow({ stage }: { stage: Stage }) {
   );
 }
 
+function ServiceSessionsRow({ sessions }: { sessions: Talk[] }) {
+  // Group talks by the time block
+  const timeBlocks = sessions.reduce((allBlocks: any, talk) => {
+    allBlocks[talk.start] = [...(allBlocks[talk.start] || []), talk];
+    return allBlocks;
+  }
+    , {});
+
+  return (
+    <div key={'General'} className={styles.service_row}>
+      <h3 className={cn(styles['service-sessions-name'], /*styles[stage.slug]*/)}>
+        <span>{'General'}</span>
+      </h3>
+      <div className={cn(styles.talks, /*styles[stage.slug]*/)}>
+        {Object.keys(timeBlocks).map((startTime: string) => (
+          <div key={startTime}>
+            {timeBlocks[startTime].map((talk: Talk, index: number) => (
+              <ServiceSessionCard key={talk.title} talk={talk} showTime={index === 0} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 type Props = {
   allStages: Stage[];
+  serviceSessions: Talk[];
 };
 
-export default function Schedule({ allStages }: Props) {
+export default function Schedule({ allStages, serviceSessions }: Props) {
   const allDays = React.useMemo(() => {
     const days = allStages.reduce((prev: Date[], curr: any) => {
       const time = new Date(curr.schedule[0].start);
@@ -81,6 +109,16 @@ export default function Schedule({ allStages }: Props) {
     return stages;
   }
     , [allStages, currentDay]);
+  
+  const currentServiceSessions = React.useMemo(() => {
+    // Filter talks inside stages by day
+    const sessions = serviceSessions.filter((talk: any) => {
+      const talkDate = new Date(talk.start);
+      return talkDate.toDateString() === currentDay.toDateString();
+    });
+    return sessions;
+  }
+    , [serviceSessions, currentDay]);
 
   return (
     <div className={styles.container}>
@@ -103,7 +141,8 @@ export default function Schedule({ allStages }: Props) {
         ))}
       </div>
       <div className={styles['row-wrapper']}>
-        {currentStages.map(stage => (
+        <ServiceSessionsRow key='service' sessions={currentServiceSessions} />
+        {currentStages.filter(stage => stage.schedule.length > 0).map(stage => (
           <StageRow key={stage.slug} stage={stage} />
         ))}
       </div>
