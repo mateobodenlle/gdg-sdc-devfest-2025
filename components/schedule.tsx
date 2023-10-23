@@ -18,6 +18,9 @@ import cn from 'classnames';
 import { Stage, Talk } from '@lib/types';
 import styles from './schedule.module.css';
 import TalkCard from './talk-card';
+import React from 'react';
+import LinkButton from './hms/LinkButton';
+import Button from './hms/Button';
 
 function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block
@@ -28,10 +31,10 @@ function StageRow({ stage }: { stage: Stage }) {
 
   return (
     <div key={stage.name} className={styles.row}>
-      <h3 className={cn(styles['stage-name'], styles[stage.slug])}>
+      <h3 className={cn(styles['stage-name'], /*styles[stage.slug]*/)}>
         <span>{stage.name}</span>
       </h3>
-      <div className={cn(styles.talks, styles[stage.slug])}>
+      <div className={cn(styles.talks, /*styles[stage.slug]*/)}>
         {Object.keys(timeBlocks).map((startTime: string) => (
           <div key={startTime}>
             {timeBlocks[startTime].map((talk: Talk, index: number) => (
@@ -49,10 +52,58 @@ type Props = {
 };
 
 export default function Schedule({ allStages }: Props) {
+  const allDays = React.useMemo(() => {
+    const days = allStages.reduce((prev: Date[], curr: any) => {
+      const time = new Date(curr.schedule[0].start);
+      const date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
+      const existingDay = prev.find((item: any) => item.toDateString() === date.toDateString());
+      if (!existingDay) {
+        prev.push(date);
+      }
+      return prev;
+    }
+      , []);
+    return days;
+  }
+    , [allStages]);
+
+  const [currentDay, setCurrentDay] = React.useState(allDays[0]);
+
+  const currentStages = React.useMemo(() => {
+    // Filter talks inside stages by day
+    const stages = allStages.map((stage: any) => ({
+      ...stage,
+      schedule: stage.schedule.filter((talk: any) => {
+        const talkDate = new Date(talk.start);
+        return talkDate.toDateString() === currentDay.toDateString();
+      })
+    }));
+    return stages;
+  }
+    , [allStages, currentDay]);
+
   return (
     <div className={styles.container}>
+      {/*
+          Buttons to switch between days
+        */}
+      <div className="flex justify-center space-x-4 my-8">
+        {allDays.map((day: Date) => (
+          <Button
+            onClick={() => setCurrentDay(day)}
+            key={day.toDateString()}
+            rel="noopener noreferrer"
+            type="button"
+            className={cn(styles.button, styles['button-link'], {
+              [styles['button-active']]: day.toDateString() === currentDay.toDateString()
+              })}
+          >
+            {day.toDateString()}
+          </Button>
+        ))}
+      </div>
       <div className={styles['row-wrapper']}>
-        {allStages.map(stage => (
+        {currentStages.map(stage => (
           <StageRow key={stage.slug} stage={stage} />
         ))}
       </div>

@@ -24,6 +24,7 @@ import Header from '@components/header';
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
+import React from 'react';
 
 type Props = {
   allStages: Stage[];
@@ -38,7 +39,10 @@ export default function SchedulePage({ allStages }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Schedule" description={meta.description} />
+        <Header
+          hero="Agenda"
+          description="Estas son las charlas que podrás disfrutar en el DevFest Santiago de Compostela 2023. ¡No te las pierdas!"
+        />
         <Schedule allStages={allStages} />
       </Layout>
     </Page>
@@ -46,7 +50,76 @@ export default function SchedulePage({ allStages }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allStages = await getAllStages();
+  const allSpeakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
+    name: speaker.fullName,
+    title: speaker.tagLine,
+    image: {
+      url: speaker.profilePicture,
+    },
+    slug: speaker.id,
+    isTopSpeaker: speaker.isTopSpeaker
+  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
+    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+  )
+    .catch((e) => {
+      console.error(e);
+      return []
+    }
+    );
+
+  const allTalks = await fetch('https://sessionize.com/api/v2/skykx1cq/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+    [
+      ...prevList,
+      ...date.rooms.reduce((prevRooms: any[], room: any) => (
+        [
+          ...prevRooms,
+          ...room.sessions.map((session: any) => ({
+            title: session.title,
+            description: session.description,
+            start: session.startsAt,
+            end: session.endsAt,
+            speaker: session.speakers[0] ?
+              session.speakers.map((speaker: any) => (
+                // Get the full speaker details from the list
+                allSpeakers.find((s: any) => s.slug === speaker.id)
+              )).sort((a: any, b: any) => a.name.localeCompare(b.name))
+                .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+              : null,
+            stage: {
+              name: room.name
+            },
+            slug: session.id,
+            isServiceSession: session.isServiceSession,
+            isPlenumSession: session.isPlenumSession
+          }))
+        ]
+      ), [])
+    ]
+  ), []))
+    .catch((e) => {
+      console.error(e);
+      return []
+    });
+
+  const serviceSessions = allTalks.filter((talk: any) => talk.isServiceSession);
+  const plenumSessions = allTalks.filter((talk: any) => talk.isPlenumSession);
+  const regularTalks = allTalks.filter((talk: any) => !talk.isServiceSession && !talk.isPlenumSession);
+
+  // Group all talks by stage
+  const allStages = regularTalks.reduce((prev: any[], curr: any) => {
+    const existingStage = prev.find((item: any) => item.name === curr.stage.name);
+    if (existingStage) {
+      existingStage.schedule.push(curr);
+    } else {
+      prev.push({
+        name: curr.stage.name,
+        slug: null,
+        schedule: [curr]
+      });
+    }
+    return prev;
+  }
+    , []);
 
   return {
     props: {

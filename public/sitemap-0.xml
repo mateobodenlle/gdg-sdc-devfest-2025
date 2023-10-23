@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://devfest.gdg-sdc.org</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/jobs</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/partners</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/schedule</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/team</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/ticket-image</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/lallie</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/peg</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/chariovalda</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/brunhild</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/terese</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/harshad</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/speakers/july</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/team/judit-gonzalez</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/team/mateo-bodenlle</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devfest.gdg-sdc.org/team/aldan-creo</loc><lastmod>2023-10-10T19:08:40.753Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/jobs</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/partners</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/schedule</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/speakers</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/team</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/ticket-image</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/speakers/98b4f87b-da9c-4d16-b2ce-08aa4da3edf5</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/speakers/22bf9adb-25ab-4230-b212-3c449a51934d</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/speakers/842b6bc7-0bed-4e44-8cdf-75611b1a9aa8</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/speakers/7294c298-79d4-4f61-8ba4-710a4b2b6d7c</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/team/judit-gonzalez</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/team/mateo-bodenlle</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devfest.gdg-sdc.org/team/aldan-creo</loc><lastmod>2023-10-17T21:36:05.193Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

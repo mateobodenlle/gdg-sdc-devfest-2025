@@ -85,9 +85,9 @@ export default function StageContainer({ stage, allStages }: Props) {
             </div>
           ) : (
             <Room
-              backstagePeers={stage.backstagePeers}
-              stagePeers={stage.stagePeers}
-              roomId={stage.roomId}
+              backstagePeers={stage.backstagePeers ?? []}
+              stagePeers={stage.stagePeers ?? []}
+              roomId={stage.roomId ?? ''}
             />
           )
         ) : loginStatus === 'loading' ? null : (

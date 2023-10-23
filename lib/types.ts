@@ -48,14 +48,14 @@ export type TeamMember = {
 
 export type Stage = {
   name: string;
-  slug: string;
-  stream: string;
-  discord: string;
+  slug?: string;
+  stream?: string;
+  discord?: string;
   schedule: Talk[];
-  isLive: boolean;
-  roomId: string;
-  stagePeers: string[];
-  backstagePeers: string[];
+  isLive?: boolean;
+  roomId?: string;
+  stagePeers?: string[];
+  backstagePeers?: string[];
 };
 
 export type Talk = {

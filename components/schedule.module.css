@@ -25,6 +25,7 @@
 
 .row-wrapper {
   display: inline-block;
+  min-width: 100%;
 }
 
 .row {
@@ -84,4 +85,38 @@
     padding-left: var(--space-8x);
     z-index: 1;
   }
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.button {
+  height: 56px;
+  margin-top: var(--space-4x);
+  border-radius: var(--space-2x);
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  outline: none;
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-active {
+  /* Same as when focused */
+  background-color: var(--brand-dark);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
