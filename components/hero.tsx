@@ -62,9 +62,9 @@ export default function Hero() {
             <strong>15:30h</strong>
           </p>
         </div>
-        <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
+        <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.location)}>
           <p className='text-center px-8 normal-case'>
-            <a className='block' href='https://maps.app.goo.gl/GFdS8heX79PLecbj6'>Escuela Técnica Superior de Ingeniería, USC</a>
+            <a className='block text-inherit' href='https://maps.app.goo.gl/GFdS8heX79PLecbj6'>Escuela Técnica Superior de Ingeniería, USC</a>
           </p>
         </div>
       </div>

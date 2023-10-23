@@ -34,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--space-6x);
+  margin-bottom: var(--space-4x);
   color: var(--brand);
 }
 
@@ -60,6 +60,22 @@
   margin: 0;
 }
 
+.location {
+  font-size: 20px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-6x);
+  color: var(--foreground-secondary);
+}
+
+.location :global(p) {
+  margin: 0;
+}
+
+
 @media (min-width: 768px) {
   .hero {
     font-size: 100px;
@@ -72,6 +88,10 @@
   }
 
   .info {
+    font-size: 24px;
+  }
+
+  .location {
     font-size: 24px;
     margin-bottom: 1.5em;
   }
