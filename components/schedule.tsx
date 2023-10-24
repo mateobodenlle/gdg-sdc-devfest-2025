@@ -82,18 +82,26 @@ type Props = {
 export default function Schedule({ allStages, serviceSessions }: Props) {
   const allDays = React.useMemo(() => {
     const days = allStages.reduce((prev: Date[], curr: any) => {
-      const time = new Date(curr.schedule[0].start);
-      const date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
-      const existingDay = prev.find((item: any) => item.toDateString() === date.toDateString());
-      if (!existingDay) {
-        prev.push(date);
-      }
-      return prev;
+      const collectedDays = curr.schedule.reduce((prev2: Date[], talk: any) => {
+        const time = new Date(talk.start);
+        const date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
+        return [...prev2, date];
+      }, []);
+      return [...prev, ...collectedDays];
     }
-      , []);
+      , []).reduce((prev: Date[], curr: Date) => {
+        const existingDay = prev.find((item: any) => item.toDateString() === curr.toDateString());
+        if (!existingDay) {
+          prev.push(curr);
+        }
+        return prev;
+      }
+        , []).sort((a: Date, b: Date) => a.getTime() - b.getTime());
     return days;
   }
     , [allStages]);
+
+    console.log(allDays);
 
   const [currentDay, setCurrentDay] = React.useState(allDays[0]);
 
@@ -109,7 +117,7 @@ export default function Schedule({ allStages, serviceSessions }: Props) {
     return stages;
   }
     , [allStages, currentDay]);
-  
+
   const currentServiceSessions = React.useMemo(() => {
     // Filter talks inside stages by day
     const sessions = serviceSessions.filter((talk: any) => {
@@ -143,7 +151,7 @@ export default function Schedule({ allStages, serviceSessions }: Props) {
       <div className={styles['row-wrapper']}>
         <ServiceSessionsRow key='service' sessions={currentServiceSessions} />
         {currentStages.filter(stage => stage.schedule.length > 0).map(stage => (
-          <StageRow key={stage.slug} stage={stage} />
+          <StageRow key={stage.name} stage={stage} />
         ))}
       </div>
     </div>
