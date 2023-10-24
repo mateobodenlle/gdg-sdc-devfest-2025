@@ -68,6 +68,11 @@
   --brand-green: #34a853;
   --brand-red: #ea4335;
 
+  --ai-topic-color: var(--brand-yellow);
+  --ai-topic-color-accent: var(--brand-red);
+  --web-topic-color: var(--brand-green);
+  --web-topic-color-accent: var(--brand);
+
   --foreground: #ffffffff;
   --foreground-secondary: #ffffff66;
 

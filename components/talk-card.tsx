@@ -22,6 +22,9 @@ import { parseISO, format, isBefore, isAfter } from 'date-fns';
 import { Talk } from '@lib/types';
 import styles from './talk-card.module.css';
 
+const AI_TOPIC_ID = 219996;
+const WEB_TOPIC_ID = 219997;
+
 type Props = {
   key: string;
   talk: Talk;
@@ -33,7 +36,7 @@ const formatDate = (date: string) => {
   return format(parseISO(date), "h:mmaaaaa'm'");
 };
 
-export default function TalkCard({ talk: { title, speaker, start, end, slug }, showTime }: Props) {
+export default function TalkCard({ talk: { title, speaker, start, end, slug, topic }, showTime }: Props) {
   const [isTalkLive, setIsTalkLive] = useState(false);
   const [startAndEndTime, setStartAndEndTime] = useState('');
 
@@ -46,16 +49,20 @@ export default function TalkCard({ talk: { title, speaker, start, end, slug }, s
   const talkLink = `/sessions/${slug}`;
 
   return (
-    <div key={title} className={styles.talk}>
+    <div key={title} className={cn(styles.talk)}>
       {showTime && <p className={styles.time}>{startAndEndTime || <>&nbsp;</>}</p>}
       <Link href={talkLink} legacyBehavior>
         <a
           className={cn(styles.card, {
-            [styles['is-live']]: isTalkLive
+            [styles['is-live']]: isTalkLive,
+                [styles.ai_topic]: topic === AI_TOPIC_ID,
+                [styles.web_topic]: topic === WEB_TOPIC_ID,
           })}
         >
           <div className={styles['card-body']}>
-            <h4 title={title} className={styles.title}>
+            <h4 title={title} className={cn(styles.title,
+              {
+              })}>
               {title}
             </h4>
             <div className={styles.speaker}>

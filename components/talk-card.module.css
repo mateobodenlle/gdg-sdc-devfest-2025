@@ -29,12 +29,27 @@
   border-radius: var(--space-2x);
   min-width: var(--talk-card-width, 270px);
   max-width: var(--talk-card-width, 270px);
-  padding: 1px;
+  padding: 0px;
   background-clip: content-box, border-box;
-  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #333333, #333333);
+  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #555, #555);
+  transition: background-image 0.8s ease;
+  background-size: 200% 200%;
+  background-position: 5% 5%;
+  transition: all 1.2s cubic-bezier(.45, .13, .1, 1);
+  border-color: #333333;
+  border-width: 2px;
+  border-style: solid;
+  transform: scale(1);
 }
+
 .card:hover {
-  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #aaa, #aaa);
+  background-position: 95% 95%;
+  transition: border-color 0.2s cubic-bezier(.45, .13, .1, 1) 0.0s, transform 0.4s cubic-bezier(.45, .13, .1, 1) 0.0s, background-position 1.0s ease-in-out 0.4s;
+  border-color: transparent;
+  transform: scale(1.04);
+  /*
+  border-width: 4px;
+  */
 }
 
 .is-live {
@@ -65,7 +80,14 @@
   font-size: 14px;
   font-weight: normal;
   margin: 0;
-  color: var(--secondary-color);
+  color: white;
+}
+
+.name:hover {
+  /*
+  color: transparent;
+  background-image: linear-gradient(to right, var(--web-topic-color), var(--web-topic-color-accent));
+  */
 }
 
 .avatar {
@@ -89,4 +111,24 @@
 
 .link:hover .card:not(.is-live) {
   background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #555, #555);
+}
+
+.web_topic {
+  color: var(--web-topic-color);
+  /*
+  background-image: 
+        radial-gradient(at 20% 47%, var(--web-topic-color) 0, transparent 50%),
+        radial-gradient(at 79% 45%, var(--web-topic-color) 0, transparent 28%),
+        radial-gradient(at 66% 38%, var(--web-topic-color) 0, transparent 53%),
+        radial-gradient(at 89% 13%, var(--web-topic-color) 0, transparent 54%),
+        radial-gradient(at 24% 7%, var(--web-topic-color) 0, transparent 40%),
+        linear-gradient(#111111, #111111),
+   linear-gradient(to right, var(--ai-topic-color), var(--web-topic-color));
+  */
+  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, var(--web-topic-color), var(--web-topic-color-accent));
+}
+
+.ai_topic {
+  color: var(--ai-topic-color);
+  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, var(--ai-topic-color), var(--ai-topic-color-accent));
 }

@@ -26,7 +26,7 @@ export default function LearnMore() {
   return (
     <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.contact, styles.btn_container)}>
       <LinkButton className={cn(styles.button, styles.register, ) + " px-12 mb-16"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2023/'>
-        Reserva tu entrada!
+        ¡Reserva tu entrada!
       </LinkButton>
     </div>
   );

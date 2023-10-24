@@ -26,6 +26,8 @@ import { Stage, Talk } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 import React from 'react';
 
+const TOPIC_CATEGORY_ID = 62477;
+
 type Props = {
   allStages: Stage[];
   serviceSessions: Talk[];
@@ -91,7 +93,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
             },
             slug: session.id,
             isServiceSession: session.isServiceSession,
-            isPlenumSession: session.isPlenumSession
+            isPlenumSession: session.isPlenumSession,
+            topic: session.categories?.find((category: any) => category.id === TOPIC_CATEGORY_ID)?.categoryItems[0].id ?? null
           }))
         ]
       ), [])
