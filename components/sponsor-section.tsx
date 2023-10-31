@@ -29,7 +29,7 @@ export default function SponsorSection({ sponsor }: Props) {
   return (
     <>
       <a className={styles.backlink}>
-        <Link href="/expo">
+        <Link href="/partners">
           <svg
             viewBox="0 0 24 24"
             width="24"

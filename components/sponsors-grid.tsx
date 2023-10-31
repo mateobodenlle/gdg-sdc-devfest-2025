@@ -22,7 +22,7 @@ import styles from './sponsors-grid.module.css';
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <Link legacyBehavior key={sponsor.name} href={`/expo/${sponsor.slug}`}>
+    <Link legacyBehavior key={sponsor.name} href={`${sponsor.website}`}>
       <a
         role="button"
         tabIndex={0}

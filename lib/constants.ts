@@ -57,6 +57,10 @@ export const NAVIGATION = [
     route: '/team'
   },
   {
+    name: 'Sponsors',
+    route: '/partners'
+  },
+  {
     name: 'Call for Speakers',
     route: 'https://sessionize.com/gdg-devfest-2023/'
   },
