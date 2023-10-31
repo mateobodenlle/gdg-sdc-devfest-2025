@@ -56,6 +56,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       teamMembers
     },
-    revalidate: 6000
+    revalidate: 600
   };
 };
