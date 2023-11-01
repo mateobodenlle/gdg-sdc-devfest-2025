@@ -20,6 +20,9 @@ import Page from '@components/page';
 import SpeakersGrid from '@components/speakers-grid';
 import Layout from '@components/layout';
 import Header from '@components/header';
+import LinkButton from '@components/hms/LinkButton';
+import styles from '@components/contact.module.css';
+import cn from 'classnames';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker, TeamMember } from '@lib/types';
@@ -40,6 +43,9 @@ export default function Team({ teamMembers }: Props) {
     <Page meta={meta}>
       <Layout>
         <Header hero="Equipo" description="Estos somos nosotros, los que hacemos posible este evento. ¡Conócenos!" />
+        <LinkButton className={cn(styles.button_small, styles.register, ) + " px-12 mb-16"} href="mailto:contact@gdg-sdc.org">
+        Contáctanos: contact@gdg-sdc.org
+      </LinkButton>
         <TeamGrid teamMembers={teamMembers} />
       </Layout>
     </Page>
