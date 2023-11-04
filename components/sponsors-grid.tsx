@@ -44,7 +44,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
             height={500}
           />
         </div>
-        {sponsor.tier !== 'silver' && (
+        {sponsor.tier === 'diamond' && (
           <div className={styles.cardBody}>
             <div>
               <h2 className={styles.name}>{sponsor.name}</h2>
@@ -63,17 +63,23 @@ type Props = {
 
 export default function SponsorsGrid({ sponsors }: Props) {
   const silverSponsors = sponsors.filter(s => s.tier === 'silver');
-  const otherSponsors = sponsors.filter(s => s.tier !== 'silver');
+  const goldSponsors = sponsors.filter(s => s.tier === 'gold');
+  const bronzeSponsors = sponsors.filter(s => s.tier === 'bronze');
 
   return (
     <>
       <div className={styles.grid}>
-        {otherSponsors.map(sponsor => (
+        {goldSponsors.map(sponsor => (
           <SponsorCard key={sponsor.name} sponsor={sponsor} />
         ))}
       </div>
-      <div className={styles.grid}>
+      <div className={styles.grid_silver}>
         {silverSponsors.map(sponsor => (
+          <SponsorCard key={sponsor.name} sponsor={sponsor} />
+        ))}
+      </div>
+      <div className={styles.grid_bronze}>
+        {bronzeSponsors.map(sponsor => (
           <SponsorCard key={sponsor.name} sponsor={sponsor} />
         ))}
       </div>
