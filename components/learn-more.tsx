@@ -25,9 +25,10 @@ import LinkButton from './hms/LinkButton';
 export default function LearnMore() {
   return (
     <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.contact, styles.btn_container)}>
-      <LinkButton className={cn(styles.button, styles.register, ) + " px-12 mb-16"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2023/'>
+      <LinkButton className={cn(styles.button, styles.register, ) + " px-12 mb-2"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2023/'>
         ¡Reserva tu entrada!
       </LinkButton>
+      <p className='mb-16 max-w-lg'>Las entradas se han agotado, pero puedes unirte a la lista de espera. Pronto liberaremos nuevas entradas, por orden de inscripción.</p>
     </div>
   );
 }
