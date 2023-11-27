@@ -58,7 +58,7 @@
 
 .button_small {
   height: 56px;
-  width: 27%;
+  width: auto;
   margin-top: var(--space-4x);
   margin-left: 5%;
   margin-bottom: 1%;
