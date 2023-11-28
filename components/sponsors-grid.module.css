@@ -47,18 +47,21 @@
     display: grid;
     grid-gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-left: 26%;
   }
   .grid_silver {
     transform: scale(0.8);
     display: grid;
     grid-gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-left: 24%;
   }
   .grid_bronze {
     transform: scale(0.6);
     display: grid;
     grid-gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-left: 20%;
   }
 }
 
