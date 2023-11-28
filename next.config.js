@@ -26,5 +26,15 @@ module.exports = {
       'sessionize.com'
     ],
     imageSizes: [24, 64, 300]
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/live',
+        destination: 'https://gdg-devfest-2023.sessionize.com',
+        permanent: true,
+        basePath: false
+      },
+    ]
+  },
 };
