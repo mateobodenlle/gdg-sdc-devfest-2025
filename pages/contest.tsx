@@ -40,7 +40,7 @@ export default function Jobs({ jobs }: Props) {
       <Layout>
         <Header hero="Condiciones Legales de Participación en el Concurso #DevFestSdC" description="¡Participa en el concurso #DevFestSdC de Google Developers Group Santiago de Compostela! Simplemente comparte una foto en tu perfil de Instagram, Twitter o LinkedIn que capture tu experiencia en el DevFest Santiago de Compostela 2023, usando el hashtag #DevFestSdC. También puedes subir la foto a tus historias en Instagram. ¡Sé creativo! Entre las mejores fotos, sortearemos tres licencias de 1 año para los IDE de JetBrains. Asegúrate de revisar las condiciones legales para participar. ¡Buena suerte a todos los participantes! 🚀" />
 
-        <div className="container mx-auto my-8 p-0 rounded-md shadow-md">
+        <div className="container md:mx-auto my-8 p-8 shadow-md border rounded-lg border-white">
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-4">1. Elegibilidad:</h2>
             <ul className="list-disc pl-6">
