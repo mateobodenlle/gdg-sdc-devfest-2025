@@ -48,6 +48,39 @@ export default function Footer() {
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
             <a
+              href="https://www.instagram.com/GDGSantiagoES"
+              className={styles['footer-link']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          </p>
+          <div className={styles['footer-separator']} ></div>
+          <p className={styles['footer-paragraph']}>
+            <a
+              href="https://www.linkedin.com/company/11843951"
+              className={styles['footer-link']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </p>
+          <div className={styles['footer-separator']} ></div>
+          <p className={styles['footer-paragraph']}>
+            <a
+              href="https://twitter.com/GDGSantiagoES"
+              className={styles['footer-link']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twitter
+            </a>
+          </p>
+          <div className={styles['footer-separator']} ></div>
+          <p className={styles['footer-paragraph']}>
+            <a
               href={CODE_OF_CONDUCT}
               className={styles['footer-link']}
               target="_blank"
@@ -56,21 +89,6 @@ export default function Footer() {
               Código de Conducta
             </a>
           </p>
-          {LEGAL_URL && (
-            <>
-              <div className={styles['footer-separator']} />
-              <p className={styles['footer-paragraph']}>
-                <a
-                  href={LEGAL_URL}
-                  className={styles['footer-link']}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Legal
-                </a>
-              </p>
-            </>
-          )}
         </div>
       </div>
     </footer>
