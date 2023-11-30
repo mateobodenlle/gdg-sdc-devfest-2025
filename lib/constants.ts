@@ -49,6 +49,10 @@ export const NAVIGATION = [
     route: '/agenda'
   },
   {
+    name: 'Sponsors',
+    route: '/partners'
+  },
+  {
     name: 'Speakers',
     route: '/speakers'
   },
@@ -57,12 +61,8 @@ export const NAVIGATION = [
     route: '/team'
   },
   {
-    name: 'Sponsors',
-    route: '/partners'
-  },
-  {
-    name: 'Call for Speakers',
-    route: 'https://sessionize.com/gdg-devfest-2023/'
+    name: 'Concurso',
+    route: '/contest'
   },
   /*{
     name: 'Live Stage',
