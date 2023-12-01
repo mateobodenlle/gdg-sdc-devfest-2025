@@ -64,6 +64,10 @@ export const NAVIGATION = [
     name: 'Concurso',
     route: '/contest'
   },
+  {
+    name: 'Datos WiFi',
+    route: '/wifi'
+  },
   /*{
     name: 'Live Stage',
     route: '/stage/a'
