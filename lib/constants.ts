@@ -41,10 +41,6 @@ export const REPO = 'https://github.com/ACMCMC/gdg-sdc-devfest-2023';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
-    name: 'Entradas',
-    route: 'https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2023/'
-  },
-  {
     name: 'Agenda',
     route: '/agenda'
   },
@@ -59,14 +55,6 @@ export const NAVIGATION = [
   {
     name: 'Equipo',
     route: '/team'
-  },
-  {
-    name: 'Concurso',
-    route: '/contest'
-  },
-  {
-    name: 'Datos WiFi',
-    route: '/wifi'
   },
   /*{
     name: 'Live Stage',

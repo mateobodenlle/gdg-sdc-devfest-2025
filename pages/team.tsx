@@ -42,7 +42,7 @@ export default function Team({ teamMembers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Equipo" description="Estos somos nosotros, los que hacemos posible este evento. ¡Conócenos!" />
+        <Header hero="Equipo" description="Estos somos nosotros, los que hemos hecho posible este evento. ¡Conócenos!" />
         <LinkButton className={cn(styles.button_small, styles.register, ) + " px-12 mb-16"} href="mailto:contact@gdg-sdc.org">
         Contáctanos: contact@gdg-sdc.org
       </LinkButton>

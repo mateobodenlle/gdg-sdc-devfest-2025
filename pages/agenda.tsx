@@ -44,7 +44,7 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
       <Layout>
         <Header
           hero="Agenda"
-          description="Estas son las charlas que podrás disfrutar en el DevFest Santiago de Compostela 2023. ¡No te las pierdas!"
+          description="Estas han sido las charlas que los asistentes han podido disfrutar en el DevFest Santiago de Compostela 2023. ¡Un evento de primer nivel!"
         />
         <Schedule allStages={allStages} serviceSessions={serviceSessions} />
       </Layout>
