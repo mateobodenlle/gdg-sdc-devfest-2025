@@ -47,7 +47,7 @@ export default function SpeakerPage({ talk }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug;
 
-  const allSpeakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
+  const allSpeakers = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
     name: speaker.fullName,
     title: speaker.tagLine,
     image: {
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     }
     );
 
-  const allTalks = await fetch('https://sessionize.com/api/v2/skykx1cq/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+  const allTalks = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
     [
       ...prevList,
       ...date.rooms.reduce((prevRooms: any[], room: any) => (
@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allSlugs = await fetch('https://sessionize.com/api/v2/skykx1cq/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+  const allSlugs = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
     [
       ...prevList,
       ...date.rooms.reduce((prevRooms: any[], room: any) => (

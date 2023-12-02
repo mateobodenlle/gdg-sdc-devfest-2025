@@ -46,7 +46,7 @@ export default function SpeakerPage({ speaker }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug;
 
-  const speakers = await fetch('https://sessionize.com/api/v2/skykx1cq/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => ({
+  const speakers = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => ({
     name: speaker.fullName,
     title: speaker.tagLine,
     image: {
@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await fetch('https://sessionize.com/api/v2/skykx1cq/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => (
+  const slugs = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => (
     { params: { slug: speaker.id } }
   )));
 
