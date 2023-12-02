@@ -37,7 +37,7 @@ export default function Speakers({ speakers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={<>Estos son los speakers que participarán en el DevFest Santiago de Compostela 2023. ¡No te los pierdas!<br /><span className='font-bold'>Anunciaremos más speakers próximamente.</span></>} />
+        <Header hero="Speakers" description={<>Estos son los speakers que participarán en el DevFest Santiago de Compostela 2023. ¡No te los pierdas!</>} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>
