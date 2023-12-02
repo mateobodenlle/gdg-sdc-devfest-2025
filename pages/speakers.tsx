@@ -31,13 +31,13 @@ type Props = {
 
 export default function Speakers({ speakers }: Props) {
   const meta = {
-    title: 'Speakers - DevFest Santiago de Compostela 2023',
+    title: 'Speakers - DevFest Santiago de Compostela 2024',
     description: META_DESCRIPTION
   };
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={<>Estos son los speakers que han participado en el DevFest Santiago de Compostela 2023.</>} />
+        <Header hero="Speakers" description={<>Estos son los speakers que han participado en el DevFest Santiago de Compostela 2024.</>} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>

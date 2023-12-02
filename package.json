@@ -1,8 +1,8 @@
 {
-  "name": "gdg-sdc-devfest-2023",
-  "description": "Website for DevFest Santiago de Compostela 2023",
+  "name": "gdg-sdc-devfest-2024",
+  "description": "Website for DevFest Santiago de Compostela 2024",
   "private": true,
-  "repository": "ACMCMC/gdg-sdc-devfest-2023",
+  "repository": "ACMCMC/gdg-sdc-devfest-2024",
   "author": "Aldan Creo",
   "homepage": "https://devfest.gdg-sdc.org",
   "engines": {
