@@ -59,7 +59,7 @@ export default function Hero() {
           <p className='hidden md:block text-right'>{DATE}</p>
           <div className={styles['description-separator']} />
           <p>
-            <strong>15:30h</strong>
+            <strong>TBD</strong>
           </p>
         </div>
         <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.location)}>
