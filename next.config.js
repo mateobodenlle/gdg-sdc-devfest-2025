@@ -31,7 +31,7 @@ module.exports = {
     return [
       {
         source: '/live',
-        destination: 'https://gdg-devfest-2024.sessionize.com',
+        destination: 'https://sessionize.com/gdg-devfest-2024//',
         permanent: true,
         basePath: false
       },
