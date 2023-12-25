@@ -41,8 +41,8 @@ export const REPO = 'https://github.com/ACMCMC/gdg-sdc-devfest-2024';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
-    name: 'Call for Papers',
-    route: 'https://sessionize.com/devfest-sdc-24/'
+    name: 'Call for Speakers',
+    route: 'https://sessionize.com/gdg-devfest-2024/'
   },
   {
     name: 'Equipo',
