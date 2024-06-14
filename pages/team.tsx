@@ -42,10 +42,12 @@ export default function Team({ teamMembers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Equipo" description="Estos somos nosotros, los que hemos hecho posible este evento. ¡Conócenos!" />
-        <LinkButton className={cn(styles.button_small, styles.register, ) + " px-12 mb-16"} href="mailto:devfest@gdg-sdc.org">
-        Contáctanos: devfest@gdg-sdc.org
-      </LinkButton>
+        <Header hero="Equipo" description="Estos somos nosotros, los que hacemos posible este evento 👋😉" />
+        <div className='flex justify-start mx-8'>
+          <LinkButton className={cn(styles.button_small, styles.register,) + " px-16"} href="mailto:devfest@gdg-sdc.org">
+            Contáctanos: devfest@gdg-sdc.org
+          </LinkButton>
+        </div>
         <TeamGrid teamMembers={teamMembers} />
       </Layout>
     </Page>
