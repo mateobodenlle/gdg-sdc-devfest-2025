@@ -43,9 +43,12 @@ export default function Team({ teamMembers }: Props) {
     <Page meta={meta}>
       <Layout>
         <Header hero="Equipo" description="Estos somos nosotros, los que hacemos posible este evento 👋😉" />
-        <div className='flex justify-start mx-8'>
+        <div className='flex justify-start mx-8 gap-4 flex-wrap mt-4'>
           <LinkButton className={cn(styles.button_small, styles.register,) + " px-16"} href="mailto:devfest@gdg-sdc.org">
-            Contáctanos: devfest@gdg-sdc.org
+            Escríbenos por email
+          </LinkButton>
+          <LinkButton className={cn(styles.button_small, styles.register,) + " px-16"} href="https://calendar.app.google/6a9udHPABjrCgmQP9">
+            Agenda una reunión
           </LinkButton>
         </div>
         <TeamGrid teamMembers={teamMembers} />

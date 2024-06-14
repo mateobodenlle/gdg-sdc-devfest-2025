@@ -58,7 +58,6 @@
 
 .button_small {
   width: auto;
-  margin-top: var(--space-4x);
   border-radius: var(--space-2x);
   border: 1px solid var(--brand);
   background: var(--brand);
