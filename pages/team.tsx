@@ -43,8 +43,8 @@ export default function Team({ teamMembers }: Props) {
     <Page meta={meta}>
       <Layout>
         <Header hero="Equipo" description="Estos somos nosotros, los que hemos hecho posible este evento. ¡Conócenos!" />
-        <LinkButton className={cn(styles.button_small, styles.register, ) + " px-12 mb-16"} href="mailto:contact@gdg-sdc.org">
-        Contáctanos: contact@gdg-sdc.org
+        <LinkButton className={cn(styles.button_small, styles.register, ) + " px-12 mb-16"} href="mailto:devfest@gdg-sdc.org">
+        Contáctanos: devfest@gdg-sdc.org
       </LinkButton>
         <TeamGrid teamMembers={teamMembers} />
       </Layout>
