@@ -22,11 +22,12 @@ export const SITE_NAME_MULTILINE = ['DevFest', 'Santiago de Compostela'];
 export const SITE_NAME = 'DevFest Santiago de Compostela 2024';
 export const META_DESCRIPTION =
   'DevFest Santiago de Compostela es una conferencia tecnológica organizada por Google Developers Group Santiago de Compostela. Los GDG son una red local de grupos sin ánimo de lucro ofrecen charlas, demostraciones prácticas, talleres y laboratorios de código sobre las últimas tecnologías de Google. En 2022, se celebraron más de 550 DevFests, que ayudaron a más de 320.000 desarrolladores. DevFest es el principal evento local para que los desarrolladores conozcan las últimas tecnologías de Google de la mano de Googlers, Google Developer Experts y ponentes del sector.';
+// Mini-broma despues de tener que posponer el evento por el huracán:
 export const SITE_DESCRIPTION =
-  'Evento cancelado el día 9 por el mal tiempo. En breve indicaremos más información.';
-export const DATE = '9-10 Octubre 2024 (en breve más información)';
-export const SHORT_DATE = '9-10 Oct (en breve más información)';
-export const FULL_DATE = '9-10 Oct (en breve más información)';
+  'El evento tech abierto a todo el mundo – ¡no nos para ni un huracán!';
+export const DATE = '10 Octubre 2024';
+export const SHORT_DATE = '10 Oct';
+export const FULL_DATE = '10 Oct';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
