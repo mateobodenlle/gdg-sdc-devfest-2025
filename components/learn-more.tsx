@@ -25,8 +25,8 @@ import LinkButton from './hms/LinkButton';
 export default function LearnMore() {
   return (
     <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.contact, styles.btn_container)}>
-      <LinkButton className={cn(styles.button, styles.register,) + " px-12 mb-2"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2024/'>
-        Reserva tu entrada!
+      <LinkButton className={cn(styles.button, styles.register,) + " px-12 mb-2"} href='https://gdg-devfest-2024.sessionize.com/'>
+        Agenda en directo
       </LinkButton>
     </div>
   );

@@ -46,6 +46,10 @@ export const NAVIGATION = [
     route: 'https://sessionize.com/gdg-devfest-2024/'
   },*/
   {
+    name: 'En directo',
+    route: 'https://gdg-devfest-2024.sessionize.com/'
+  },
+  {
     name: 'Agenda',
     route: '/agenda'
   },
@@ -60,6 +64,10 @@ export const NAVIGATION = [
   {
     name: 'Equipo',
     route: '/team'
+  },
+  {
+    name: 'Entradas',
+    route: 'https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2024/'
   },
   {
     name: 'Edición 2023',
