@@ -38,7 +38,7 @@ export default function Jobs({ jobs }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Condiciones Legales de Participación en el Concurso #DevFestSdC" description="¡Participa en el concurso #DevFestSdC de Google Developers Group Santiago de Compostela! Simplemente comparte una foto en tu perfil de Instagram, Twitter o LinkedIn que capture tu experiencia en el DevFest Santiago de Compostela 2024, usando el hashtag #DevFestSdC. También puedes subir la foto a tus historias en Instagram. ¡Sé creativo! Entre las mejores fotos, sortearemos tres licencias de 1 año para los IDE de JetBrains. Asegúrate de revisar las condiciones legales para participar. ¡Buena suerte a todos los participantes! 🚀" />
+        <Header hero="Condiciones Legales de Participación en el Concurso #DevFestSdC" description="¡Participa en el concurso #DevFestSdC de Google Developers Group Santiago de Compostela! Simplemente comparte una foto en tu perfil de Instagram, Twitter o LinkedIn que capture tu experiencia en el DevFest Santiago de Compostela 2025, usando el hashtag #DevFestSdC. También puedes subir la foto a tus historias en Instagram. ¡Sé creativo! Entre las mejores fotos, sortearemos tres licencias de 1 año para los IDE de JetBrains. Asegúrate de revisar las condiciones legales para participar. ¡Buena suerte a todos los participantes! 🚀" />
 
         <div className="container md:mx-auto my-8 p-8 shadow-md border rounded-lg border-white">
           <section className="mb-8">
@@ -52,7 +52,7 @@ export default function Jobs({ jobs }: Props) {
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-4">2. Duración del Concurso:</h2>
             <ul className="list-disc pl-6">
-              <li>El concurso comenzará con la apertura del DevFest Santiago de Compostela 2024 y finalizará con su cierre.</li>
+              <li>El concurso comenzará con la apertura del DevFest Santiago de Compostela 2025 y finalizará con su cierre.</li>
               <li>Las participaciones enviadas fuera de este período podrán no ser consideradas.</li>
               <li>El fallo del concurso podrá ser realizado de forma posterior al cierre del plazo de participación.</li>
             </ul>
@@ -63,7 +63,7 @@ export default function Jobs({ jobs }: Props) {
             <ul className="list-disc pl-6">
               <li>Los participantes deben publicar una foto en su perfil personal en Instagram, Twitter o LinkedIn con el hashtag #DevFestSdC.</li>
               <li>En Instagram, también se aceptarán publicaciones en las historias (stories).</li>
-              <li>La foto debe reflejar la experiencia del participante en el DevFest Santiago de Compostela 2024.</li>
+              <li>La foto debe reflejar la experiencia del participante en el DevFest Santiago de Compostela 2025.</li>
             </ul>
           </section>
 

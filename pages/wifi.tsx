@@ -42,8 +42,8 @@ export default function Jobs({ jobs }: Props) {
 
         <div className="container md:mx-auto my-8 p-8 shadow-md border rounded-lg border-white">
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">SSID: Devfest2024</h2>
-            <h2 className="text-xl font-semibold mb-4">Login: Devfest2024</h2>
+            <h2 className="text-xl font-semibold mb-4">SSID: Devfest2025</h2>
+            <h2 className="text-xl font-semibold mb-4">Login: Devfest2025</h2>
             <h2 className="text-xl font-semibold mb-4">Password: Mp7rAwL3*5j=</h2>
           </section>
         </div>
