@@ -43,7 +43,7 @@ export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
     name: 'Call for Speakers',
-    route: 'https://sessionize.com/gdg-devfest-2025/'
+    route: 'https://sessionize.com/devfest-2025/'
   },
   /*{
     name: 'En directo',
