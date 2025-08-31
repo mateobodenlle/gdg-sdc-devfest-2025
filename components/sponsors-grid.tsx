@@ -25,83 +25,63 @@ type Props = {
 };
 
 function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
-  const getCardClass = (tier: string) => {
+  const getTierColor = (tier: string) => {
     switch (tier) {
       case 'Platinum':
-        return 'platinum-card';
+        return '#fbbf24'; // Gold
       case 'Gold':
-        return 'gold-card';
+        return '#f59e0b'; // Orange-Gold
       case 'Silver':
-        return 'silver-card';
+        return '#94a3b8'; // Slate
       case 'Bronze':
-        return 'bronze-card';
+        return '#fb923c'; // Orange
       default:
-        return 'default-card';
+        return '#6b7280'; // Gray
     }
   };
 
   return (
-    <a
-      href={sponsor.website}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(styles.card, styles[getCardClass(tier)])}
-    >
-      <div className={styles.cardInner}>
-        <div className={styles.logoContainer}>
-          <img
-            alt={sponsor.name}
-            src={sponsor.logo.url}
-            className={styles.logo}
-            loading="lazy"
-            title={sponsor.name}
-          />
-        </div>
-        
-        <div className={styles.content}>
-          <h3 className={styles.name}>{sponsor.name}</h3>
-          
-          {(tier === 'Platinum' || tier === 'Gold') && (
-            <p className={styles.description}>
-              {sponsor.description.length > 120 
-                ? `${sponsor.description.substring(0, 120)}...` 
-                : sponsor.description
-              }
-            </p>
-          )}
-        </div>
-
-        <div className={cn(styles.tierBadge, styles[tier.toLowerCase()])}>
-          {tier === 'Platinum' && '👑'}
-          {tier === 'Gold' && '🥇'}
-          {tier === 'Silver' && '🥈'}
-          {tier === 'Bronze' && '🥉'}
+    <div className={styles.card}>
+      <div className={styles.imageWrapper}>
+        <div 
+          className={styles.placeholder}
+          style={{ backgroundColor: getTierColor(tier) }}
+        >
+          <span className={styles.placeholderText}>
+            {sponsor.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+          </span>
         </div>
       </div>
-    </a>
+      <div className={styles.cardBody}>
+        <div>
+          <h2 className={styles.name}>{sponsor.name}</h2>
+          <p className={styles.tier}>
+            {tier} Sponsor
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
 const TierSection = ({ 
   tier, 
   sponsors, 
-  title, 
-  gridClass 
+  title 
 }: { 
   tier: string;
   sponsors: Sponsor[];
   title: string;
-  gridClass: string;
 }) => {
   if (sponsors.length === 0) return null;
 
   return (
     <div className={styles.tierSection}>
       <div className={styles.tierHeader}>
-        <h2 className={cn(styles.tierTitle, styles[tier.toLowerCase()])}>{title}</h2>
+        <h2 className={styles.tierTitle}>{title}</h2>
       </div>
       
-      <div className={gridClass}>
+      <div className={cn(styles.grid, styles[`${tier.toLowerCase()}Grid`])}>
         {sponsors.map(sponsor => (
           <SponsorCard 
             key={sponsor.slug || sponsor.name} 
@@ -120,42 +100,30 @@ export default function SponsorsGrid({ sponsors }: Props) {
   const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
   const bronzeSponsors = sponsors.filter(s => s.tier === 'Bronze');
 
-  if (sponsors.length === 0) {
-    return (
-      <div className={styles.emptyState}>
-        <p>Próximamente anunciaremos nuestros partners</p>
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.grid}>
+    <div className={styles.container}>
       <TierSection
         tier="Platinum"
         sponsors={platinumSponsors}
-        title="PLATINUM PARTNERS"
-        gridClass={styles.platinumGrid}
+        title="PLATINUM"
       />
       
       <TierSection
         tier="Gold"
         sponsors={goldSponsors}
-        title="GOLD SPONSORS"
-        gridClass={styles.goldGrid}
+        title="GOLD"
       />
       
       <TierSection
         tier="Silver"
         sponsors={silverSponsors}
-        title="SILVER SUPPORTERS"
-        gridClass={styles.silverGrid}
+        title="SILVER"
       />
       
       <TierSection
         tier="Bronze"
         sponsors={bronzeSponsors}
-        title="COMMUNITY PARTNERS"
-        gridClass={styles.bronzeGrid}
+        title="BRONZE"
       />
     </div>
   );
