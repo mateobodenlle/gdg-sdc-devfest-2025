@@ -241,6 +241,13 @@ export async function getAllTeamMembers(): Promise<TeamMember[]> {
     }
   `);
 
+  console.log('Storyblok API response for TeamItems:', JSON.stringify(data, null, 2));
+  
+  if (!data || !data.TeamItems) {
+    console.warn('TeamItems not found in Storyblok response. Available data:', Object.keys(data || {}));
+    return [];
+  }
+
   const transformedData = transformResponse(data.TeamItems.items);
   return transformedData;
 }

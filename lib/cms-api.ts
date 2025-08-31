@@ -22,11 +22,14 @@ import * as contentfulApi from './cms-providers/contentful';
 import * as prismicApi from './cms-providers/prismic';
 import * as storyblokApi from './cms-providers/storyblok';
 
+import { TeamMember } from './types';
+
 let cmsApi: {
   getAllSpeakers: () => Promise<Speaker[]>;
   getAllStages: () => Promise<Stage[]>;
   getAllSponsors: () => Promise<Sponsor[]>;
   getAllJobs: () => Promise<Job[]>;
+  getAllTeamMembers: () => Promise<TeamMember[]>;
 };
 
 if (process.env.DATOCMS_READ_ONLY_API_TOKEN) {
@@ -50,7 +53,8 @@ if (process.env.DATOCMS_READ_ONLY_API_TOKEN) {
     getAllSpeakers: () => Promise.resolve([]),
     getAllStages: () => Promise.resolve([]),
     getAllSponsors: () => Promise.resolve([]),
-    getAllJobs: () => Promise.resolve([])
+    getAllJobs: () => Promise.resolve([]),
+    getAllTeamMembers: () => Promise.resolve([])
   };
 }
 
@@ -68,4 +72,8 @@ export async function getAllSponsors(): Promise<Sponsor[]> {
 
 export async function getAllJobs(): Promise<Job[]> {
   return cmsApi.getAllJobs();
+}
+
+export async function getAllTeamMembers(): Promise<TeamMember[]> {
+  return cmsApi.getAllTeamMembers();
 }
