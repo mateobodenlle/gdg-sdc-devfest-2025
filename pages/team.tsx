@@ -47,7 +47,7 @@ export default function Team({ teamMembers }: Props) {
             <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
             <div className="relative z-10 px-8 py-20">
               <div className="text-center mb-16">
-                <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-6">
+                <h1 className="text-6xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl">
                   EQUIPO
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
