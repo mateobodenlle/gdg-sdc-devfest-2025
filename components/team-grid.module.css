@@ -15,24 +15,21 @@
  */
 
 .grid {
-  margin: 50px auto;
+  margin: 0 auto 50px;
   padding: 0 24px;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 24px;
+  grid-gap: 32px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 @media (min-width: 472px) {
   .grid {
-    grid-template-columns: repeat(auto-fit,
-      minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 40px;
   }
 }
 
@@ -48,7 +45,7 @@
 }
 
 .card {
-  border-radius: var(--space-2x);
+  border-radius: 16px;
   background: #111111;
   display: flex;
   flex-direction: column;
@@ -56,35 +53,47 @@
   background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #333333, #333333);
   padding: 1px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 
 .card:hover,
 .card:focus {
   outline: none;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   background-image: linear-gradient(#111111, #111111),
-    linear-gradient(to right, var(--brand), var(--brand));
+    linear-gradient(135deg, var(--brand), var(--brand-dark));
 }
 
 .cardBody {
-  padding: var(--space-4x);
+  padding: 24px;
   color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 15em;
+  min-height: 18em;
+  overflow: hidden;
 }
 
 .image {
   object-fit: cover;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
 }
 
 @media (max-width: 471px) {
@@ -94,11 +103,12 @@
 }
 
 .name {
-  font-weight: bold;
-  color: #f1f1f1;
-  font-size: 20px;
-  margin: 0;
-  line-height: 1.4;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 22px;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
 }
 
 .company {
@@ -107,4 +117,7 @@
 
 .title {
   margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
 }

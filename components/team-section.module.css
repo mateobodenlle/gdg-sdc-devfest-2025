@@ -15,9 +15,13 @@
  */
 
 .container {
-  padding: var(--space-4x);
+  padding: 32px;
   display: flex;
   flex-direction: column-reverse;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  border-radius: 20px;
+  margin: 24px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .backlink {
@@ -37,7 +41,7 @@
 }
 
 .speaker-details {
-  padding: var(--space-4x) 0;
+  padding: 32px 0;
   display: flex;
   flex-direction: column;
   flex: unset;
@@ -52,46 +56,62 @@
 .bio {
   color: var(--accents-2);
   max-width: 800px;
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.9;
 }
 
 .image {
-  border-radius: var(--space-2x);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
-    padding: var(--space-8x);
+    padding: 48px;
+    margin: 32px;
   }
 
   .backlink {
-    padding: var(--space-8x);
+    padding: 48px;
     padding-bottom: 0;
   }
 
   .speaker-details {
     padding: 0;
-    padding-left: var(--space-8x);
+    padding-left: 48px;
   }
 
   .talk-details {
-    padding-left: var(--space-8x);
+    padding-left: 48px;
     color: var(--accents-2);
   }
 
   .image {
-    max-width: 300px;
-    max-height: 400px;
+    max-width: 320px;
+    max-height: 420px;
     object-fit: cover;
   }
 }
 
 .name {
   font-weight: 800;
-  color: #fff;
-  font-size: 56px;
-  margin: 0;
-  line-height: 1.2;
+  color: #ffffff;
+  font-size: 48px;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .name {
+    font-size: 56px;
+  }
 }
 
 .company {
@@ -105,20 +125,25 @@
 .title {
   margin-top: 0;
   margin-bottom: 24px;
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .bio-header {
-  font-size: 30px;
-  letter-spacing: -0.05em;
-  color: #fff;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 32px 0 16px 0;
+  font-weight: 700;
 }
 
 .socials-header {
-  font-size: 24px;
-  letter-spacing: -0.05em;
-  color: #fff;
-  margin-bottom: var(--space-4x);
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 32px 0 16px 0;
+  font-weight: 600;
 }
 
 .disabled {
@@ -126,5 +151,10 @@
 }
 
 .githubIcon {
-  margin-left: var(--space-2x);
+  margin-left: 12px;
+  transition: transform 0.2s ease;
+}
+
+.githubIcon:hover {
+  transform: scale(1.1);
 }
