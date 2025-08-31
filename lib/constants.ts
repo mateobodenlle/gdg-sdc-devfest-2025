@@ -52,12 +52,12 @@ export const NAVIGATION = [
   {
     name: 'Agenda',
     route: '/agenda'
-  },
+  },*/
   {
     name: 'Sponsors',
     route: '/partners'
   },
-  {
+  /*{
     name: 'Speakers',
     route: '/speakers'
   },*/
