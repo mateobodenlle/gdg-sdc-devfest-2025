@@ -17,7 +17,7 @@
 .contact {
   text-align: center;
   color: var(--secondary-color);
-  margin-bottom: var(--space-12x);
+  margin-bottom: 0px;
 }
 
 .contact-email {
@@ -34,13 +34,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 12px;
-  gap: 12px;
+  margin-bottom: 0px;
+  gap: 8px;
 }
 
 .button {
-  height: 56px;
-  margin-top: var(--space-4x);
+  height: 48px;
+  margin-top: 8px;
   border-radius: var(--space-2x);
   border: 1px solid var(--brand);
   background: var(--brand);

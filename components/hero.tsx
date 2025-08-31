@@ -67,6 +67,11 @@ export default function Hero() {
             <a className='block text-inherit' href='https://maps.app.goo.gl/GFdS8heX79PLecbj6'>Escuela Técnica Superior de Ingeniería, USC</a>
           </p>
         </div>
+        <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.button_container)}>
+          <a className={styles.button + " px-12"} href=''>
+            Nos vemos en 2025
+          </a>
+        </div>
       </div>
       <GradientBackground
         variant="large"

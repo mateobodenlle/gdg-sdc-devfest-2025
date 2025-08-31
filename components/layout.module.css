@@ -23,6 +23,12 @@
   flex-direction: column;
 }
 
+.background.no-scroll {
+  height: 100vh;
+  height: var(--100vh);
+  overflow: hidden;
+}
+
 .page {
   display: flex;
   flex-direction: column;
