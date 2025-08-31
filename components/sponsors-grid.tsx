@@ -20,102 +20,264 @@ import cn from 'classnames';
 import { Sponsor } from '@lib/types';
 import styles from './sponsors-grid.module.css';
 
-function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
-  const getTierStyle = (tier: string) => {
+function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
+  const getTierGradient = (tier: string) => {
     switch (tier) {
       case 'Platinum':
-        return 'from-yellow-400/20 to-yellow-600/20 border-yellow-400/30 hover:border-yellow-400/60';
+        return 'from-yellow-300 via-yellow-100 to-yellow-300';
       case 'Gold':
-        return 'from-yellow-600/20 to-orange-500/20 border-yellow-600/30 hover:border-yellow-600/60';
+        return 'from-yellow-500 via-yellow-400 to-yellow-600';
       case 'Silver':
-        return 'from-slate-400/20 to-slate-600/20 border-slate-400/30 hover:border-slate-400/60';
+        return 'from-slate-300 via-slate-200 to-slate-400';
       case 'Bronze':
-        return 'from-orange-600/20 to-orange-700/20 border-orange-600/30 hover:border-orange-600/60';
+        return 'from-orange-400 via-orange-300 to-orange-500';
       default:
-        return 'from-gray-400/20 to-gray-600/20 border-gray-400/30 hover:border-gray-400/60';
+        return 'from-gray-300 via-gray-200 to-gray-400';
     }
   };
 
-  const getCardSize = (tier: string) => {
+  const getTierBorder = (tier: string) => {
     switch (tier) {
       case 'Platinum':
-        return 'min-h-[300px]';
+        return 'linear-gradient(135deg, #fbbf24, #f59e0b)';
       case 'Gold':
-        return 'min-h-[250px]';
+        return 'linear-gradient(135deg, #f59e0b, #d97706)';
       case 'Silver':
-        return 'min-h-[200px]';
+        return 'linear-gradient(135deg, #94a3b8, #64748b)';
       case 'Bronze':
-        return 'min-h-[150px]';
+        return 'linear-gradient(135deg, #fb923c, #ea580c)';
       default:
-        return 'min-h-[200px]';
+        return 'linear-gradient(135deg, #6b7280, #4b5563)';
+    }
+  };
+
+  const getCardHeight = (tier: string) => {
+    switch (tier) {
+      case 'Platinum':
+        return 'min-h-[24em]';
+      case 'Gold':
+        return 'min-h-[20em]';
+      case 'Silver':
+        return 'min-h-[16em]';
+      case 'Bronze':
+        return 'min-h-[14em]';
+      default:
+        return 'min-h-[16em]';
     }
   };
 
   return (
-    <Link legacyBehavior key={sponsor.name} href={sponsor.website}>
-      <a
-        role="button"
-        tabIndex={0}
-        className={`
-          relative group cursor-pointer transition-all duration-300 
-          bg-gradient-to-br ${getTierStyle(sponsor.tier)} 
-          backdrop-filter backdrop-blur-lg 
-          border border-solid rounded-3xl overflow-hidden 
-          hover:transform hover:scale-105 hover:shadow-2xl 
-          ${getCardSize(sponsor.tier)}
-        `}
-        target="_blank"
-        rel="noopener noreferrer"
+    <a
+      href={sponsor.website}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`
+        group cursor-pointer transition-all duration-400 cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        ${getCardHeight(tier)}
+        block relative overflow-hidden
+      `}
+    >
+      <div 
+        className="
+          h-full
+          backdrop-blur-xl
+          border border-white/10
+          p-1
+          transition-all duration-300 ease-out
+          group-hover:scale-105
+          group-hover:-translate-y-2
+        "
+        style={{
+          borderRadius: '32px',
+          background: 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+          boxShadow: `
+            0 20px 40px rgba(0,0,0,0.1),
+            0 8px 16px rgba(0,0,0,0.1),
+            inset 0 1px 0 rgba(255,255,255,0.1)
+          `
+        }}
       >
-        <div className="relative w-full h-full p-6 flex flex-col justify-center items-center">
-          <div className="w-full h-32 mb-4 flex items-center justify-center">
-            <Image
+        {/* Tier indicator border */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-1 rounded-t-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: getTierBorder(tier) }}
+        />
+        
+        {/* Card content */}
+        <div 
+          className="h-full p-8 flex flex-col justify-center items-center text-center backdrop-blur-sm"
+          style={{
+            borderRadius: '28px',
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)'
+          }}
+        >
+          {/* Logo container */}
+          <div className={`mb-6 flex items-center justify-center ${
+            tier === 'Platinum' ? 'h-24' : 
+            tier === 'Gold' ? 'h-20' :
+            tier === 'Silver' ? 'h-16' : 'h-14'
+          }`}>
+            <img
               alt={sponsor.name}
               src={sponsor.logo.url}
-              className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              className="max-w-full max-h-full object-contain filter brightness-0 invert transition-all duration-300 group-hover:scale-110"
               loading="lazy"
               title={sponsor.name}
-              width={300}
-              height={120}
             />
           </div>
           
-          {(sponsor.tier === 'Platinum' || sponsor.tier === 'Gold') && (
-            <div className="text-center">
-              <h3 className="text-white font-bold text-lg mb-2 group-hover:text-blue-300 transition-colors">
-                {sponsor.name}
-              </h3>
-              <p className="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {sponsor.description.substring(0, 120)}...
-              </p>
-            </div>
+          {/* Company name */}
+          <h3 
+            className={`font-extrabold mb-4 ${
+              tier === 'Platinum' ? 'text-2xl' :
+              tier === 'Gold' ? 'text-xl' :
+              tier === 'Silver' ? 'text-lg' : 'text-base'
+            }`}
+            style={{
+              background: `linear-gradient(135deg, ${getTierGradient(tier)})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+          >
+            {sponsor.name}
+          </h3>
+          
+          {/* Description for premium tiers */}
+          {(tier === 'Platinum' || tier === 'Gold') && (
+            <p className="text-white/80 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              {sponsor.description.length > 120 ? 
+                `${sponsor.description.substring(0, 120)}...` : 
+                sponsor.description
+              }
+            </p>
           )}
-
-          {sponsor.tier === 'Platinum' && (
-            <div className="absolute top-3 right-3">
-              <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-2 py-1 rounded-full text-xs font-bold">
-                ⭐ PLATINUM
-              </div>
+          
+          {/* Tier badge */}
+          <div className="absolute top-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+            <div 
+              className="px-3 py-1 rounded-full text-xs font-bold"
+              style={{ 
+                background: getTierBorder(tier),
+                color: tier === 'Platinum' ? '#000' : '#fff'
+              }}
+            >
+              {tier === 'Platinum' && '👑'}
+              {tier === 'Gold' && '🥇'} 
+              {tier === 'Silver' && '🥈'}
+              {tier === 'Bronze' && '🥉'}
+              <span className="ml-1">{tier.toUpperCase()}</span>
             </div>
-          )}
-
-          {sponsor.tier === 'Gold' && (
-            <div className="absolute top-3 right-3">
-              <div className="bg-gradient-to-r from-yellow-600 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                🥇 GOLD
-              </div>
-            </div>
-          )}
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
+          {/* Hover shine effect */}
+          <div className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(255,255,255,0.02) 100%)'
+               }} />
+          
+          {/* Animated gradient border on hover */}
+          <div 
+            className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+            style={{
+              background: `linear-gradient(45deg, ${getTierBorder(tier)})`,
+              padding: '1px',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude'
+            }}
+          />
         </div>
-      </a>
-    </Link>
+      </div>
+    </a>
   );
 }
 
 type Props = {
   sponsors: Sponsor[];
+};
+
+const TierSection = ({ 
+  tier, 
+  sponsors, 
+  title, 
+  gridClass 
+}: { 
+  tier: string;
+  sponsors: Sponsor[];
+  title: string;
+  gridClass: string;
+}) => {
+  const getTierGradient = () => {
+    switch (tier) {
+      case 'Platinum':
+        return 'from-yellow-200 via-yellow-100 to-yellow-300';
+      case 'Gold':
+        return 'from-yellow-500 via-yellow-400 to-orange-400';
+      case 'Silver':
+        return 'from-slate-300 via-slate-200 to-slate-400';
+      case 'Bronze':
+        return 'from-orange-400 via-orange-300 to-orange-500';
+      default:
+        return 'from-gray-300 via-gray-200 to-gray-400';
+    }
+  };
+
+  const getTitleSize = () => {
+    switch (tier) {
+      case 'Platinum':
+        return 'text-5xl md:text-6xl';
+      case 'Gold':
+        return 'text-4xl md:text-5xl';
+      case 'Silver':
+        return 'text-3xl md:text-4xl';
+      case 'Bronze':
+        return 'text-2xl md:text-3xl';
+      default:
+        return 'text-3xl md:text-4xl';
+    }
+  };
+
+  if (sponsors.length === 0) return null;
+
+  return (
+    <div className="mb-24">
+      <div className="text-center mb-16">
+        <h2 
+          className={`font-black mb-8 leading-tight ${getTitleSize()}`}
+          style={{
+            background: `linear-gradient(135deg, ${getTierGradient()})`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}
+        >
+          {title}
+        </h2>
+        <div 
+          className="h-2 mx-auto rounded-full"
+          style={{ 
+            width: tier === 'Platinum' ? '120px' : 
+                   tier === 'Gold' ? '100px' : 
+                   tier === 'Silver' ? '80px' : '60px',
+            background: `linear-gradient(90deg, ${getTierGradient()})`
+          }}
+        />
+      </div>
+      
+      <div className={gridClass}>
+        {sponsors.map(sponsor => (
+          <SponsorCard 
+            key={sponsor.slug || sponsor.name} 
+            sponsor={sponsor} 
+            tier={tier}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default function SponsorsGrid({ sponsors }: Props) {
@@ -124,75 +286,45 @@ export default function SponsorsGrid({ sponsors }: Props) {
   const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
   const bronzeSponsors = sponsors.filter(s => s.tier === 'Bronze');
 
+  if (sponsors.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto px-8 py-16">
+        <div className="text-center text-white">
+          <p className="text-xl">No hay sponsors disponibles</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-7xl mx-auto px-8 py-16">
-      {/* Platinum Sponsors */}
-      {platinumSponsors.length > 0 && (
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 mb-4">
-              PLATINUM SPONSORS
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {platinumSponsors.map(sponsor => (
-              <SponsorCard key={sponsor.name} sponsor={sponsor} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Gold Sponsors */}
-      {goldSponsors.length > 0 && (
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-yellow-500 to-orange-500 mb-4">
-              GOLD SPONSORS
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-yellow-600 to-orange-500 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {goldSponsors.map(sponsor => (
-              <SponsorCard key={sponsor.name} sponsor={sponsor} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Silver Sponsors */}
-      {silverSponsors.length > 0 && (
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-400 mb-4">
-              SILVER SPONSORS
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-slate-400 to-slate-600 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {silverSponsors.map(sponsor => (
-              <SponsorCard key={sponsor.name} sponsor={sponsor} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Bronze Sponsors */}
-      {bronzeSponsors.length > 0 && (
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 mb-4">
-              BRONZE SPONSORS
-            </h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-orange-600 to-orange-700 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {bronzeSponsors.map(sponsor => (
-              <SponsorCard key={sponsor.name} sponsor={sponsor} />
-            ))}
-          </div>
-        </div>
-      )}
+    <div className="max-w-7xl mx-auto px-8 py-20">
+      <TierSection
+        tier="Platinum"
+        sponsors={platinumSponsors}
+        title="PLATINUM PARTNERS"
+        gridClass="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl mx-auto"
+      />
+      
+      <TierSection
+        tier="Gold"
+        sponsors={goldSponsors}
+        title="GOLD SPONSORS"
+        gridClass="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+      />
+      
+      <TierSection
+        tier="Silver"
+        sponsors={silverSponsors}
+        title="SILVER SUPPORTERS"
+        gridClass="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"
+      />
+      
+      <TierSection
+        tier="Bronze"
+        sponsors={bronzeSponsors}
+        title="BRONZE CONTRIBUTORS"
+        gridClass="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+      />
     </div>
   );
 }
