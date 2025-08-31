@@ -19,9 +19,6 @@ import { GetStaticProps } from 'next';
 import Page from '@components/page';
 import SponsorsGrid from '@components/sponsors-grid';
 import Layout from '@components/layout';
-import LinkButton from '@components/hms/LinkButton';
-import styles from '@components/contact.module.css';
-import cn from 'classnames';
 
 import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
@@ -175,8 +172,8 @@ export default function PartnersPage({ sponsors }: Props) {
                 </p>
                 
                 <div className="flex justify-center gap-8 mt-12">
-                  <LinkButton 
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
+                  <a 
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 inline-block"
                     href="mailto:sponsors@gdg-sdc.org"
                   >
                     <span className="flex items-center gap-3">
@@ -185,10 +182,10 @@ export default function PartnersPage({ sponsors }: Props) {
                       </svg>
                       Become a Sponsor
                     </span>
-                  </LinkButton>
+                  </a>
                   
-                  <LinkButton 
-                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+                  <a 
+                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 inline-block"
                     href="/sponsorship-kit.pdf"
                   >
                     <span className="flex items-center gap-3">
@@ -197,7 +194,7 @@ export default function PartnersPage({ sponsors }: Props) {
                       </svg>
                       Sponsorship Kit
                     </span>
-                  </LinkButton>
+                  </a>
                 </div>
               </div>
             </div>

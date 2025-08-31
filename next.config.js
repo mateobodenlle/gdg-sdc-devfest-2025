@@ -23,7 +23,12 @@ module.exports = {
       'images.prismic.io',
       'cdn.aglty.io',
       'localhost', // For Strapi
-      'sessionize.com'
+      'sessionize.com',
+      'upload.wikimedia.org',
+      'images.unsplash.com',
+      'github.githubassets.com',
+      'assets.vercel.com',
+      'webassets.mongodb.com'
     ],
     imageSizes: [24, 64, 300]
   },
