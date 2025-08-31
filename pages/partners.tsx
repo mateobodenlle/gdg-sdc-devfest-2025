@@ -153,8 +153,11 @@ export default function PartnersPage({ sponsors }: Props) {
     description: 'Conoce a las empresas que hacen posible DevFest Santiago 2025. Únete a nosotros y forma parte del futuro de la tecnología.'
   };
 
-  // Use sample data if no sponsors from CMS
-  const sponsorData = sponsors.length > 0 ? sponsors : SAMPLE_SPONSORS;
+  // Force use of sample data for testing
+  const sponsorData = SAMPLE_SPONSORS;
+  console.log('Partners page - CMS sponsors:', sponsors.length);
+  console.log('Partners page - Sample sponsors:', SAMPLE_SPONSORS.length);
+  console.log('Partners page - Using data:', sponsorData.length);
 
   return (
     <Page meta={meta}>
