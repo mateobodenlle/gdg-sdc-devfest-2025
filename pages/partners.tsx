@@ -203,8 +203,8 @@ export default function PartnersPage({ sponsors }: Props) {
             </div>
           </div>
           
-          <div className="relative -mt-16">
-            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-16">
+          <div className="relative -mt-20">
+            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-12">
               <SponsorsGrid sponsors={sponsorData} />
             </div>
           </div>
