@@ -200,11 +200,30 @@ export default function PartnersPage({ sponsors }: Props) {
                   </a>
                 </div>
               </div>
+              
+              {/* Scroll indicator */}
+              <div className="flex justify-center mt-8">
+                <div className="animate-bounce">
+                  <svg 
+                    className="w-6 h-6 text-white/60" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
           
-          <div className="relative -mt-20">
-            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-12">
+          <div className="relative -mt-24">
+            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
               <SponsorsGrid sponsors={sponsorData} />
             </div>
           </div>

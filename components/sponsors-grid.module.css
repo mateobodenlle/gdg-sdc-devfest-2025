@@ -16,7 +16,7 @@
 
 .container {
   margin: 0 auto;
-  padding: 40px 24px 100px;
+  padding: 20px 24px 100px;
   width: 100%;
   max-width: 1400px;
   position: relative;
@@ -24,7 +24,7 @@
 
 @media (min-width: 640px) {
   .container {
-    padding: 60px 48px 120px;
+    padding: 40px 48px 120px;
   }
 }
 
