@@ -53,7 +53,7 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allSpeakers = await fetch('https://sessionize.com/api/v2/xuz69sq5/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
+  const allSpeakers = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
     name: speaker.fullName,
     title: speaker.tagLine,
     image: {
@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     }
     );
 
-  const allTalks = await fetch('https://sessionize.com/api/v2/xuz69sq5/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
+  const allTalks = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
     [
       ...prevList,
       ...date.rooms.reduce((prevRooms: any[], room: any) => (
