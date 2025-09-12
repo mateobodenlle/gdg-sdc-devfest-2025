@@ -48,11 +48,11 @@ export const NAVIGATION = [
   /*{
     name: 'En directo',
     route: 'https://gdg-devfest-2025.sessionize.com/'
-  },
+  },*/
   {
     name: 'Agenda',
     route: '/agenda'
-  },*/
+  },
   {
     name: 'Sponsors',
     route: '/partners'
