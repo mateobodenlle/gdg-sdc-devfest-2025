@@ -1,11 +1,14 @@
 [build]
-  command = "yarn install --frozen-lockfile && yarn build"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
   YARN_VERSION = "1.22.22"
   NPM_FLAGS = "--production=false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[redirects]]
   from = "/live"
