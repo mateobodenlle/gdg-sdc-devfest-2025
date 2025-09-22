@@ -31,15 +31,13 @@ function StageRow({ stage }: { stage: Stage }) {
   }, {});
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 shadow-lg">
-      <h3 className="text-2xl font-bold text-white mb-6 border-b border-white/20 pb-3">
-        <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-          {stage.name}
-        </span>
+    <div key={stage.name} className={styles.row}>
+      <h3 className={cn(styles['stage-name'], /*styles[stage.slug]*/)}>
+        <span>{stage.name}</span>
       </h3>
-      <div className="space-y-4">
+      <div className={cn(styles.talks, /*styles[stage.slug]*/)}>
         {Object.keys(timeBlocks).map((startTime: string) => (
-          <div key={startTime} className="space-y-3">
+          <div key={startTime}>
             {timeBlocks[startTime].map((talk: Talk, index: number) => (
               <TalkCard key={talk.title} talk={talk} showTime={index === 0} />
             ))}
@@ -59,15 +57,13 @@ function ServiceSessionsRow({ sessions }: { sessions: Talk[] }) {
     , {});
 
   return (
-    <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 backdrop-blur-sm rounded-2xl p-6 border border-blue-400/20 shadow-lg">
-      <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400/30 pb-3">
-        <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          Sesiones Generales
-        </span>
+    <div key={'General'} className={styles.service_row}>
+      <h3 className={cn(styles['service-sessions-name'], /*styles[stage.slug]*/)}>
+        <span>{'General'}</span>
       </h3>
-      <div className="space-y-4">
+      <div className={cn(styles.talks, /*styles[stage.slug]*/)}>
         {Object.keys(timeBlocks).map((startTime: string) => (
-          <div key={startTime} className="space-y-3">
+          <div key={startTime}>
             {timeBlocks[startTime].map((talk: Talk, index: number) => (
               <ServiceSessionCard key={talk.title} talk={talk} showTime={index === 0} />
             ))}
@@ -92,7 +88,7 @@ export default function Schedule({ allStages, serviceSessions }: Props) {
           <div className="text-center max-w-md">
             <h3 className="text-2xl font-bold mb-4 text-gray-800">Agenda en construcción</h3>
             <p className="text-gray-600 mb-6">
-              Estamos trabajando en la agenda del DevFest Santiago de Compostela 2025. 
+              Estamos trabajando en la agenda del DevFest Santiago de Compostela 2025.
               ¡Pronto tendrás disponible todo el programa con las charlas y speakers confirmados!
             </p>
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-800">
@@ -157,28 +153,26 @@ export default function Schedule({ allStages, serviceSessions }: Props) {
     , [serviceSessions, currentDay]);
 
   return (
-    <div className="overflow-auto -webkit-overflow-scrolling-touch px-6 py-8">
-      {/* Day selector buttons */}
-      <div className="flex justify-center gap-4 mb-12">
+    <div className={styles.container}>
+      {/*
+          Buttons to switch between days
+        */}
+      <div className="flex justify-start gap-4 my-8 px-8">
         {allDays.map((day: Date) => (
-          <button
+          <Button
             onClick={() => setCurrentDay(day)}
             key={day.toDateString()}
+            rel="noopener noreferrer"
             type="button"
-            className={cn(
-              "px-8 py-4 rounded-full font-semibold transition-all duration-300 backdrop-blur-sm border-2",
-              day.toDateString() === currentDay.toDateString()
-                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-purple-400 shadow-lg shadow-purple-500/25 scale-105"
-                : "bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/40 hover:scale-105"
-            )}
+            className={cn(styles.button, styles['button-link'], {
+              [styles['button-active']]: day.toDateString() === currentDay.toDateString()
+            })}
           >
             {((string) => string[0].toUpperCase() + string.slice(1))(day.toLocaleDateString(new Intl.Locale('es-ES'), { weekday: 'long', day: 'numeric' }))}
-          </button>
+          </Button>
         ))}
       </div>
-
-      {/* Schedule content */}
-      <div className="space-y-8">
+      <div className={styles['row-wrapper']}>
         <ServiceSessionsRow key='service' sessions={currentServiceSessions} />
         {currentStages.filter(stage => stage.schedule.length > 0).map(stage => (
           <StageRow key={stage.name} stage={stage} />
