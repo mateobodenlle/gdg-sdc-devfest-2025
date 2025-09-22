@@ -45,7 +45,7 @@ export default function Speakers({ speakers }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const speakers = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
+  const speakers = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
     name: speaker.fullName,
     title: speaker.tagLine,
     image: {
