@@ -41,10 +41,6 @@ export const CODE_OF_CONDUCT =
 export const REPO = 'https://github.com/ACMCMC/gdg-sdc-devfest-2025';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
-  {
-    name: 'Call for Speakers',
-    route: 'https://sessionize.com/devfest-2025/'
-  },
   /*{
     name: 'En directo',
     route: 'https://gdg-devfest-2025.sessionize.com/'
