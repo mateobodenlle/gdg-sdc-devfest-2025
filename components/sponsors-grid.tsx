@@ -40,28 +40,66 @@ function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
     }
   };
 
-  return (
+  const CardContent = (
     <div className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <div 
-          className={styles.placeholder}
-          style={{ backgroundColor: getTierColor(tier) }}
-        >
-          <span className={styles.placeholderText}>
-            {sponsor.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
-          </span>
-        </div>
+      <div className={styles.logoSection}>
+        {sponsor.logo?.url ? (
+          <div className={styles.logoWrapper}>
+            <Image
+              alt={sponsor.name}
+              src={sponsor.logo.url}
+              className={styles.logo}
+              width={300}
+              height={120}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: '80px',
+                objectFit: 'contain'
+              }}
+            />
+          </div>
+        ) : (
+          <div
+            className={styles.placeholder}
+            style={{ backgroundColor: getTierColor(tier) }}
+          >
+            <span className={styles.placeholderText}>
+              {sponsor.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+            </span>
+          </div>
+        )}
       </div>
-      <div className={styles.cardBody}>
+      <div className={styles.cardInfo}>
         <div>
           <h2 className={styles.name}>{sponsor.name}</h2>
           <p className={styles.tier}>
             {tier} Sponsor
           </p>
+          {sponsor.description && (
+            <p className={styles.description}>
+              {sponsor.description}
+            </p>
+          )}
         </div>
       </div>
     </div>
   );
+
+  if (sponsor.website) {
+    return (
+      <a
+        href={sponsor.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
+        {CardContent}
+      </a>
+    );
+  }
+
+  return CardContent;
 }
 
 const TierSection = ({ 

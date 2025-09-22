@@ -60,52 +60,69 @@
   display: none;
 }
 
-/* Platinum: 2 columns like team page */
+/* Platinum: 1 centered column for single sponsor */
 .platinumGrid {
   grid-template-columns: 1fr;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 @media (min-width: 640px) {
   .platinumGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 40px;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
   }
 }
 
-/* Gold: 3 columns */
+/* Gold: 1 centered column for single sponsor */
 .goldGrid {
   grid-template-columns: 1fr;
+  max-width: 450px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 @media (min-width: 472px) {
   .goldGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 768px) {
   .goldGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
   }
 }
 
-/* Silver: 4 columns */
+/* Silver: 1 centered column for single sponsor */
 .silverGrid {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 24px;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 @media (min-width: 472px) {
   .silverGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 768px) {
   .silverGrid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
@@ -133,9 +150,9 @@
   }
 }
 
-/* Card styles - copied from team-grid.module.css */
+/* Card styles - optimized for horizontal logos */
 .card {
-  border-radius: 32px;
+  border-radius: 24px;
   background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.1);
@@ -143,12 +160,14 @@
   flex-direction: column;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0,0,0,0.1),
     0 8px 16px rgba(0,0,0,0.1),
     inset 0 1px 0 rgba(255,255,255,0.1);
   overflow: hidden;
   position: relative;
+  height: auto;
+  min-height: 280px;
 }
 
 .card::before {
@@ -197,23 +216,45 @@
   transform: rotate(45deg) translate(50%, 50%);
 }
 
-.imageWrapper {
-  position: relative;
+/* Logo section - optimized for horizontal logos */
+.logoSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
+  border-radius: 20px 20px 0 0;
+  min-height: 120px;
+}
+
+.logoWrapper {
   width: 100%;
-  height: 100%;
-  min-height: 12em;
-  overflow: hidden;
-  border-radius: 28px 28px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 280px;
+}
+
+.logo {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+}
+
+.card:hover .logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
 .placeholder {
   width: 100%;
-  height: 100%;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   filter: brightness(0.9) contrast(1.1);
+  border-radius: 12px;
 }
 
 .card:hover .placeholder {
@@ -221,23 +262,23 @@
 }
 
 .placeholderText {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   letter-spacing: 2px;
 }
 
-.cardBody {
-  padding: 24px;
+.cardInfo {
+  padding: 20px 24px 28px;
   color: rgba(255,255,255,0.8);
+  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 20px 20px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
-  backdrop-filter: blur(10px);
-  position: relative;
 }
 
 .name {
@@ -262,51 +303,67 @@
   text-shadow: 0 0 10px rgba(96,165,250,0.3);
 }
 
-/* Tier-specific sizes */
-.platinumGrid .imageWrapper {
-  min-height: 14em;
+.description {
+  margin: 12px 0 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.8);
+  font-weight: 400;
+}
+
+/* Tier-specific adjustments for new layout */
+.platinumGrid .card {
+  min-height: 320px;
+  width: 100%;
 }
 
 .platinumGrid .name {
   font-size: 24px;
 }
 
-.platinumGrid .placeholderText {
-  font-size: 40px;
+.platinumGrid .description {
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-.goldGrid .imageWrapper {
-  min-height: 13em;
+.goldGrid .card {
+  min-height: 300px;
+  width: 100%;
 }
 
 .goldGrid .name {
   font-size: 22px;
 }
 
-.goldGrid .placeholderText {
-  font-size: 36px;
+.goldGrid .description {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.silverGrid .imageWrapper {
-  min-height: 11em;
+.silverGrid .card {
+  min-height: 280px;
+  width: 100%;
 }
 
 .silverGrid .name {
-  font-size: 18px;
+  font-size: 20px;
 }
 
-.silverGrid .placeholderText {
-  font-size: 28px;
+.silverGrid .description {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.bronzeGrid .imageWrapper {
-  min-height: 10em;
+.bronzeGrid .card {
+  min-height: 260px;
+  width: 100%;
 }
 
 .bronzeGrid .name {
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.bronzeGrid .placeholderText {
-  font-size: 24px;
+.bronzeGrid .description {
+  font-size: 13px;
+  line-height: 1.5;
 }

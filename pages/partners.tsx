@@ -24,121 +24,51 @@ import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
-// Sample sponsor data for different tiers
-const SAMPLE_SPONSORS: Sponsor[] = [
+// Real sponsor data for DevFest Santiago 2025
+const REAL_SPONSORS: Sponsor[] = [
   // Platinum Tier
   {
-    name: 'Google',
-    description: 'Tecnología que conecta el mundo. Desde búsquedas hasta inteligencia artificial, Google impulsa la innovación digital global.',
-    slug: 'google',
-    website: 'https://google.com',
-    callToAction: 'Explorar carreras',
-    callToActionLink: 'https://careers.google.com',
+    name: 'OSIX Tech',
+    description: 'Empresa tecnológica especializada en soluciones innovadoras de desarrollo de software y servicios digitales.',
+    slug: 'osixtech',
+    website: 'https://osix.tech',
+    callToAction: 'Conoce más',
+    callToActionLink: 'https://osix.tech',
     links: [],
     discord: '',
     tier: 'Platinum',
     cardImage: { url: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&h=600&fit=crop' },
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'Microsoft',
-    description: 'Empoderando a cada persona y organización del planeta para lograr más. Líderes en productividad y servicios en la nube.',
-    slug: 'microsoft', 
-    website: 'https://microsoft.com',
-    callToAction: 'Ver oportunidades',
-    callToActionLink: 'https://careers.microsoft.com',
-    links: [],
-    discord: '',
-    tier: 'Platinum',
-    cardImage: { url: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop' },
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png' },
+    logo: { url: '/osixtech.png' },
     youtubeSlug: ''
   },
   // Gold Tier
   {
-    name: 'Amazon Web Services',
-    description: 'La plataforma de servicios en la nube más adoptada y completa del mundo, ofreciendo más de 200 servicios integrales.',
-    slug: 'aws',
-    website: 'https://aws.amazon.com',
-    callToAction: 'Únete al equipo',
-    callToActionLink: 'https://amazon.jobs/aws',
+    name: 'dinahosting',
+    description: 'Proveedor líder de servicios de hosting y dominios en España, ofreciendo soluciones confiables para empresas y desarrolladores.',
+    slug: 'dinahosting',
+    website: 'https://dinahosting.com',
+    callToAction: 'Descubre servicios',
+    callToActionLink: 'https://dinahosting.com',
     links: [],
     discord: '',
     tier: 'Gold',
     cardImage: { url: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=600&fit=crop' },
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'Meta',
-    description: 'Construyendo tecnologías que ayudan a las personas a conectar, encontrar comunidades y hacer crecer los negocios.',
-    slug: 'meta',
-    website: 'https://meta.com',
-    callToAction: 'Descubre más',
-    callToActionLink: 'https://careers.meta.com',
-    links: [],
-    discord: '',
-    tier: 'Gold',
-    cardImage: { url: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop' },
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/512px-Meta_Platforms_Inc._logo.svg.png' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'JetBrains',
-    description: 'Herramientas esenciales para desarrolladores de software y equipos. Creadores de IntelliJ IDEA, PyCharm, y muchos más IDEs.',
-    slug: 'jetbrains',
-    website: 'https://jetbrains.com',
-    callToAction: 'Prueba gratis',
-    callToActionLink: 'https://jetbrains.com/products/',
-    links: [],
-    discord: '',
-    tier: 'Gold',
-    cardImage: { url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop' },
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/JetBrains_Logo_2016.svg/512px-JetBrains_Logo_2016.svg.png' },
+    logo: { url: '/dinahosting.png' },
     youtubeSlug: ''
   },
   // Silver Tier
   {
-    name: 'GitHub',
-    description: 'La plataforma de desarrollo colaborativo donde millones de desarrolladores crean, comparten y construyen software juntos.',
-    slug: 'github',
-    website: 'https://github.com',
-    callToAction: 'Únete',
-    callToActionLink: 'https://github.com/about/careers',
+    name: 'Raiola Networks',
+    description: 'Empresa gallega especializada en hosting web, servidores dedicados y soluciones de infraestructura cloud.',
+    slug: 'raiola-networks',
+    website: 'https://raiolanetworks.es',
+    callToAction: 'Ver servicios',
+    callToActionLink: 'https://raiolanetworks.es',
     links: [],
     discord: '',
     tier: 'Silver',
     cardImage: { url: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&h=600&fit=crop' },
-    logo: { url: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'Vercel',
-    description: 'La plataforma frontend para desarrolladores, proporcionando velocidad y confiabilidad que los equipos necesitan para crear en la web.',
-    slug: 'vercel',
-    website: 'https://vercel.com',
-    callToAction: 'Deploy ahora',
-    callToActionLink: 'https://vercel.com/signup',
-    links: [],
-    discord: '',
-    tier: 'Silver',
-    cardImage: { url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop' },
-    logo: { url: 'https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'MongoDB',
-    description: 'La base de datos para aplicaciones modernas. Potencia aplicaciones innovadoras con una plataforma de datos flexible.',
-    slug: 'mongodb',
-    website: 'https://mongodb.com',
-    callToAction: 'Comienza gratis',
-    callToActionLink: 'https://mongodb.com/cloud/atlas/register',
-    links: [],
-    discord: '',
-    tier: 'Silver',
-    cardImage: { url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop' },
-    logo: { url: 'https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png' },
+    logo: { url: '/logo-Raiola-Networks-Plata.jpg' },
     youtubeSlug: ''
   }
 ];
@@ -153,10 +83,10 @@ export default function PartnersPage({ sponsors }: Props) {
     description: 'Conoce a las empresas que hacen posible DevFest Santiago 2025. Únete a nosotros y forma parte del futuro de la tecnología.'
   };
 
-  // Force use of sample data for testing
-  const sponsorData = SAMPLE_SPONSORS;
+  // Use real sponsor data
+  const sponsorData = REAL_SPONSORS;
   console.log('Partners page - CMS sponsors:', sponsors.length);
-  console.log('Partners page - Sample sponsors:', SAMPLE_SPONSORS.length);
+  console.log('Partners page - Real sponsors:', REAL_SPONSORS.length);
   console.log('Partners page - Using data:', sponsorData.length);
 
   return (
