@@ -80,14 +80,12 @@ export default function Footer() {
           </p>
           <div className={styles['footer-separator']} ></div>
           <p className={styles['footer-paragraph']}>
-            <a
-              href={CODE_OF_CONDUCT}
+            <span
               className={styles['footer-link']}
-              target="_blank"
-              rel="noopener noreferrer"
+              style={{ opacity: 0.5, cursor: 'not-allowed' }}
             >
               Código de Conducta
-            </a>
+            </span>
           </p>
         </div>
       </div>
