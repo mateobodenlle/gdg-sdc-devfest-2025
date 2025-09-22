@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Job, Sponsor, Stage, Speaker } from '@lib/types';
+import { Job, Sponsor, Stage, Speaker, TeamMember } from '@lib/types';
 import { richTextAsText, getLinkUrl } from './utils';
 
 const API_REF_URL = `https://${process.env.PRISMIC_REPO_ID}.prismic.io/api/v2`;
@@ -324,6 +324,37 @@ export async function getAllJobs(): Promise<Job[]> {
 
 
 export async function getAllTeamMembers() {
-  const teamMembers = await client.getAllByType("teamMember");
-  return teamMembers || [];
+  const data = await fetchCmsAPI(`
+    {
+      allTeam_members {
+        edges {
+          node {
+            name
+            title
+            slug
+            bio
+            twitter
+            github
+            linkedin
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  return data.allTeam_members.edges.map(({ node }: any) => ({
+    name: node.name,
+    title: node.title,
+    slug: node.slug,
+    bio: richTextAsText(node.bio),
+    twitter: node.twitter,
+    github: node.github,
+    linkedin: node.linkedin,
+    image: {
+      url: node.image.url
+    }
+  }));
 }

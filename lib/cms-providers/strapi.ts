@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Job, Sponsor, Stage, Speaker } from '@lib/types';
+import { Job, Sponsor, Stage, Speaker, TeamMember } from '@lib/types';
 
 const API_URL = `${process.env.STRAPI_API_URL}/graphql`;
 const IMAGE_API_URL = process.env.STRAPI_API_URL;

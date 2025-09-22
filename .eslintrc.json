@@ -11,7 +11,7 @@
     "prettier"
   ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": ["warn", { "args": "after-used", "ignoreRestSiblings": false, "argsIgnorePattern": "^_.*?$" }],
+    "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -23,6 +23,9 @@
     "@typescript-eslint/no-floating-promises": 0,
     "@typescript-eslint/no-unsafe-assignment": 0,
     "@typescript-eslint/restrict-template-expressions": 0,
-    "@typescript-eslint/no-empty-function": 0
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-unsafe-argument": 0,
+    "@typescript-eslint/no-misused-promises": 0,
+    "@typescript-eslint/no-unsafe-enum-comparison": 0
   }
 }

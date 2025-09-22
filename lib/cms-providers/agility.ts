@@ -20,7 +20,7 @@
 const agilityContentSync = require('@agility/content-sync');
 const agilityFileSystem = require('@agility/content-sync/src/store-interface-filesystem');
 
-import { Job, Speaker, Sponsor, Stage } from '../types';
+import { Job, Speaker, Sponsor, Stage, TeamMember } from '../types';
 
 const agilityConfig = {
   guid: process.env.AGILITY_GUID,
@@ -387,9 +387,10 @@ const asyncForEach = async (array: any, callback: any) => {
 
 
 export async function getAllTeamMembers() {
-  const teamMembers = await api.getContentList({
+  const agility = await syncContentAndGetClient(null);
+  const teamMembers = await agility.getContentList({
     referenceName: "teamMembers",
-    take: 100
+    languageCode: agilityConfig.languageCode
   });
   return teamMembers || [];
 }
