@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { Speaker, TeamMember } from '@lib/types';
 import styles from './team-grid.module.css';
@@ -27,33 +26,31 @@ export default function TeamGrid({ teamMembers }: Props) {
   return (
     <div className={styles.grid}>
       {teamMembers.map(teamMember => (
-        <Link legacyBehavior key={teamMember.name} href={`/team/${teamMember.slug}`}>
-          <a role="button" tabIndex={0} className={styles.card}>
-            <div className={styles.imageWrapper}>
-              <Image
-                alt={teamMember.name}
-                src={teamMember.image.url}
-                className={styles.image}
-                loading="lazy"
-                quality="50"
-                title={teamMember.name}
-                placeholder={teamMember.image.blurDataURL ? 'blur' : 'empty'}
-                blurDataURL={teamMember.image.blurDataURL}
-                layout='fill'
-                objectFit='cover'
-              />
+        <div key={teamMember.name} className={styles.card}>
+          <div className={styles.imageWrapper}>
+            <Image
+              alt={teamMember.name}
+              src={teamMember.image.url}
+              className={styles.image}
+              loading="lazy"
+              quality="50"
+              title={teamMember.name}
+              placeholder={teamMember.image.blurDataURL ? 'blur' : 'empty'}
+              blurDataURL={teamMember.image.blurDataURL}
+              layout='fill'
+              objectFit='cover'
+            />
+          </div>
+          <div className={styles.cardBody}>
+            <div>
+              <h2 className={styles.name}>{teamMember.name}</h2>
+              <p className={styles.title}>
+                {`${teamMember.roleAtCurrentAffiliation} @ `}
+                <span className={styles.company}>{teamMember.currentAffiliation}</span>
+              </p>
             </div>
-            <div className={styles.cardBody}>
-              <div>
-                <h2 className={styles.name}>{teamMember.name}</h2>
-                <p className={styles.title}>
-                  {`${teamMember.roleAtCurrentAffiliation} @ `}
-                  <span className={styles.company}>{teamMember.currentAffiliation}</span>
-                </p>
-              </div>
-            </div>
-          </a>
-        </Link>
+          </div>
+        </div>
       ))}
     </div>
   );

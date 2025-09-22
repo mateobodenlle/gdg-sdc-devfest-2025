@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       },
       slug: speaker.id,
       isTopSpeaker: speaker.isTopSpeaker,
-      sessionizeUrl: sessionizeLink?.url
+      sessionizeUrl: sessionizeLink?.url || null
     };
   }))
     .catch(() => []);
