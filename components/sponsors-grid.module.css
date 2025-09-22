@@ -150,6 +150,22 @@
   }
 }
 
+/* Colaborador: 2 columns like a medium tier */
+.colaboradorGrid {
+  grid-template-columns: 1fr;
+  grid-gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .colaboradorGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+  }
+}
+
 /* Card styles - optimized for horizontal logos */
 .card {
   border-radius: 24px;
@@ -365,5 +381,19 @@
 
 .bronzeGrid .description {
   font-size: 13px;
+  line-height: 1.5;
+}
+
+.colaboradorGrid .card {
+  min-height: 280px;
+  width: 100%;
+}
+
+.colaboradorGrid .name {
+  font-size: 20px;
+}
+
+.colaboradorGrid .description {
+  font-size: 14px;
   line-height: 1.5;
 }
