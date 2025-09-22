@@ -55,12 +55,8 @@ export default function Hero() {
           {SITE_DESCRIPTION}
         </h2>
         <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
-          <p className='block md:hidden text-right'>{SHORT_DATE}</p>
-          <p className='hidden md:block text-right'>{DATE}</p>
-          <div className={styles['description-separator']} />
-          <p>
-            <strong>16:30h</strong>
-          </p>
+          <p className='block md:hidden text-center'>{SHORT_DATE}</p>
+          <p className='hidden md:block text-center'>{DATE}</p>
         </div>
         <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.location)}>
           <p className='text-center px-8 normal-case'>

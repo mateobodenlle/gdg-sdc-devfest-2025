@@ -25,9 +25,9 @@ export const META_DESCRIPTION =
 // Mini-broma despues de tener que posponer el evento por el huracán:
 export const SITE_DESCRIPTION =
   'Tecnología, innovación y networking. ¡No te lo pierdas!';
-export const DATE = 'Octubre 2025';
-export const SHORT_DATE = 'Oct';
-export const FULL_DATE = 'Oct';
+export const DATE = '8 y 9 de Octubre 2025';
+export const SHORT_DATE = '8-9 Oct';
+export const FULL_DATE = '8-9 Oct';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
