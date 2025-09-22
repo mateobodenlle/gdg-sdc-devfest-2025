@@ -53,57 +53,74 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allSpeakers = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
-    name: speaker.fullName,
-    title: speaker.tagLine,
-    image: {
-      url: speaker.profilePicture,
-    },
-    slug: speaker.id,
-    isTopSpeaker: speaker.isTopSpeaker
-  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
-    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-  )
-    .catch((e) => {
-      console.error(e);
-      return []
+  console.log('🔍 Starting agenda data fetch...');
+  
+  let allSpeakers: any[] = [];
+  
+  try {
+    const speakersResponse = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/SpeakerWall');
+    console.log('📡 Speakers API status:', speakersResponse.status);
+    
+    if (speakersResponse.ok) {
+      const speakersData = await speakersResponse.json();
+      console.log('👥 Speakers received:', speakersData?.length || 0);
+      
+      allSpeakers = speakersData.map((speaker: any) => ({
+        name: speaker.fullName,
+        title: speaker.tagLine,
+        image: {
+          url: speaker.profilePicture,
+        },
+        slug: speaker.id,
+        isTopSpeaker: speaker.isTopSpeaker
+      })).sort((a: any, b: any) => a.name.localeCompare(b.name))
+        .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker);
     }
-    );
+  } catch (error) {
+    console.error('❌ Error fetching speakers:', error);
+  }
 
-  const allTalks = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
-    [
-      ...prevList,
-      ...date.rooms.reduce((prevRooms: any[], room: any) => (
-        [
-          ...prevRooms,
-          ...room.sessions.map((session: any) => ({
-            title: session.title,
-            description: session.description,
-            start: session.startsAt,
-            end: session.endsAt,
-            speaker: session.speakers[0] ?
-              session.speakers.map((speaker: any) => (
-                // Get the full speaker details from the list
-                allSpeakers.find((s: any) => s.slug === speaker.id)
-              )).sort((a: any, b: any) => a.name.localeCompare(b.name))
-                .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-              : null,
-            stage: {
-              name: room.name
-            },
-            slug: session.id,
-            isServiceSession: session.isServiceSession,
-            isPlenumSession: session.isPlenumSession,
-            topic: session.categories?.find((category: any) => category.id === TOPIC_CATEGORY_ID)?.categoryItems[0].id ?? null
-          }))
-        ]
-      ), [])
-    ]
-  ), []))
-    .catch((e) => {
-      console.error(e);
-      return []
-    });
+  let allTalks: any[] = [];
+  
+  try {
+    const talksResponse = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/GridSmart');
+    console.log('📡 Talks API status:', talksResponse.status);
+    
+    if (talksResponse.ok) {
+      const talksData = await talksResponse.json();
+      console.log('📅 Talks data received:', talksData?.length || 0, 'items');
+      
+      if (Array.isArray(talksData) && talksData.length > 0) {
+        allTalks = talksData.reduce((prevList: any[], date: any) => [
+          ...prevList,
+          ...date.rooms.reduce((prevRooms: any[], room: any) => [
+            ...prevRooms,
+            ...room.sessions.map((session: any) => ({
+              title: session.title,
+              description: session.description,
+              start: session.startsAt,
+              end: session.endsAt,
+              speaker: session.speakers[0] ?
+                session.speakers.map((speaker: any) => 
+                  allSpeakers.find((s: any) => s.slug === speaker.id)
+                ).sort((a: any, b: any) => a.name.localeCompare(b.name))
+                  .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
+                : null,
+              stage: {
+                name: room.name
+              },
+              slug: session.id,
+              isServiceSession: session.isServiceSession,
+              isPlenumSession: session.isPlenumSession,
+              topic: session.categories?.find((category: any) => category.id === TOPIC_CATEGORY_ID)?.categoryItems[0].id ?? null
+            }))
+          ], [])
+        ], []);
+      }
+    }
+  } catch (error) {
+    console.error('❌ Error fetching talks:', error);
+  }
 
   const serviceSessions = allTalks.filter((talk: any) => talk.isServiceSession);
   const plenumSessions = allTalks.filter((talk: any) => talk.isPlenumSession);
@@ -122,8 +139,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       });
     }
     return prev;
-  }
-    , []);
+  }, []);
+
+  console.log('📋 Final results:');
+  console.log('  - Speakers:', allSpeakers.length);
+  console.log('  - Stages:', allStages.length);
+  console.log('  - Service sessions:', serviceSessions.length);
 
   return {
     props: {
