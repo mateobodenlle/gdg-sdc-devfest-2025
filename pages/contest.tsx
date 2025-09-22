@@ -38,7 +38,7 @@ export default function Jobs({ jobs }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Condiciones Legales de Participación en el Concurso #DevFestSdC" description="¡Participa en el concurso #DevFestSdC de Google Developers Group Santiago de Compostela! Simplemente comparte una foto en tu perfil de Instagram, Twitter o LinkedIn que capture tu experiencia en el DevFest Santiago de Compostela 2025, usando el hashtag #DevFestSdC. También puedes subir la foto a tus historias en Instagram. ¡Sé creativo! Entre las mejores fotos, sortearemos tres licencias de 1 año para los IDE de JetBrains. Asegúrate de revisar las condiciones legales para participar. ¡Buena suerte a todos los participantes! 🚀" />
+        <Header hero="Condiciones Legales de Participación en el Concurso #DevFestSdC" description="¡Participa en el concurso #DevFestSdC de Google Developers Group Santiago de Compostela! Simplemente comparte una foto en tu perfil de Instagram, Twitter o LinkedIn que capture tu experiencia en el DevFest Santiago de Compostela 2025, usando el hashtag #DevFestSdC. También puedes subir la foto a tus historias en Instagram. ¡Sé creativo! Entre las mejores fotos, sortearemos tres licencias de 1 año para los IDE de JetBrains. Asegúrate de revisar las condiciones legales para participar. ¡Buena suerte a todos los participantes!" />
 
         <div className="container md:mx-auto my-8 p-8 shadow-md border rounded-lg border-white">
           <section className="mb-8">

@@ -51,7 +51,7 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
                   AGENDA
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Descubre todas las charlas y eventos del DevFest Santiago 2025 🗓️
+                  Descubre todas las charlas y eventos del DevFest Santiago 2025
                 </p>
 
                 <div className="flex justify-center gap-8 mt-12">

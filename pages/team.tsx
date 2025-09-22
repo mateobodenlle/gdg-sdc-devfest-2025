@@ -51,7 +51,7 @@ export default function Team({ teamMembers }: Props) {
                   EQUIPO
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Los visionarios y hacedores que dan vida a DevFest Santiago 2025 ✨
+                  Los visionarios y hacedores que dan vida a DevFest Santiago 2025
                 </p>
                 
                 <div className="flex justify-center gap-8 mt-12">
