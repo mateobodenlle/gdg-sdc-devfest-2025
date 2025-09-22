@@ -77,26 +77,19 @@
   }
 }
 
-/* Gold: 1 centered column for single sponsor */
+/* Gold: 2 columns for multiple sponsors */
 .goldGrid {
   grid-template-columns: 1fr;
-  max-width: 450px;
+  max-width: 900px;
   margin: 0 auto;
   justify-items: center;
-}
-
-@media (min-width: 472px) {
-  .goldGrid {
-    grid-template-columns: 1fr;
-    max-width: 450px;
-    margin: 0 auto;
-  }
+  grid-gap: 32px;
 }
 
 @media (min-width: 768px) {
   .goldGrid {
-    grid-template-columns: 1fr;
-    max-width: 450px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
     margin: 0 auto;
   }
 }
