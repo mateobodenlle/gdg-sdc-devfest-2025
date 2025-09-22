@@ -19,6 +19,7 @@ import { GetStaticProps } from 'next';
 import Page from '@components/page';
 import SponsorsGrid from '@components/sponsors-grid';
 import Layout from '@components/layout';
+import LinkButton from '@components/hms/LinkButton';
 
 import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
@@ -152,8 +153,8 @@ export default function PartnersPage({ sponsors }: Props) {
                 </p>
 
                 <div className="flex justify-center gap-8 mt-12">
-                  <a
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 inline-block"
+                  <LinkButton
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
                     href="mailto:devfest@gdg-sdc.org"
                   >
                     <span className="flex items-center gap-3">
@@ -162,7 +163,7 @@ export default function PartnersPage({ sponsors }: Props) {
                       </svg>
                       Become a Sponsor
                     </span>
-                  </a>
+                  </LinkButton>
 
                   <span
                     className="group relative px-8 py-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full text-white font-semibold shadow-2xl opacity-50 cursor-not-allowed inline-block"

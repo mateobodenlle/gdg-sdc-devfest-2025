@@ -20,6 +20,7 @@ import Page from '@components/page';
 import Schedule from '@components/schedule';
 import Layout from '@components/layout';
 import Header from '@components/header';
+import LinkButton from '@components/hms/LinkButton';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage, Talk } from '@lib/types';
@@ -55,8 +56,8 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
                 </p>
 
                 <div className="flex justify-center gap-8 mt-12">
-                  <a
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 inline-block"
+                  <LinkButton
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
                     href="/speakers"
                   >
                     <span className="flex items-center gap-3">
@@ -65,7 +66,7 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
                       </svg>
                       Ver Speakers
                     </span>
-                  </a>
+                  </LinkButton>
                 </div>
               </div>
 
