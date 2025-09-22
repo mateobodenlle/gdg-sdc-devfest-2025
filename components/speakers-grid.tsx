@@ -29,7 +29,7 @@ export default function SpeakersGrid({ speakers }: Props) {
       {speakers.map(speaker => (
         <a
           key={speaker.name}
-          href={speaker.sessionizeUrl || `https://sessionize.com/s/${speaker.slug}`}
+          href={speaker.sessionizeUrl || `https://sessionize.com/${speaker.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}

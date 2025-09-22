@@ -47,7 +47,6 @@ export default function Speakers({ speakers }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const speakers = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => {
     const sessionizeLink = speaker.links?.find((link: any) => link.linkType === 'Sessionize');
-    console.log(`Speaker: ${speaker.fullName}, Links:`, speaker.links, 'Sessionize URL:', sessionizeLink?.url);
 
     return {
       name: speaker.fullName,
