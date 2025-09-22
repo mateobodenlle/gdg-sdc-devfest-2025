@@ -84,8 +84,8 @@ export default function TalkSection({ talk }: Props) {
             <p className={styles.bio}>{talk.description}</p>
             <h2 className={styles['speakers-header']}>Speaker{talk.speaker?.length > 1 && 's'}</h2>
             {talk.speaker?.map(s => (
-              <a className={styles['avatar-group']} href={`/speakers/${s.slug}`}>
-                <div key={s.name} className={styles['avatar-wrapper']}>
+              <div key={s.name} className={styles['avatar-group']}>
+                <div className={styles['avatar-wrapper']}>
                   <Image
                     loading="lazy"
                     alt={s.name}
@@ -99,7 +99,7 @@ export default function TalkSection({ talk }: Props) {
                 <p className={styles.speaker_name} >
                   {s.name}
                 </p>
-              </a>
+              </div>
             ))}
           </div>
         </div>
