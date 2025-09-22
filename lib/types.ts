@@ -31,6 +31,7 @@ export type Speaker = {
   image: Image;
   imageSquare: Image;
   isTopSpeaker?: boolean;
+  sessionizeUrl?: string;
 };
 
 export type TeamMember = {
