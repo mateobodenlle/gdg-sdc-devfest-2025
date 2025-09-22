@@ -70,6 +70,52 @@ const REAL_SPONSORS: Sponsor[] = [
     cardImage: { url: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&h=600&fit=crop' },
     logo: { url: '/logo-Raiola-Networks-Plata.jpg' },
     youtubeSlug: ''
+  },
+  {
+    name: 'EthicHub',
+    description: 'Plataforma blockchain que conecta inversores con agricultores de países en desarrollo, promoviendo la inclusión financiera y el comercio ético.',
+    slug: 'ethichub',
+    website: 'https://www.ethichub.com/es',
+    callToAction: 'Descubre EthicHub',
+    callToActionLink: 'https://www.ethichub.com/es',
+    links: [],
+    discord: '',
+    tier: 'Silver',
+    cardImage: { url: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop' },
+    logo: { url: 'https://cdn.prod.website-files.com/63f56f54bbc14aab5dd1a315/63fe1e37c205fa5a16df7f40_Vectors-Wrapper.svg' },
+    youtubeSlug: ''
+  }
+];
+
+// Collaborators and Partners
+const COLLABORATORS: Sponsor[] = [
+  {
+    name: 'Universidad de Santiago de Compostela',
+    description: 'Universidad pública gallega de referencia, comprometida con la excelencia académica y la investigación de vanguardia.',
+    slug: 'usc',
+    website: 'https://www.usc.gal',
+    callToAction: 'Visitar USC',
+    callToActionLink: 'https://www.usc.gal',
+    links: [],
+    discord: '',
+    tier: 'Colaborador',
+    cardImage: { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop' },
+    logo: { url: 'https://assets.usc.gal/sites/default/files/logos/2022/06/logo-neg.svg' },
+    youtubeSlug: ''
+  },
+  {
+    name: 'Escola Técnica Superior de Enxeñería',
+    description: 'Centro de la USC dedicado a la formación integral de ingenieros comprometidos con el desarrollo de la sociedad bajo principios éticos.',
+    slug: 'etse',
+    website: 'https://www.usc.gal/en/center/higher-technical-engineering-school',
+    callToAction: 'Conoce ETSE',
+    callToActionLink: 'https://www.usc.gal/en/center/higher-technical-engineering-school',
+    links: [],
+    discord: '',
+    tier: 'Colaborador',
+    cardImage: { url: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop' },
+    logo: { url: 'https://assets.usc.gal/sites/default/files/logos/2022/06/logo-neg.svg' },
+    youtubeSlug: ''
   }
 ];
 
@@ -83,11 +129,12 @@ export default function PartnersPage({ sponsors }: Props) {
     description: 'Conoce a las empresas que hacen posible DevFest Santiago 2025. Únete a nosotros y forma parte del futuro de la tecnología.'
   };
 
-  // Use real sponsor data
-  const sponsorData = REAL_SPONSORS;
+  // Combine sponsors and collaborators
+  const allSponsors = [...REAL_SPONSORS, ...COLLABORATORS];
   console.log('Partners page - CMS sponsors:', sponsors.length);
   console.log('Partners page - Real sponsors:', REAL_SPONSORS.length);
-  console.log('Partners page - Using data:', sponsorData.length);
+  console.log('Partners page - Collaborators:', COLLABORATORS.length);
+  console.log('Partners page - Total data:', allSponsors.length);
 
   return (
     <Page meta={meta}>
@@ -98,14 +145,14 @@ export default function PartnersPage({ sponsors }: Props) {
             <div className="relative z-10 px-8 py-20">
               <div className="text-center mb-16">
                 <h1 className="text-6xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl">
-                  SPONSORS
+                  SPONSORS & PARTNERS
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Las empresas que hacen posible DevFest Santiago 2025 ✨
+                  Las empresas e instituciones que hacen posible DevFest Santiago 2025 ✨
                 </p>
-                
+
                 <div className="flex justify-center gap-8 mt-12">
-                  <a 
+                  <a
                     className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 inline-block"
                     href="mailto:sponsors@gdg-sdc.org"
                   >
@@ -116,8 +163,8 @@ export default function PartnersPage({ sponsors }: Props) {
                       Become a Sponsor
                     </span>
                   </a>
-                  
-                  <a 
+
+                  <a
                     className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 inline-block"
                     href="/sponsorship-kit.pdf"
                   >
@@ -130,31 +177,31 @@ export default function PartnersPage({ sponsors }: Props) {
                   </a>
                 </div>
               </div>
-              
+
               {/* Scroll indicator */}
               <div className="flex justify-center mt-8">
                 <div className="animate-bounce">
-                  <svg 
-                    className="w-6 h-6 text-white/60" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className="w-6 h-6 text-white/60"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
                     />
                   </svg>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className="relative -mt-24">
             <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
-              <SponsorsGrid sponsors={sponsorData} />
+              <SponsorsGrid sponsors={allSponsors} />
             </div>
           </div>
         </div>
