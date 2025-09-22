@@ -42,11 +42,74 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header
-          hero="Agenda"
-          description="Estas han sido las charlas que los asistentes han podido disfrutar en el DevFest Santiago de Compostela 2025. ¡Un evento de primer nivel!"
-        />
-        <Schedule allStages={allStages} serviceSessions={serviceSessions} />
+        <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
+          <div className="relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
+            <div className="relative z-10 px-8 py-20">
+              <div className="text-center mb-16">
+                <h1 className="text-6xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl">
+                  AGENDA
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                  Descubre todas las charlas y eventos del DevFest Santiago 2025 🗓️
+                </p>
+
+                <div className="flex justify-center gap-8 mt-12">
+                  <a
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 inline-block"
+                    href="/speakers"
+                  >
+                    <span className="flex items-center gap-3">
+                      <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.3.63-1.42 1.37L1.5 16H4v6h4v-6h2v6h4v-6h2v6h4z"/>
+                      </svg>
+                      Ver Speakers
+                    </span>
+                  </a>
+
+                  <a
+                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 inline-block"
+                    href="https://sessionize.com/devfest-2025/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="flex items-center gap-3">
+                      <svg className="w-5 h-5 group-hover:bounce" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                      Call for Speakers
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Scroll indicator */}
+              <div className="flex justify-center mt-8">
+                <div className="animate-bounce">
+                  <svg
+                    className="w-6 h-6 text-white/60"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative -mt-24">
+            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
+              <Schedule allStages={allStages} serviceSessions={serviceSessions} />
+            </div>
+          </div>
+        </div>
       </Layout>
     </Page>
   );
