@@ -80,7 +80,7 @@ const REAL_SPONSORS: Sponsor[] = [
     callToActionLink: 'https://www.ethichub.com/es',
     links: [],
     discord: '',
-    tier: 'Silver',
+    tier: 'Gold',
     cardImage: { url: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop' },
     logo: { url: 'https://cdn.prod.website-files.com/63f56f54bbc14aab5dd1a315/63fe1e37c205fa5a16df7f40_Vectors-Wrapper.svg' },
     youtubeSlug: ''

@@ -35,6 +35,8 @@ function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
         return '#94a3b8'; // Slate
       case 'Bronze':
         return '#fb923c'; // Orange
+      case 'Colaborador':
+        return '#10b981'; // Green
       default:
         return '#6b7280'; // Gray
     }
@@ -74,7 +76,7 @@ function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
         <div>
           <h2 className={styles.name}>{sponsor.name}</h2>
           <p className={styles.tier}>
-            {tier} Sponsor
+            {tier === 'Colaborador' ? 'Partner' : `${tier} Sponsor`}
           </p>
           {sponsor.description && (
             <p className={styles.description}>
@@ -137,6 +139,7 @@ export default function SponsorsGrid({ sponsors }: Props) {
   const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
   const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
   const bronzeSponsors = sponsors.filter(s => s.tier === 'Bronze');
+  const collaborators = sponsors.filter(s => s.tier === 'Colaborador');
 
   return (
     <div className={styles.container}>
@@ -145,23 +148,29 @@ export default function SponsorsGrid({ sponsors }: Props) {
         sponsors={platinumSponsors}
         title="PLATINUM"
       />
-      
+
       <TierSection
         tier="Gold"
         sponsors={goldSponsors}
         title="GOLD"
       />
-      
+
       <TierSection
         tier="Silver"
         sponsors={silverSponsors}
         title="SILVER"
       />
-      
+
       <TierSection
         tier="Bronze"
         sponsors={bronzeSponsors}
         title="BRONZE"
+      />
+
+      <TierSection
+        tier="Colaborador"
+        sponsors={collaborators}
+        title="PARTNERS & COLLABORATORS"
       />
     </div>
   );
