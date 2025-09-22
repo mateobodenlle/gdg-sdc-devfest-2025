@@ -27,13 +27,7 @@ export default function SpeakersGrid({ speakers }: Props) {
   return (
     <div className={styles.grid}>
       {speakers.map(speaker => (
-        <a
-          key={speaker.name}
-          href={speaker.sessionizeUrl || `https://sessionize.com/${speaker.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.card}
-        >
+        <div key={speaker.name} className={styles.card}>
           <div className={styles.imageWrapper}>
             <Image
               alt={speaker.name}
@@ -59,7 +53,7 @@ export default function SpeakersGrid({ speakers }: Props) {
               </p>
             </div>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   );
