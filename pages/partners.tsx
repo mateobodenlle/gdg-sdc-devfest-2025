@@ -164,17 +164,16 @@ export default function PartnersPage({ sponsors }: Props) {
                     </span>
                   </a>
 
-                  <a
-                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 inline-block"
-                    href="/sponsorship-kit.pdf"
+                  <span
+                    className="group relative px-8 py-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full text-white font-semibold shadow-2xl opacity-50 cursor-not-allowed inline-block"
                   >
                     <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5 group-hover:bounce" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                       </svg>
                       Sponsorship Kit
                     </span>
-                  </a>
+                  </span>
                 </div>
               </div>
 
