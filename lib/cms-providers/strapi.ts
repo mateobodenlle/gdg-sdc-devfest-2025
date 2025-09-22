@@ -228,3 +228,9 @@ export async function getAllJobs(): Promise<Job[]> {
 
   return data.jobs;
 }
+
+
+export async function getAllTeamMembers() {
+  const teamMembers = await fetchCmsAPI("/team-members");
+  return teamMembers?.data || [];
+}

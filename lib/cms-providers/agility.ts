@@ -384,3 +384,12 @@ const asyncForEach = async (array: any, callback: any) => {
     await callback(array[index], index, array);
   }
 };
+
+
+export async function getAllTeamMembers() {
+  const teamMembers = await api.getContentList({
+    referenceName: "teamMembers",
+    take: 100
+  });
+  return teamMembers || [];
+}

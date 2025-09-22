@@ -321,3 +321,9 @@ export async function getAllJobs(): Promise<Job[]> {
 
   return reformatedData;
 }
+
+
+export async function getAllTeamMembers() {
+  const teamMembers = await client.getAllByType("teamMember");
+  return teamMembers || [];
+}
