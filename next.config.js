@@ -15,10 +15,7 @@
  */
 
 module.exports = {
-  trailingSlash: true,
-  output: 'export',
   images: {
-    unoptimized: true,
     domains: [
       'www.datocms-assets.com',
       'a.storyblok.com',
