@@ -68,8 +68,8 @@ export default function Hero() {
           </p>
         </div>
         <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.button_container)}>
-          <a className={styles.button + " px-12"} href=''>
-            Nos vemos en 2025
+          <a className={styles.button + " px-12"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2025/' target='_blank' rel='noopener noreferrer'>
+            Reserva ya tu entrada
           </a>
         </div>
       </div>
