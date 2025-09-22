@@ -195,9 +195,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   console.log('  - Speakers:', allSpeakers.length);
   console.log('  - Stages:', allStages.length);
   console.log('  - Service sessions:', serviceSessions.length);
-  console.log('  - All stage names:', allStages.map((s: any) => s.name));
-  console.log('  - Regular talks count:', regularTalks.length);
-  console.log('  - A7 talks:', regularTalks.filter((t: any) => t.stage.name === 'A7'));
 
   return {
     props: {
