@@ -45,34 +45,34 @@ export default function Team({ teamMembers }: Props) {
         <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
           <div className="relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
-            <div className="relative z-10 px-8 py-12">
-              <div className="text-center mb-10">
-                <h1 className="text-5xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
+            <div className="relative z-10 px-8 py-6">
+              <div className="text-center mb-6">
+                <h1 className="text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-2xl">
                   EQUIPO
                 </h1>
-                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   Los visionarios y hacedores que dan vida a DevFest Santiago 2025
                 </p>
-                
-                <div className="flex justify-center gap-8 mt-8">
-                  <LinkButton 
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
+
+                <div className="flex justify-center gap-8 mt-5">
+                  <LinkButton
+                    className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
                     href="mailto:devfest@gdg-sdc.org"
                   >
-                    <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                       </svg>
                       Contáctanos
                     </span>
                   </LinkButton>
-                  
-                  <LinkButton 
-                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+
+                  <LinkButton
+                    className="group relative px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
                     href="https://calendar.app.google/6a9udHPABjrCgmQP9"
                   >
-                    <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5 group-hover:bounce" fill="currentColor" viewBox="0 0 24 24">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4 group-hover:bounce" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                       </svg>
                       Agenda reunión

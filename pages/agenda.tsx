@@ -46,22 +46,22 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
         <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
           <div className="relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
-            <div className="relative z-10 px-8 py-12">
-              <div className="text-center mb-10">
-                <h1 className="text-5xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
+            <div className="relative z-10 px-8 py-6">
+              <div className="text-center mb-6">
+                <h1 className="text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-2xl">
                   AGENDA
                 </h1>
-                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   Descubre todas las charlas y eventos del DevFest Santiago 2025
                 </p>
 
-                <div className="flex justify-center gap-8 mt-8">
+                <div className="flex justify-center gap-8 mt-5">
                   <LinkButton
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
+                    className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
                     href="/speakers"
                   >
-                    <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.3.63-1.42 1.37L1.5 16H4v6h4v-6h2v6h4v-6h2v6h4z"/>
                       </svg>
                       Ver Speakers

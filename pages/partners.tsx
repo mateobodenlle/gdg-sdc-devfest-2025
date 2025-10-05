@@ -143,22 +143,22 @@ export default function PartnersPage({ sponsors }: Props) {
         <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
           <div className="relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
-            <div className="relative z-10 px-8 py-12">
-              <div className="text-center mb-10">
-                <h1 className="text-5xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
+            <div className="relative z-10 px-8 py-6">
+              <div className="text-center mb-6">
+                <h1 className="text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-2xl">
                   SPONSORS & PARTNERS
                 </h1>
-                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   Las empresas e instituciones que hacen posible DevFest Santiago 2025
                 </p>
 
-                <div className="flex justify-center gap-8 mt-8">
+                <div className="flex justify-center gap-8 mt-5">
                   <LinkButton
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
+                    className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
                     href="mailto:devfest@gdg-sdc.org"
                   >
-                    <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                       </svg>
                       Become a Sponsor
@@ -166,10 +166,10 @@ export default function PartnersPage({ sponsors }: Props) {
                   </LinkButton>
 
                   <span
-                    className="group relative px-8 py-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full text-white font-semibold shadow-2xl opacity-50 cursor-not-allowed inline-block"
+                    className="group relative px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full text-white font-semibold shadow-2xl opacity-50 cursor-not-allowed inline-block"
                   >
-                    <span className="flex items-center gap-3">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                       </svg>
                       Sponsorship Kit
