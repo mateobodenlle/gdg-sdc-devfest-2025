@@ -67,6 +67,11 @@ export type Talk = {
   speaker: Speaker[];
   slug?: string;
   topic?: number;
+  isServiceSession?: boolean;
+  isPlenumSession?: boolean;
+  stage?: {
+    name: string;
+  };
 };
 
 export type Link = {

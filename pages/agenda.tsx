@@ -17,7 +17,7 @@
 import { GetStaticProps } from 'next';
 
 import Page from '@components/page';
-import Schedule from '@components/schedule';
+import ScheduleGrid from '@components/schedule-grid';
 import Layout from '@components/layout';
 import Header from '@components/header';
 import LinkButton from '@components/hms/LinkButton';
@@ -75,7 +75,7 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
 
           <div className="relative -mt-16">
             <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
-              <Schedule allStages={allStages} serviceSessions={serviceSessions} />
+              <ScheduleGrid allStages={allStages} serviceSessions={serviceSessions} />
             </div>
           </div>
         </div>
