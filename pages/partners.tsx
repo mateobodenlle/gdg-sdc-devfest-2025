@@ -86,6 +86,20 @@ const REAL_SPONSORS: Sponsor[] = [
     logo: { url: 'https://cdn.prod.website-files.com/63f56f54bbc14aab5dd1a315/63fe1e37c205fa5a16df7f40_Vectors-Wrapper.svg' },
     youtubeSlug: ''
   },
+  {
+    name: 'AVTE - USC',
+    description: 'Área de Valorización, Transferencia y Emprendimiento de la Universidad de Santiago de Compostela, impulsando la innovación y el emprendimiento en la comunidad universitaria.',
+    slug: 'avte-usc',
+    website: 'https://www.usc.gal/es/investigacion/avte',
+    callToAction: 'Conoce AVTE',
+    callToActionLink: 'https://www.usc.gal/es/investigacion/avte',
+    links: [],
+    discord: '',
+    tier: 'Gold',
+    cardImage: { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop' },
+    logo: { url: '/avte.jpg' },
+    youtubeSlug: ''
+  },
 ];
 
 // Collaborators and Partners
