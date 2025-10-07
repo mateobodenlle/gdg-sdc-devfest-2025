@@ -50,7 +50,9 @@ function SponsorCard({ sponsor, tier }: { sponsor: Sponsor; tier: string }) {
             <Image
               alt={sponsor.name}
               src={sponsor.logo.url}
-              className={styles.logo}
+              className={cn(styles.logo, {
+                [styles.uscLogo]: sponsor.slug === 'usc' || sponsor.slug === 'etse',
+              })}
               width={300}
               height={120}
               style={{

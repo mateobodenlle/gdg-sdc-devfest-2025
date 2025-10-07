@@ -143,11 +143,11 @@
   }
 }
 
-/* Colaborador: 2 columns like a medium tier */
+/* Colaborador: 3 columns in a single row */
 .colaboradorGrid {
   grid-template-columns: 1fr;
   grid-gap: 24px;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   justify-items: center;
 }
@@ -155,6 +155,13 @@
 @media (min-width: 768px) {
   .colaboradorGrid {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .colaboradorGrid {
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 32px;
   }
 }
@@ -253,6 +260,16 @@
 .card:hover .logo {
   transform: scale(1.05);
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
+
+/* USC logo blue color filter */
+.uscLogo {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(1876%) hue-rotate(200deg) brightness(90%) contrast(101%);
+}
+
+.card:hover .uscLogo {
+  transform: scale(1.05);
+  filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(1876%) hue-rotate(200deg) brightness(95%) contrast(101%);
 }
 
 .placeholder {
@@ -380,6 +397,7 @@
 .colaboradorGrid .card {
   min-height: 280px;
   width: 100%;
+  height: 100%;
 }
 
 .colaboradorGrid .name {

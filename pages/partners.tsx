@@ -85,7 +85,7 @@ const REAL_SPONSORS: Sponsor[] = [
     cardImage: { url: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop' },
     logo: { url: 'https://cdn.prod.website-files.com/63f56f54bbc14aab5dd1a315/63fe1e37c205fa5a16df7f40_Vectors-Wrapper.svg' },
     youtubeSlug: ''
-  }
+  },
 ];
 
 // Collaborators and Partners
@@ -117,6 +117,20 @@ const COLLABORATORS: Sponsor[] = [
     cardImage: { url: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop' },
     logo: { url: 'https://assets.usc.gal/sites/default/files/logos/2022/06/logo-neg.svg' },
     youtubeSlug: ''
+  },
+  {
+    name: 'JetBrains',
+    description: 'Empresa líder en herramientas de desarrollo profesional para programadores, creadora de IDEs como IntelliJ IDEA, PyCharm y WebStorm.',
+    slug: 'jetbrains',
+    website: 'https://www.jetbrains.com',
+    callToAction: 'Descubre JetBrains',
+    callToActionLink: 'https://www.jetbrains.com',
+    links: [],
+    discord: '',
+    tier: 'Colaborador',
+    cardImage: { url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop' },
+    logo: { url: '/jetbrains.png' },
+    youtubeSlug: ''
   }
 ];
 
@@ -135,7 +149,7 @@ export default function PartnersPage({ sponsors }: Props) {
   console.log('Partners page - CMS sponsors:', sponsors.length);
   console.log('Partners page - Real sponsors:', REAL_SPONSORS.length);
   console.log('Partners page - Collaborators:', COLLABORATORS.length);
-  console.log('Partners page - Total data:', allSponsors.length);
+  console.log('Partners page - Total sponsors:', allSponsors.length);
 
   return (
     <Page meta={meta}>
