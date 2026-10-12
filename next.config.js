@@ -24,6 +24,7 @@ module.exports = {
       'cdn.aglty.io',
       'localhost', // For Strapi
       'sessionize.com',
+      'cdn.sessionize.com',
       'upload.wikimedia.org',
       'images.unsplash.com',
       'github.githubassets.com',
@@ -31,6 +32,13 @@ module.exports = {
       'webassets.mongodb.com'
     ],
     imageSizes: [24, 64, 300]
+  },
+  // Archivo estático de la edición 2025 (public/2025, generado con `next export` del commit 843ddd6)
+  async rewrites() {
+    return [
+      { source: '/2025', destination: '/2025/index.html' },
+      { source: '/2025/:path+', destination: '/2025/:path+/index.html' }
+    ];
   },
   async redirects() {
     return [
