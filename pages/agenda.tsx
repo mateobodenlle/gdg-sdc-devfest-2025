@@ -15,26 +15,22 @@
  */
 
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 
 import Page from '@components/page';
-import ScheduleGrid from '@components/schedule-grid';
 import Layout from '@components/layout';
-import Header from '@components/header';
 import LinkButton from '@components/hms/LinkButton';
+import PageHero from '@components/page-hero';
 
-import { getAllStages } from '@lib/cms-api';
-import { Stage, Talk } from '@lib/types';
-import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
-import React from 'react';
-
-const TOPIC_CATEGORY_ID = 62477;
+import { getSessionizeData, SessionizeTalk } from '@lib/sessionize';
+import { EVENT_DAYS, META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
 type Props = {
-  allStages: Stage[];
-  serviceSessions: Talk[];
+  talks: SessionizeTalk[];
 };
 
-export default function SchedulePage({ allStages, serviceSessions }: Props) {
+export default function SchedulePage({ talks }: Props) {
   const meta = {
     title: 'Agenda - ' + SITE_NAME,
     description: META_DESCRIPTION
@@ -43,39 +39,93 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
-            <div className="relative z-10 px-8 py-6">
-              <div className="text-center mb-6">
-                <h1 className="text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-2xl">
-                  AGENDA
-                </h1>
-                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Descubre todas las charlas y eventos del DevFest Santiago 2025
-                </p>
+        <PageHero
+          title="Agenda"
+          description="Las charlas confirmadas del DevFest Santiago 2026 y el horario previsto de cada día."
+        >
+          <LinkButton href="/speakers" variant="secondary">
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.3.63-1.42 1.37L1.5 16H4v6h4v-6h2v6h4v-6h2v6h4z"/>
+            </svg>
+            Ver speakers
+          </LinkButton>
+        </PageHero>
 
-                <div className="flex justify-center gap-8 mt-5">
-                  <LinkButton
-                    className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
-                    href="/speakers"
-                  >
-                    <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.3.63-1.42 1.37L1.5 16H4v6h4v-6h2v6h4v-6h2v6h4z"/>
-                      </svg>
-                      Ver Speakers
-                    </span>
-                  </LinkButton>
+        <div className="rounded-t-[40px] bg-black/20 px-6 pt-10 pb-16 md:px-8 md:pt-14 md:pb-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {EVENT_DAYS.map(day => (
+                <div
+                  key={day.date}
+                  className="rounded-3xl border border-white/10 bg-white/5 px-6 py-8 text-center md:py-10"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-widest text-[var(--brand-lighter)]">
+                    {day.label}
+                  </p>
+                  <p className="mt-3 text-4xl font-black tabular-nums text-white md:text-5xl">
+                    {day.start} – {day.end}
+                  </p>
                 </div>
-              </div>
-
+              ))}
             </div>
-          </div>
 
-          <div className="relative -mt-16">
-            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
-              <ScheduleGrid allStages={allStages} serviceSessions={serviceSessions} />
+            <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#f9ab00]/30 bg-[#f9ab00]/10 px-5 py-4 md:px-6 md:py-5">
+              <svg className="mt-[2px] h-5 w-5 flex-none text-[var(--brand-yellow)] md:mt-[3px]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
+              <p className="m-0 text-sm leading-relaxed text-amber-100 md:text-base">
+                <strong className="font-semibold text-white">Horarios provisionales.</strong> Estas son las horas
+                aproximadas del evento, pero aún no son definitivas. En los próximos días publicaremos la
+                agenda detallada con el horario y la sala de cada charla.
+              </p>
+            </div>
+
+            <div className="mt-16 mb-6 flex items-baseline justify-between gap-4 md:mt-20">
+              <h2 className="text-2xl font-black text-white md:text-3xl">Charlas confirmadas</h2>
+              <p className="text-sm text-gray-300">{talks.length} charlas</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {talks.map(talk => (
+                <Link
+                  key={talk.slug}
+                  href={`/sessions/${talk.slug}`}
+                  className="group flex min-w-0 flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors duration-200 hover:border-[#4285f4]/60 hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-lighter)] md:p-7"
+                >
+                  <div className="flex flex-wrap gap-2 text-xs font-semibold">
+                    {talk.level && (
+                      <span className="rounded-full bg-[#4285f4]/15 px-3 py-1 text-[var(--brand-lighter)]">
+                        {talk.level}
+                      </span>
+                    )}
+                    {talk.duration && (
+                      <span className="rounded-full bg-white/10 px-3 py-1 text-gray-200">
+                        {talk.duration} min
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-4 mb-6 text-lg font-bold leading-snug text-white transition-colors group-hover:text-[var(--brand-lighter)] md:text-xl">
+                    {talk.title}
+                  </h3>
+                  <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5">
+                    {talk.speakers.map(speaker => (
+                      <div key={speaker.slug} className="flex items-center gap-3">
+                        <Image
+                          src={speaker.image.url}
+                          alt=""
+                          width={40}
+                          height={40}
+                          className="h-10 w-10 flex-none rounded-full object-cover"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-white">{speaker.name}</p>
+                          <p className="truncate text-xs text-gray-300">{speaker.title}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -85,103 +135,11 @@ export default function SchedulePage({ allStages, serviceSessions }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  console.log('🔍 Starting agenda data fetch...');
-  
-  let allSpeakers: any[] = [];
-  
-  try {
-    const speakersResponse = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/SpeakerWall');
-    console.log('📡 Speakers API status:', speakersResponse.status);
-    
-    if (speakersResponse.ok) {
-      const speakersData = await speakersResponse.json();
-      console.log('👥 Speakers received:', speakersData?.length || 0);
-      
-      allSpeakers = speakersData.map((speaker: any) => ({
-        name: speaker.fullName,
-        title: speaker.tagLine,
-        image: {
-          url: speaker.profilePicture,
-        },
-        slug: speaker.id,
-        isTopSpeaker: speaker.isTopSpeaker
-      })).sort((a: any, b: any) => a.name.localeCompare(b.name))
-        .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker);
-    }
-  } catch (error) {
-    console.error('❌ Error fetching speakers:', error);
-  }
-
-  let allTalks: any[] = [];
-  
-  try {
-    const talksResponse = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/GridSmart');
-    console.log('📡 Talks API status:', talksResponse.status);
-    
-    if (talksResponse.ok) {
-      const talksData = await talksResponse.json();
-      console.log('📅 Talks data received:', talksData?.length || 0, 'items');
-      
-      if (Array.isArray(talksData) && talksData.length > 0) {
-        allTalks = talksData.reduce((prevList: any[], date: any) => [
-          ...prevList,
-          ...date.rooms.reduce((prevRooms: any[], room: any) => [
-            ...prevRooms,
-            ...room.sessions.map((session: any) => ({
-              title: session.title,
-              description: session.description,
-              start: session.startsAt,
-              end: session.endsAt,
-              speaker: session.speakers[0] ?
-                session.speakers.map((speaker: any) => 
-                  allSpeakers.find((s: any) => s.slug === speaker.id)
-                ).sort((a: any, b: any) => a.name.localeCompare(b.name))
-                  .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-                : null,
-              stage: {
-                name: room.name
-              },
-              slug: session.id,
-              isServiceSession: session.isServiceSession,
-              isPlenumSession: session.isPlenumSession,
-              topic: session.categories?.find((category: any) => category.id === TOPIC_CATEGORY_ID)?.categoryItems[0].id ?? null
-            }))
-          ], [])
-        ], []);
-      }
-    }
-  } catch (error) {
-    console.error('❌ Error fetching talks:', error);
-  }
-
-  const serviceSessions = allTalks.filter((talk: any) => talk.isServiceSession);
-  const plenumSessions = allTalks.filter((talk: any) => talk.isPlenumSession);
-  const regularTalks = allTalks.filter((talk: any) => !talk.isServiceSession && !talk.isPlenumSession);
-
-  // Group all talks by stage
-  const allStages = regularTalks.reduce((prev: any[], curr: any) => {
-    const existingStage = prev.find((item: any) => item.name === curr.stage.name);
-    if (existingStage) {
-      existingStage.schedule.push(curr);
-    } else {
-      prev.push({
-        name: curr.stage.name,
-        slug: null,
-        schedule: [curr]
-      });
-    }
-    return prev;
-  }, []);
-
-  console.log('📋 Final results:');
-  console.log('  - Speakers:', allSpeakers.length);
-  console.log('  - Stages:', allStages.length);
-  console.log('  - Service sessions:', serviceSessions.length);
+  const { talks } = await getSessionizeData();
 
   return {
     props: {
-      allStages,
-      serviceSessions,
+      talks
     },
     revalidate: 360
   };

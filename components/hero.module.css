@@ -16,37 +16,40 @@
 
 .wrapper {
   margin-top: var(--space-4x);
+  padding: 0 var(--space-6x);
 }
 
 .hero {
-  font-size: 48px;
-  line-height: 1.1;
+  font-size: 44px;
+  line-height: 1.05;
   letter-spacing: -0.05em;
   font-weight: 700;
   text-align: center;
-  margin: 0 0 12px;
+  margin: 0;
+  text-wrap: balance;
 }
 
 .info {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.3;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 8px;
-  color: var(--brand);
+  margin: 28px 0 8px;
+  color: var(--brand-lighter);
 }
 
 .description {
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.3;
+  line-height: 1.4;
   text-align: center;
-  margin: 8px auto 4px auto;
-  color: var(--foreground-secondary);
+  margin: 16px auto 0;
+  color: var(--accents-3);
   max-width: 30em;
-  width: 70%;
 }
 
 .description-separator {
@@ -61,14 +64,32 @@
 }
 
 .location {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.3;
-  text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 0px;
-  color: var(--foreground-secondary);
+  color: var(--accents-3);
+}
+
+.location_link {
+  display: inline;
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.location_link svg {
+  display: inline;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+.location_link:hover {
+  color: var(--foreground);
+  text-decoration: underline;
 }
 
 .location :global(p) {
@@ -81,39 +102,37 @@
     font-size: 80px;
     line-height: 1;
     font-weight: 800;
-    margin: 0 0px 32px;
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
 
   .info {
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 40px;
   }
 
   .location {
-    font-size: 20px;
-    margin-bottom: 1em;
+    font-size: 18px;
   }
 
   .description {
     font-size: 20px;
-    max-width: 30em;
-    margin: 24px auto;
+    margin-top: 20px;
   }
 }
 
 .logo {
   width: 40%;
-  max-width: 16em;
-  margin: 0 auto 16px auto;
+  max-width: 14em;
+  margin: 0 auto 32px auto;
 }
 
 .button_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .button {
@@ -137,6 +156,10 @@
   box-shadow: 0 4px 14px 0 rgba(66, 133, 244, 0.25);
   position: relative;
   overflow: hidden;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 2px #111, 0 0 0 4px var(--brand-lighter);
 }
 
 .button:hover {

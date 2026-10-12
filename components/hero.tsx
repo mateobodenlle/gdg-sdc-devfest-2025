@@ -26,15 +26,6 @@ export default function Hero() {
   return (
     <div>
       <div className={cn(styles.wrapper)}>
-        <h2
-          className={cn(
-            styleUtils.appear,
-            styleUtils['appear-second'],
-            styles.description
-          ) + ' block md:hidden'}
-        >
-          {SITE_DESCRIPTION}
-        </h2>
         <div className={cn(styleUtils.appear,
           styleUtils['appear-second'],
           styles.logo)}>
@@ -50,7 +41,7 @@ export default function Hero() {
             styleUtils.appear,
             styleUtils['appear-third'],
             styles.description
-          ) + ' hidden md:block'}
+          )}
         >
           {SITE_DESCRIPTION}
         </h2>
@@ -60,11 +51,14 @@ export default function Hero() {
         </div>
         <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.location)}>
           <p className='text-center px-8 normal-case'>
-            <a className='block text-inherit' href='https://maps.app.goo.gl/GFdS8heX79PLecbj6'>Escuela Técnica Superior de Ingeniería, USC</a>
+            <a className={styles.location_link} href='https://maps.app.goo.gl/GFdS8heX79PLecbj6' target='_blank' rel='noopener noreferrer'>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              Escuela Técnica Superior de Ingeniería, USC
+            </a>
           </p>
         </div>
         <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.button_container)}>
-          <a className={styles.button + " px-12"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2025/' target='_blank' rel='noopener noreferrer'>
+          <a className={styles.button + " px-12"} href='https://gdg.community.dev/events/details/google-gdg-santiago-de-compostela-presents-devfest-santiago-de-compostela-2026/' target='_blank' rel='noopener noreferrer'>
             Reserva ya tu entrada
           </a>
         </div>

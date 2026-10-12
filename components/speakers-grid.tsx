@@ -24,20 +24,13 @@ type Props = {
 };
 
 export default function SpeakersGrid({ speakers }: Props) {
-  const handleSpeakerClick = (speaker: Speaker) => {
-    if (speaker.sessionizeUrl) {
-      window.open(speaker.sessionizeUrl, '_blank');
-    }
-  };
-
   return (
     <div className={styles.grid}>
       {speakers.map(speaker => (
-        <div
-          key={speaker.name}
+        <Link
+          key={speaker.slug}
+          href={`/speakers/${speaker.slug}`}
           className={styles.card}
-          onClick={() => handleSpeakerClick(speaker)}
-          style={{ cursor: speaker.sessionizeUrl ? 'pointer' : 'default' }}
         >
           <div className={styles.imageWrapper}>
             <Image
@@ -64,7 +57,7 @@ export default function SpeakersGrid({ speakers }: Props) {
               </p>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -108,3 +108,12 @@
 .title {
   margin: 0;
 }
+.card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--brand-lighter);
+  outline-offset: 3px;
+}

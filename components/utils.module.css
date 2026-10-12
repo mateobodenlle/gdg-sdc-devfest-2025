@@ -16,31 +16,38 @@
 
 .appear {
   opacity: 0;
-  animation: appear 0.8s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+  animation: appear 0.7s cubic-bezier(0.1, 0, 0.175, 1) forwards;
 }
 
 .appear-first {
-  animation-delay: 0.4s;
+  animation-delay: 0.1s;
 }
 
 .appear-second {
-  animation-delay: 0.8s;
+  animation-delay: 0.2s;
 }
 
 .appear-third {
-  animation-delay: 1.2s;
+  animation-delay: 0.35s;
 }
 
 .appear-fourth {
-  animation-delay: 1.6s;
+  animation-delay: 0.5s;
 }
 
 .appear-fifth {
-  animation-delay: 2s;
+  animation-delay: 0.65s;
 }
 
 .appear-sixth {
-  animation-delay: 2.4s;
+  animation-delay: 0.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appear {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 @keyframes appear {

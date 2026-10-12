@@ -19,11 +19,12 @@ import { GetStaticProps } from 'next';
 import Page from '@components/page';
 import SpeakersGrid from '@components/speakers-grid';
 import Layout from '@components/layout';
-import Header from '@components/header';
+import PageHero from '@components/page-hero';
+import LinkButton from '@components/hms/LinkButton';
 
-import { getAllSpeakers } from '@lib/cms-api';
+import { getSessionizeData } from '@lib/sessionize';
 import { Speaker } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
 type Props = {
   speakers: Speaker[];
@@ -31,47 +32,35 @@ type Props = {
 
 export default function Speakers({ speakers }: Props) {
   const meta = {
-    title: 'Speakers - DevFest Santiago de Compostela 2025',
+    title: 'Speakers - ' + SITE_NAME,
     description: META_DESCRIPTION
   };
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={<>Estos son los speakers que han participado en el DevFest Santiago de Compostela 2025.</>} />
-        <SpeakersGrid speakers={speakers} />
+        <PageHero
+          title="Speakers"
+          description="Quién sube al escenario en el DevFest Santiago 2026. Pulsa en cada speaker para ver su bio y sus charlas."
+        >
+          <LinkButton href="/agenda" variant="secondary">
+            Ver agenda
+          </LinkButton>
+        </PageHero>
+
+        <div className="rounded-t-[40px] bg-black/20 pt-4 pb-16 md:pb-24">
+          <SpeakersGrid speakers={speakers} />
+        </div>
       </Layout>
     </Page>
   );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const speakers = await fetch('https://sessionize.com/api/v2/ac5px0ex/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => {
-    const sessionizeLink = speaker.links?.find((link: any) => link.linkType === 'Sessionize');
-
-    return {
-      name: speaker.fullName,
-      title: speaker.tagLine,
-      image: {
-        url: speaker.profilePicture,
-      },
-      slug: speaker.id,
-      isTopSpeaker: speaker.isTopSpeaker,
-      sessionizeUrl: sessionizeLink?.url || null
-    };
-  }))
-    .catch(() => []);
-
-
-  const topSpeakers = speakers.filter((speaker: any) => speaker.isTopSpeaker).sort((a: any, b: any) => a.name.localeCompare(b.name));
-  const otherSpeakers = speakers.filter((speaker: any) => !speaker.isTopSpeaker);
-  // Shuffle the other speakers
-  otherSpeakers.sort(() => Math.random() - 0.5);
-    
-  const allSpeakers = [...topSpeakers, ...otherSpeakers];
+  const { speakers } = await getSessionizeData();
 
   return {
     props: {
-      speakers: allSpeakers,
+      speakers: speakers as unknown as Speaker[]
     },
     revalidate: 360
   };

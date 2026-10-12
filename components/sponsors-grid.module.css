@@ -102,7 +102,7 @@
   }
 }
 
-/* Silver: 1 centered column for single sponsor */
+/* Silver: 1 column on mobile, 2 side by side from tablet */
 .silverGrid {
   grid-template-columns: 1fr;
   grid-gap: 24px;
@@ -121,9 +121,10 @@
 
 @media (min-width: 768px) {
   .silverGrid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 824px;
     margin: 0 auto;
+    align-items: stretch;
   }
 }
 
@@ -250,6 +251,20 @@
   background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
   border-radius: 20px 20px 0 0;
   min-height: 120px;
+}
+
+/* Misma altura de logo y de tarjeta en cada fila, sea cual sea la proporción del logo */
+.silverGrid .logoSection {
+  flex: none;
+  height: 128px;
+}
+
+.silverGrid > a {
+  display: flex;
+}
+
+.silverGrid .card {
+  width: 100%;
 }
 
 .logoWrapper {

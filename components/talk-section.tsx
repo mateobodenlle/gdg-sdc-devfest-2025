@@ -32,6 +32,7 @@ type Props = {
 
 export default function TalkSection({ talk }: Props) {
   const dayFormatted = React.useMemo(() => {
+    if (!talk.start) return '';
     const time = new Date(talk.start);
     const dateInLowercase =  time.toLocaleDateString(new Intl.Locale('es-ES'), {dateStyle: 'full'});
     const dateInSentenceCase = dateInLowercase.charAt(0).toUpperCase() + dateInLowercase.slice(1);
@@ -74,17 +75,25 @@ export default function TalkSection({ talk }: Props) {
         <div className={styles['speaker-details']}>
           <div>
             <h1 className={styles.name}>{talk.title}</h1>
-            <p className={styles.date}>
-              <span className={styles.company}>{dayFormatted}</span>
-            </p>
-            <p className={styles.hours}>
-              <span className={styles.company}>{`${new Date(talk.start).toLocaleTimeString(new Intl.Locale('es-ES'), {timeStyle: 'short'})} - ${new Date(talk.end).toLocaleTimeString(new Intl.Locale('es-ES'), {timeStyle: 'short'})}`}</span>
-            </p>
+            {talk.start ? (
+              <>
+                <p className={styles.date}>
+                  <span className={styles.company}>{dayFormatted}</span>
+                </p>
+                <p className={styles.hours}>
+                  <span className={styles.company}>{`${new Date(talk.start).toLocaleTimeString(new Intl.Locale('es-ES'), {timeStyle: 'short'})} - ${new Date(talk.end).toLocaleTimeString(new Intl.Locale('es-ES'), {timeStyle: 'short'})}`}</span>
+                </p>
+              </>
+            ) : (
+              <p className={styles.date}>
+                <span className={styles.company}>Horario por confirmar</span>
+              </p>
+            )}
             <h2 className={styles['bio-header']}>Descripción</h2>
             <p className={styles.bio}>{talk.description}</p>
             <h2 className={styles['speakers-header']}>Speaker{talk.speaker?.length > 1 && 's'}</h2>
             {talk.speaker?.map(s => (
-              <div key={s.name} className={styles['avatar-group']}>
+              <Link key={s.name} href={`/speakers/${s.slug}`} className={styles['avatar-group']}>
                 <div className={styles['avatar-wrapper']}>
                   <Image
                     loading="lazy"
@@ -99,7 +108,7 @@ export default function TalkSection({ talk }: Props) {
                 <p className={styles.speaker_name} >
                   {s.name}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

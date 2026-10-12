@@ -19,15 +19,23 @@ export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_U
 export const TWITTER_USER_NAME = 'GDGSantiagoES';
 export const BRAND_NAME = 'GDG Santiago de Compostela';
 export const SITE_NAME_MULTILINE = ['DevFest', 'Santiago de Compostela'];
-export const SITE_NAME = 'DevFest Santiago de Compostela 2025';
+export const SITE_NAME = 'DevFest Santiago de Compostela 2026';
 export const META_DESCRIPTION =
   'DevFest Santiago de Compostela es una conferencia tecnológica organizada por Google Developers Group Santiago de Compostela. Los GDG son una red local de grupos sin ánimo de lucro ofrecen charlas, demostraciones prácticas, talleres y laboratorios de código sobre las últimas tecnologías de Google. En 2022, se celebraron más de 550 DevFests, que ayudaron a más de 320.000 desarrolladores. DevFest es el principal evento local para que los desarrolladores conozcan las últimas tecnologías de Google de la mano de Googlers, Google Developer Experts y ponentes del sector.';
-// Mini-broma despues de tener que posponer el evento por el huracán:
 export const SITE_DESCRIPTION =
   'Tecnología, innovación y networking. ¡No te lo pierdas!';
-export const DATE = '8 y 9 de Octubre 2025';
-export const SHORT_DATE = '8-9 Oct';
-export const FULL_DATE = '8-9 Oct';
+export const DATE = '4 y 5 de Noviembre 2026';
+export const SHORT_DATE = '4-5 Nov';
+export const FULL_DATE = '4-5 Nov';
+
+// Endpoint de la API de Sessionize del evento (solo lectura)
+export const SESSIONIZE_ID = '6irtnp29';
+
+// Horario aproximado: aún no hay agenda cerrada en Sessionize
+export const EVENT_DAYS = [
+  { date: '2026-11-04', label: 'Miércoles 4 de noviembre', start: '16:30', end: '20:15' },
+  { date: '2026-11-05', label: 'Jueves 5 de noviembre', start: '11:00', end: '20:15' }
+];
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
@@ -53,17 +61,17 @@ export const NAVIGATION = [
     name: 'Sponsors',
     route: '/partners'
   },
-  /*{
+  {
     name: 'Speakers',
     route: '/speakers'
-  },*/
+  },
   {
     name: 'Equipo',
     route: '/team'
   },
   {
-    name: 'Edición 2024',
-    route: 'https://devfest24.gdg-sdc.org'
+    name: 'Edición 2025',
+    route: '/2025'
   },
   /*{
     name: 'Live Stage',

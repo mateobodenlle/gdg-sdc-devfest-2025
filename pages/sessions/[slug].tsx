@@ -17,10 +17,9 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Page from '@components/page';
-import SpeakerSection from '@components/speaker-section';
 import Layout from '@components/layout';
 
-import { getAllSpeakers } from '@lib/cms-api';
+import { getSessionizeData } from '@lib/sessionize';
 import { Speaker, Talk } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 import TalkSection from '@components/talk-section';
@@ -45,62 +44,10 @@ export default function SpeakerPage({ talk }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const slug = params?.slug;
+  const { talks } = await getSessionizeData();
+  const talk = talks.find(t => t.slug === params?.slug);
 
-  const allSpeakers = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/SpeakerWall').then(res => res.json()).then(data => data.map((speaker: any) => ({
-    name: speaker.fullName,
-    title: speaker.tagLine,
-    image: {
-      url: speaker.profilePicture,
-    },
-    slug: speaker.id,
-    isTopSpeaker: speaker.isTopSpeaker
-  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
-    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-  )
-    .catch((e) => {
-      console.error(e);
-      return []
-    }
-    );
-
-  const allTalks = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
-    [
-      ...prevList,
-      ...date.rooms.reduce((prevRooms: any[], room: any) => (
-        [
-          ...prevRooms,
-          ...room.sessions.map((session: any) => ({
-            title: session.title,
-            description: session.description,
-            start: session.startsAt,
-            end: session.endsAt,
-            speaker: session.speakers[0] ?
-              session.speakers.map((speaker: any) => (
-                // Get the full speaker details from the list
-                allSpeakers.find((s: any) => s.slug === speaker.id)
-              )).sort((a: any, b: any) => a.name.localeCompare(b.name))
-                .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-              : null,
-            stage: {
-              name: room.name
-            },
-            slug: session.id,
-            isServiceSession: session.isServiceSession,
-            isPlenumSession: session.isPlenumSession
-          }))
-        ]
-      ), [])
-    ]
-  ), []))
-    .catch((e) => {
-      console.error(e);
-      return []
-    });
-
-  const currentTalk = allTalks.find((t: any) => t.slug === slug) || null;
-
-  if (!currentTalk) {
+  if (!talk) {
     return {
       notFound: true
     };
@@ -108,33 +55,25 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   return {
     props: {
-      talk: currentTalk
+      // Sessionize has no schedule yet: start/end stay empty until it is published
+      talk: {
+        title: talk.title,
+        description: talk.description,
+        start: '',
+        end: '',
+        slug: talk.slug,
+        speaker: talk.speakers as unknown as Speaker[]
+      }
     },
     revalidate: 60
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allSlugs = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/GridSmart').then(res => res.json()).then((data: any[]) => data.reduce((prevList: any[], date: any) => (
-    [
-      ...prevList,
-      ...date.rooms.reduce((prevRooms: any[], room: any) => (
-        [
-          ...prevRooms,
-          ...room.sessions.map((session: any) => ({
-            params: { slug: session.id },
-          }))
-        ]
-      ), [])
-    ]
-  ), []))
-    .catch((e) => {
-      console.error(e);
-      return []
-    });
+  const { talks } = await getSessionizeData();
 
   return {
-    paths: allSlugs,
+    paths: talks.map(t => ({ params: { slug: t.slug } })),
     fallback: 'blocking'
   };
 };

@@ -20,43 +20,14 @@ import Page from '@components/page';
 import SponsorsGrid from '@components/sponsors-grid';
 import Layout from '@components/layout';
 import LinkButton from '@components/hms/LinkButton';
+import PageHero from '@components/page-hero';
 
 import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
-// Real sponsor data for DevFest Santiago 2025
+// Sponsors confirmados para DevFest Santiago 2026
 const REAL_SPONSORS: Sponsor[] = [
-  // Platinum Tier
-  {
-    name: 'OSIX Tech',
-    description: 'Empresa tecnológica especializada en soluciones innovadoras de desarrollo de software y servicios digitales.',
-    slug: 'osixtech',
-    website: 'https://osix.tech',
-    callToAction: 'Conoce más',
-    callToActionLink: 'https://osix.tech',
-    links: [],
-    discord: '',
-    tier: 'Platinum',
-    cardImage: { url: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&h=600&fit=crop' },
-    logo: { url: '/osixtech.png' },
-    youtubeSlug: ''
-  },
-  // Gold Tier
-  {
-    name: 'dinahosting',
-    description: 'Proveedor líder de servicios de hosting y dominios en España, ofreciendo soluciones confiables para empresas y desarrolladores.',
-    slug: 'dinahosting',
-    website: 'https://dinahosting.com',
-    callToAction: 'Descubre servicios',
-    callToActionLink: 'https://dinahosting.com',
-    links: [],
-    discord: '',
-    tier: 'Gold',
-    cardImage: { url: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=600&fit=crop' },
-    logo: { url: '/dinahosting.png' },
-    youtubeSlug: ''
-  },
   // Silver Tier
   {
     name: 'Raiola Networks',
@@ -73,77 +44,17 @@ const REAL_SPONSORS: Sponsor[] = [
     youtubeSlug: ''
   },
   {
-    name: 'EthicHub',
-    description: 'Plataforma blockchain que conecta inversores con agricultores de países en desarrollo, promoviendo la inclusión financiera y el comercio ético.',
-    slug: 'ethichub',
-    website: 'https://www.ethichub.com/es',
-    callToAction: 'Descubre EthicHub',
-    callToActionLink: 'https://www.ethichub.com/es',
+    name: 'dinahosting',
+    description: 'Proveedor líder de servicios de hosting y dominios en España, ofreciendo soluciones confiables para empresas y desarrolladores.',
+    slug: 'dinahosting',
+    website: 'https://dinahosting.com',
+    callToAction: 'Descubre servicios',
+    callToActionLink: 'https://dinahosting.com',
     links: [],
     discord: '',
-    tier: 'Gold',
-    cardImage: { url: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop' },
-    logo: { url: 'https://cdn.prod.website-files.com/63f56f54bbc14aab5dd1a315/63fe1e37c205fa5a16df7f40_Vectors-Wrapper.svg' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'AVTE - USC',
-    description: 'Área de Valorización, Transferencia y Emprendimiento de la Universidad de Santiago de Compostela, impulsando la innovación y el emprendimiento en la comunidad universitaria.',
-    slug: 'avte-usc',
-    website: 'https://www.usc.gal/es/AVTE',
-    callToAction: 'Conoce AVTE',
-    callToActionLink: 'https://www.usc.gal/es/AVTE',
-    links: [],
-    discord: '',
-    tier: 'Gold',
-    cardImage: { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop' },
-    logo: { url: '/avte.jpg' },
-    youtubeSlug: ''
-  },
-];
-
-// Collaborators and Partners
-const COLLABORATORS: Sponsor[] = [
-  {
-    name: 'Universidad de Santiago de Compostela',
-    description: 'Universidad pública gallega de referencia, comprometida con la excelencia académica y la investigación de vanguardia.',
-    slug: 'usc',
-    website: 'https://www.usc.gal',
-    callToAction: 'Visitar USC',
-    callToActionLink: 'https://www.usc.gal',
-    links: [],
-    discord: '',
-    tier: 'Colaborador',
-    cardImage: { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop' },
-    logo: { url: 'https://assets.usc.gal/sites/default/files/logos/2022/06/logo-neg.svg' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'Escola Técnica Superior de Enxeñería',
-    description: 'Centro de la USC dedicado a la formación integral de ingenieros comprometidos con el desarrollo de la sociedad bajo principios éticos.',
-    slug: 'etse',
-    website: 'https://www.usc.gal/en/center/higher-technical-engineering-school',
-    callToAction: 'Conoce ETSE',
-    callToActionLink: 'https://www.usc.gal/en/center/higher-technical-engineering-school',
-    links: [],
-    discord: '',
-    tier: 'Colaborador',
-    cardImage: { url: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop' },
-    logo: { url: 'https://assets.usc.gal/sites/default/files/logos/2022/06/logo-neg.svg' },
-    youtubeSlug: ''
-  },
-  {
-    name: 'JetBrains',
-    description: 'Empresa líder en herramientas de desarrollo profesional para programadores, creadora de IDEs como IntelliJ IDEA, PyCharm y WebStorm.',
-    slug: 'jetbrains',
-    website: 'https://www.jetbrains.com',
-    callToAction: 'Descubre JetBrains',
-    callToActionLink: 'https://www.jetbrains.com',
-    links: [],
-    discord: '',
-    tier: 'Colaborador',
-    cardImage: { url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop' },
-    logo: { url: '/jetbrains.png' },
+    tier: 'Silver',
+    cardImage: { url: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=600&fit=crop' },
+    logo: { url: '/dinahosting.png' },
     youtubeSlug: ''
   }
 ];
@@ -155,65 +66,31 @@ type Props = {
 export default function PartnersPage({ sponsors }: Props) {
   const meta = {
     title: 'Sponsors - ' + SITE_NAME,
-    description: 'Conoce a las empresas que hacen posible DevFest Santiago 2025. Únete a nosotros y forma parte del futuro de la tecnología.'
+    description: 'Conoce a las empresas que hacen posible DevFest Santiago 2026. Únete a nosotros y forma parte del futuro de la tecnología.'
   };
 
-  // Combine sponsors and collaborators
-  const allSponsors = [...REAL_SPONSORS, ...COLLABORATORS];
+  const allSponsors = REAL_SPONSORS;
   console.log('Partners page - CMS sponsors:', sponsors.length);
   console.log('Partners page - Real sponsors:', REAL_SPONSORS.length);
-  console.log('Partners page - Collaborators:', COLLABORATORS.length);
   console.log('Partners page - Total sponsors:', allSponsors.length);
 
   return (
     <Page meta={meta}>
       <Layout>
-        <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen">
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/confetti.svg')] opacity-5"></div>
-            <div className="relative z-10 px-8 py-6">
-              <div className="text-center mb-6">
-                <h1 className="text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-2xl">
-                  SPONSORS & PARTNERS
-                </h1>
-                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Las empresas e instituciones que hacen posible DevFest Santiago 2025
-                </p>
+        <PageHero
+          title="Sponsors"
+          description="Las empresas que hacen posible el DevFest Santiago 2026."
+        >
+          <LinkButton href="mailto:devfest@gdg-sdc.org">
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Patrocina el DevFest
+          </LinkButton>
+        </PageHero>
 
-                <div className="flex justify-center gap-8 mt-5">
-                  <LinkButton
-                    className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
-                    href="mailto:devfest@gdg-sdc.org"
-                  >
-                    <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                      </svg>
-                      Become a Sponsor
-                    </span>
-                  </LinkButton>
-
-                  <span
-                    className="group relative px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full text-white font-semibold shadow-2xl opacity-50 cursor-not-allowed inline-block"
-                  >
-                    <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                      </svg>
-                      Sponsorship Kit
-                    </span>
-                  </span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div className="relative -mt-16">
-            <div className="bg-black/20 backdrop-blur-sm rounded-t-[40px] pt-8">
-              <SponsorsGrid sponsors={allSponsors} />
-            </div>
-          </div>
+        <div className="rounded-t-[40px] bg-black/20 pt-4 pb-16 md:pb-24">
+          <SponsorsGrid sponsors={allSponsors} />
         </div>
       </Layout>
     </Page>

@@ -32,9 +32,10 @@ const TwitterIcon = () => (
 
 type Props = {
   speaker: Speaker;
+  talks?: { slug: string; title: string }[];
 };
 
-export default function SpeakerSection({ speaker }: Props) {
+export default function SpeakerSection({ speaker, talks = [] }: Props) {
   return (
     <>
       <Link href="/speakers" className={styles.backlink}>
@@ -76,6 +77,22 @@ export default function SpeakerSection({ speaker }: Props) {
             </p>
             <h2 className={styles['bio-header']}>Bio</h2>
             <p className={styles.bio}>{speaker.bio}</p>
+            {talks.length > 0 && (
+              <>
+                <h2 className={styles['bio-header']}>Charla{talks.length > 1 && 's'}</h2>
+                <ul className="flex flex-col gap-2">
+                  {talks.map(t => (
+                    <li key={t.slug}>
+                      <Link href={`/sessions/${t.slug}`} className="text-purple-300 underline-offset-4 hover:underline">
+                        {t.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {(speaker.twitter || speaker.github) && (
+            <>
             <h3 className={styles['socials-header']}>Social Media</h3>
             {speaker.twitter ? (
               <a
@@ -105,6 +122,8 @@ export default function SpeakerSection({ speaker }: Props) {
               <span className={cn(styles.githubIcon, styles.disabled)}>
                 <GithubIcon color="#D8D8D8" size={24} />
               </span>
+            )}
+            </>
             )}
           </div>
         </div>

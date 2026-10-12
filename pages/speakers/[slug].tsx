@@ -20,49 +20,35 @@ import Page from '@components/page';
 import SpeakerSection from '@components/speaker-section';
 import Layout from '@components/layout';
 
-import { getAllSpeakers } from '@lib/cms-api';
+import { getSessionizeData } from '@lib/sessionize';
 import { Speaker } from '@lib/types';
 import { META_DESCRIPTION, SITE_NAME } from '@lib/constants';
 
 type Props = {
   speaker: Speaker;
+  talks: { slug: string; title: string }[];
 };
 
-export default function SpeakerPage({ speaker }: Props) {
+export default function SpeakerPage({ speaker, talks }: Props) {
   const meta = {
-    title: 'Speakers - ' + SITE_NAME,
+    title: speaker.name + ' - ' + SITE_NAME,
     description: META_DESCRIPTION
   };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <SpeakerSection speaker={speaker} />
+        <SpeakerSection speaker={speaker} talks={talks} />
       </Layout>
     </Page>
   );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const slug = params?.slug;
+  const { speakers, talks } = await getSessionizeData();
+  const speaker = speakers.find(s => s.slug === params?.slug);
 
-  const speakers = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => ({
-    name: speaker.fullName,
-    title: speaker.tagLine,
-    image: {
-      url: speaker.profilePicture,
-    },
-    slug: speaker.id,
-    isTopSpeaker: speaker.isTopSpeaker,
-    bio: speaker.bio,
-  })).sort((a: any, b: any) => a.name.localeCompare(b.name))
-    .sort((a: any, b: any) => b.isTopSpeaker - a.isTopSpeaker)
-  )
-    .catch(() => [])
-
-  const currentSpeaker = speakers.find((s: Speaker) => s.slug === slug) || null;
-
-  if (!currentSpeaker) {
+  if (!speaker) {
     return {
       notFound: true
     };
@@ -70,19 +56,20 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   return {
     props: {
-      speaker: currentSpeaker
+      speaker: speaker as unknown as Speaker,
+      talks: talks
+        .filter(t => t.speakers.some(s => s.slug === speaker.slug))
+        .map(t => ({ slug: t.slug, title: t.title }))
     },
     revalidate: 60
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await fetch('https://sessionize.com/api/v2/w5tzgdt6/view/Speakers').then(res => res.json()).then(data => data.map((speaker: any) => (
-    { params: { slug: speaker.id } }
-  )));
+  const { speakers } = await getSessionizeData();
 
   return {
-    paths: slugs,
+    paths: speakers.map(s => ({ params: { slug: s.slug } })),
     fallback: 'blocking'
   };
 };

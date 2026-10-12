@@ -52,6 +52,8 @@
 .bio {
   color: var(--accents-2);
   max-width: 800px;
+  white-space: pre-line;
+  line-height: 1.7;
 }
 
 .image {
