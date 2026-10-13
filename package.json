@@ -6,7 +6,7 @@
   "author": "Aldan Creo",
   "homepage": "https://devfest.gdg-sdc.org",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next",
